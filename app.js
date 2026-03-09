@@ -116,76 +116,78 @@ setInterval(nextQuote, 30000);
 // PLANOS DETALHADOS
 // ══════════════════════════════════════════
 
-// ── GUITARRA — SEMANA 1 ──
+// ── GUITARRA — SEMANA 1 — NÍVEL AVANÇADO (Guthrie Govan / Alex Hutchings style) ──
 const GUITAR_PLAN = {
-  seg: { tipo:'TÉCNICA', foco:'Alternate Picking', dur:'60 min', cor:'#e8ff47',
+  seg: { tipo:'TÉCNICA', foco:'Alternate Picking — Precisão Cirúrgica', dur:'60 min', cor:'#e8ff47',
     exercicios:[
-      { n:'Cromático 1-2-3-4', bpm:'60 BPM', desc:'Todas as cordas, subindo e descendo o braço. Movimento mínimo de dedos.' },
-      { n:'Alternate Picking — Pentatônica Am', bpm:'80 BPM', desc:'Posição 1. Baixo-cima-baixo-cima estrito. Limpo 3x antes de acelerar.' },
-      { n:'Inside/Outside Picking', bpm:'72 BPM', desc:'2 notas por corda. Foco na troca: inside picking entre as cordas.' },
-      { n:'Sequência descendente — grupos de 3', bpm:'75 BPM', desc:'Padrão 5-4-3 / 4-3-2 / 3-2-1. Começa a criar fraseado musical.' },
-      { n:'Legato livre sobre backing Am', bpm:'Livre', desc:'Sem metrônomo. Hammer-ons e pull-offs. Objetivo: sentir o groove.' },
+      { n:'Aquecimento: Cromático com muting de palma', bpm:'80 BPM / 5 min', desc:'1-2-3-4 em todas as cordas com palm mute controlado. Foco: ataque uniforme entre palheta pra cima e pra baixo.' },
+      { n:'Sequências de 6 notas — pentatônica Am em 3 posições', bpm:'100–120 BPM', desc:'Padrão 1-2-1-2-1-2 em grupos de 6 subindo e descendo o braço. Conecte as 5 posições sem parar. Metrônomo em semínimas.' },
+      { n:'Inside vs Outside Picking — troca de cordas deliberada', bpm:'90 BPM', desc:'2 notas por corda, alternando inside (palheta entre as cordas) e outside. Grave e escute: sem ruído nas trocas. Base do som de Guthrie em "Erotic Cakes".' },
+      { n:'Licks de 3 notas/corda — modo Lídio (A Lídio)', bpm:'95 BPM', desc:'A-B-C#-D#-E-F#-G#-A com alternate picking puro. O #4 (D#) é o sabor Lídio — destaque-o. 3 notas por corda, todas as 6 cordas.' },
+      { n:'Frase fusion: escala + cromatismo de aproximação', bpm:'Livre', desc:'Crie uma frase de 4 compassos usando a escala mais 1 nota cromática antes de cada nota alvo. Técnica central de Alex Hutchings — tensão controlada.' },
     ],
-    regra:'⚠️ Se errar 2x seguidas na mesma nota → reduza 5 BPM imediatamente.'
+    regra:'⚠️ Regra de ouro: se não está limpo a 100 BPM, não avance. Limpo lento > sujo rápido.'
   },
-  ter: { tipo:'TEORIA', foco:'Modo Dórico', dur:'50 min', cor:'#4ecdc4',
+  ter: { tipo:'TEORIA APLICADA', foco:'Harmonia Funcional — Modos por Acorde', dur:'60 min', cor:'#4ecdc4',
     exercicios:[
-      { n:'Anatomia do Modo Dórico', bpm:'Sem tempo', desc:'A Dórico = A-B-C-D-E-F#-G. O F# é a identidade. Compare com Am natural.' },
-      { n:'Posição 1 — A Dórico', bpm:'50 BPM', desc:'Raiz no 5º traste, 6ª corda. Cante cada nota enquanto toca.' },
-      { n:'Posição 2 — extensão agudo', bpm:'55 BPM', desc:'Raiz no 12º traste, 5ª corda. Conecte com posição 1. Sustente o F#.' },
-      { n:'Improviso sobre Am7 drone', bpm:'Livre', desc:'Corda A em bordão. Improvise em A Dórico. Toda vez que tocar F#, sustente.' },
+      { n:'7 modos — cor sonora por acorde alvo', bpm:'Sem tempo', desc:'Jônico=Maj7, Dórico=m7, Frígio=m7b9, Lídio=Maj7#11, Mixolídio=dom7, Eólio=m7, Lócrio=m7b5. Toque cada um sobre o acorde e ouça a cor. Associe som, não nome.' },
+      { n:'Progressão ii-V-I em C com modo correto por acorde', bpm:'80 BPM', desc:'Dm7=Dórico, G7=Mixolídio, Cmaj7=Jônico. Não mude de escala — mude de foco dentro da mesma tonalidade. Técnica central de Guthrie Govan.' },
+      { n:'Tritone substitution — G7 substituído por Db7', bpm:'Livre', desc:'Troque G7 por Db7 na progressão ii-V-I. Improvise sobre esse acorde. Note como as notas características resolvem diferente. Jazz aplicado no fusion.' },
+      { n:'Arpejos com extensões — Am9, D13, Gmaj7#11', bpm:'70 BPM', desc:'Am9: A-C-E-G-B. D13: D-F#-A-C-B. Gmaj7#11: G-B-D-F#-C#. Toque subindo e descendo com alternate picking. Extensões são o vocabulário do fusion.' },
+      { n:'Improviso sobre Dm7→G7→Cmaj7 aplicando modos por acorde', bpm:'Backing track', desc:'YouTube: "jazz fusion backing track C major". 10 min contínuos aplicando os modos por acorde. GRAVE obrigatório — compare com semana anterior.' },
     ],
-    regra:'🎵 Referência: Santana usa Dórico em "Evil Ways" e "Oye Como Va". Ouça hoje.'
+    regra:'🎵 Referência: "Wonderful Slippery Thing" — Guthrie pensa por acorde, não por tonalidade. Ouça hoje.'
   },
-  qua: { tipo:'TÉCNICA', foco:'Legato & Hammer-ons', dur:'60 min', cor:'#e8ff47',
+  qua: { tipo:'TÉCNICA', foco:'Legato Total — Técnica Govan Completa', dur:'65 min', cor:'#e8ff47',
     exercicios:[
-      { n:'Cromático legato — 1h-2h-3h-4 / 4p-3p-2p-1', bpm:'55 BPM', desc:'h=hammer-on, p=pull-off. Cada nota deve soar igual em volume.' },
-      { n:'Legato contínuo — 3 notas/corda na pentatônica', bpm:'70 BPM tercinas', desc:'Ex 1ª corda Am: 5h7h8. Suba e desça sem palheta.' },
-      { n:'Trill 1-3 e 1-4 em todas as cordas', bpm:'30s cada', desc:'1º dedo fixo. Alterne hammer/pull com 3º e 4º dedos. Resistência e independência.' },
-      { n:'Legato sobre A Dórico — técnica Guthrie Govan', bpm:'65 BPM', desc:'Palheta apenas na 1ª nota de cada corda. Resto é hammer e pull.' },
-      { n:'Frase curta legato — crie e repita 10x', bpm:'80 BPM', desc:'4 compassos em A Dórico. Consistência é o objetivo, não criatividade.' },
+      { n:'Legato de 4 notas/corda — 3 cordas contínuas', bpm:'80 BPM tercinas', desc:'4 notas por corda (hammer + pull) em 3 cordas sem palheta. Ex Am: corda 1: 5h7h8h10 → corda 2: 5h7h8h10 → corda 3: 5h7h9h10. Volume uniforme é fundamental.' },
+      { n:'Hammer-on from nowhere (HFN) — técnica Govan', bpm:'Livre / 10 min', desc:'Martele a 1ª nota sem atacar com palheta. Cria articulação impossível de outro modo. Pratique HFN no início de frases em Am pentatônica e A Dórico.' },
+      { n:'Legato com tapping integrado — esquerda + tapping direita', bpm:'75 BPM', desc:'Padrão: esquerda 5h8h10, tapping direita no 13, pull-off 10-8-5. Tapping funcional estilo Hutchings — não decorativo, serve a frase musical.' },
+      { n:'Legato cromático + resolução diatônica', bpm:'90 BPM', desc:'4 notas cromáticas (ex: 5-6-7-8 na 1ª corda) resolvendo na nota da escala mais próxima. Cria tensão e resolução automáticas — harmonia implícita.' },
+      { n:'Frase Alex Hutchings style — legato over chord changes', bpm:'Backing funk/fusion', desc:'YouTube: "Dm7 funk fusion backing". Improvise com legato puro, trocando conscientemente quando o acorde muda. Palheta proibida por 5 min.' },
     ],
-    regra:'🎵 Referência: "Fives" do Guthrie Govan. Objetivo: fluidez, não velocidade.'
+    regra:'🎵 Referência: "Fives" e "Uncle Buck" — Guthrie Govan. Legato não é técnica, é voz.'
   },
-  qui: { tipo:'TEORIA', foco:'Arpejos Am7 e D7', dur:'50 min', cor:'#4ecdc4',
+  qui: { tipo:'TÉCNICA', foco:'Sweep Picking Integrado + Economy Picking', dur:'60 min', cor:'#e8ff47',
     exercicios:[
-      { n:'Por que arpejos no Dórico?', bpm:'Sem tempo', desc:'Am7 (I), Bm7 (II), Cmaj7 (III), D7 (IV). O D7 com F# confirma o sabor Dórico.' },
-      { n:'Arpejo Am7 — posição fechada (5º traste)', bpm:'65 BPM', desc:'Notas: A-C-E-G. Use alternate picking. Sustente cada nota antes da próxima.' },
-      { n:'Arpejo D7 — 5º traste', bpm:'65 BPM', desc:'Notas: D-F#-A-C. Destaque o F#: mais pressão, mais sustain.' },
-      { n:'Alternância Am7 → D7 em loop', bpm:'70 BPM', desc:'2 compassos cada sobre backing. Ouça o D7 "brilhar" — essa é a essência do Dórico.' },
-      { n:'Escala + arpejo misturados', bpm:'Livre', desc:'Escala Dórica → ao mudar para D7 na progressão, mude para o arpejo D7 por 1 compasso.' },
+      { n:'Sweep 3 cordas — Am, Dm, Em posições fechadas', bpm:'80 BPM', desc:'Am: 5ª corda 7ª casa → 4ª 5ª → 3ª 5ª, sweep down e up. Palm mute leve no início para limpar. Cada nota soa individual — não é acorde.' },
+      { n:'Sweep 5 cordas — Amaj7 e Am7 alternados', bpm:'75 BPM', desc:'Amaj7: A-C#-E-G# / Am7: A-C-E-G em 5 cordas. Alterne em loop. Foco na transição no topo — tapping opcional no pico da frase.' },
+      { n:'Arpejo + escala integrados — sair do sweep direto na escala', bpm:'Livre', desc:'Sweep de Am7 → topo → direto para lick A Dórico com legato. Isso é o que separa guitarrista de músico: conectar técnicas em frases musicais.' },
+      { n:'Economy picking — 3 notas/corda em sequência', bpm:'95 BPM', desc:'Na troca de corda continue o movimento (down→down ou up→up). Mais eficiente para velocidade. Compare com alternate no mesmo lick — sinta a diferença.' },
+      { n:'Composição: 8 compassos sweep + legato + picking', bpm:'Livre', desc:'Monte uma frase de 8 compassos combinando as 3 técnicas. Não precisa ser rápido — precisa ser intencional e musical. Grave.' },
     ],
-    regra:'💡 Guitarristas avançados tocam os acordes da progressão, não apenas "a escala".'
+    regra:'💡 Sweep limpo a 80 BPM > sweep sujo a 130 BPM. Guthrie nunca toca sweep de exibição — sempre serve a frase.'
   },
-  sex: { tipo:'TÉCNICA', foco:'Bending & Vibrato', dur:'60 min', cor:'#e8ff47',
+  sex: { tipo:'EXPRESSIVIDADE', foco:'Vibrato & Bending — Voz Própria', dur:'60 min', cor:'#ff6b35',
     exercicios:[
-      { n:'Cromático com dedos 2 e 3 apenas', bpm:'60 BPM', desc:'Ative os dedos mais fracos. 1-3 / 2-4 / 1-4 nas 6 cordas. Lento e articulado.' },
-      { n:'Bend de 1 tom — afinação cirúrgica', bpm:'10 reps cada', desc:'2ª corda 8ª casa (F#→G#). Toque o G# normal primeiro para memorizar o alvo. 3 dedos empurram juntos.' },
-      { n:'Pre-bend e release', bpm:'5 min', desc:'Suba o bend antes de atacar, toque, depois desça. Efeito "choro". Fundamental blues.' },
-      { n:'Vibrato com pulso — guitar vibrato', bpm:'60 BPM lento', desc:'Oscile empurrando e voltando à afinação. Pulso inteiro gira, não só o dedo. Nunca abaixo da nota.' },
-      { n:'Vibrato em frase musical', bpm:'Livre', desc:'4 notas retas + 1 nota longa com vibrato. Grave e ouça: deve soar intencional.' },
+      { n:'Vibrato em 4 velocidades — lento / médio / rápido / wide', bpm:'Metrônomo livre', desc:'Lento e largo (Gary Moore), médio expressivo (Guthrie), rápido tenso (blues), wide com pulso (SRV). 3 min cada. São "palavras" diferentes na sua linguagem.' },
+      { n:'Micro-bends — 1/4 de tom intencional (blue note)', bpm:'Livre / 10 min', desc:'Suba apenas 1/4 de tom — nem chega no semitom. Na pentatônica Am, aplique nas notas C e G. Som blue note puro. Isso é o que Guthrie faz em "Wonderful Slippery Thing".' },
+      { n:'Pre-bend invisível — sobe antes, ataque, release lento', bpm:'Lento', desc:'Suba o bend ANTES de atacar. Ataque na nota aguda. Desça devagar até a original. Efeito de descida emocional. 10 min na nota G, 3ª corda.' },
+      { n:'Vibrato no bend — benda e vibra simultaneamente', bpm:'Livre', desc:'Bend de 1 tom + vibrato no topo do bend. Difícil: a maioria perde a afinação. Foco: manter o bend enquanto oscila. 3 dedos sempre, pulso como eixo.' },
+      { n:'Frase de 4 notas — expressão máxima em cada uma', bpm:'Lento/livre', desc:'Apenas 4 notas — mas com vibrato, bend, dinâmica e intenção total. Grave e ouça: você tocou algo ou executou técnica? Hutchings faz isso constantemente.' },
     ],
-    regra:'🎵 Grave seu vibrato e compare com Gary Moore em "Still Got the Blues". Compare intenção, não velocidade.'
+    regra:'🎵 Referência: Alex Hutchings "At Large" + Guthrie "Fives". Cada nota tem personalidade própria.'
   },
-  sab: { tipo:'IMPROVISAÇÃO', foco:'Sessão Livre + Análise', dur:'75 min', cor:'#ff6b35',
+  sab: { tipo:'IMPROVISAÇÃO', foco:'Sessão Fusion Completa — Análise', dur:'90 min', cor:'#ff6b35',
     exercicios:[
-      { n:'Backing Am blues/funk — 15 min contínuos', bpm:'90 BPM', desc:'YouTube: "Am dorian backing track". Regra: não pare. Use tudo da semana. GRAVE EM VÍDEO.' },
-      { n:'Restrição criativa — apenas notas longas', bpm:'Lento/livre', desc:'Proibido colcheias. Apenas semínimas e mais longas com vibrato e bend. Pense no que dizer.' },
-      { n:'Call and Response — pergunta e resposta', bpm:'80-95 BPM', desc:'Frase de 2 compassos (pergunta) → pausa 2 → responde. Estrutura do blues. 10 minutos.' },
-      { n:'Análise: ouça a gravação — 3 pontos fortes', bpm:'15 min', desc:'Ouça com ouvido de produtor. Anote: momentos de intenção, boa dinâmica, frases que funcionaram.' },
-      { n:'Identifique 2 padrões repetitivos (licks de emergência)', bpm:'15 min', desc:'Todo guitarrista tem licks de fuga. Identifique 1 deles. Na próxima semana: proibido esse lick.' },
+      { n:'Warm-up técnico — 10 min percorrendo a semana', bpm:'Confortável', desc:'2 min cada: alternate picking licks, legato 4 notas/corda, sweep 3 cordas, vibrato 4 velocidades. Não pratique — confirme que entrou no corpo.' },
+      { n:'Backing fusion Am — 20 min GRAVADO (vídeo ou áudio)', bpm:'Backing track', desc:'YouTube: "Am fusion backing track Guthrie style". Regra absoluta: não pare por nenhum erro. Use tudo: sweep, legato, bends, modos, arpejos, economia de picking.' },
+      { n:'Restrição 1: apenas 3 notas por frase — 10 min', bpm:'Lento', desc:'Proibido mais de 3 notas consecutivas sem silêncio ou nota longa. Força pensar melodicamente, não tecnicamente. Isso separa Guthrie de 99% dos guitarristas.' },
+      { n:'Restrição 2: apenas groove e timing — 5 min', bpm:'Groove/funk', desc:'Foque no ritmo. Uma nota longa + vibrato no tempo certo é mais musical que 16 notas sem intenção rítmica. Alex Hutchings faz isso constantemente.' },
+      { n:'Análise crítica da gravação — 3 metas para semana 2', bpm:'20 min', desc:'Ouça 2x: 1ª como ouvinte (o que soou bem?), 2ª como professor (o que repetiu demais? onde perdeu a musicalidade?). Anote 3 metas específicas para semana 2.' },
     ],
-    regra:'🏆 Objetivo do sábado: descobrir onde você está. Gravação honesta > prática sem feedback.'
+    regra:'🏆 A sessão de sábado é seu espelho real. Gravação honesta é o feedback mais valioso que existe.'
   },
-  dom: { tipo:'REVISÃO', foco:'Repertório + Descanso', dur:'45 min', cor:'#c084fc',
+  dom: { tipo:'REVISÃO + REPERTÓRIO', foco:'Música Real + Descanso Mental', dur:'45 min', cor:'#c084fc',
     exercicios:[
-      { n:'Flash review — exercícios da semana (2 min cada)', bpm:'Sem pressão', desc:'Alternate picking 80 BPM, Dórico posições 1 e 2, arpejo Am7, arpejo D7, 1 bend perfeito. Confirme a memória.' },
-      { n:'Intro de "Oye Como Va" (Santana) — A Dórico', bpm:'50% velocidade', desc:'Aprenda as 8 primeiras notas do solo. Reconheça o F#. Use o vibrato da sexta. Sem pressa.' },
-      { n:'Toque algo que você já sabe — por prazer', bpm:'Livre / alegre', desc:'10 min tocando o que você gosta, sem objetivo técnico. Sustente o amor pelo instrumento.' },
+      { n:'Flash review — 1 exercício de cada dia (2 min cada)', bpm:'Confortável', desc:'Seg: lick alternate picking inside/outside. Ter: ii-V-I com modos por acorde. Qua: legato 4 notas/corda HFN. Qui: sweep Am7 5 cordas. Sex: vibrato + micro-bend.' },
+      { n:'Aprenda o intro de "Wonderful Slippery Thing" — Guthrie Govan', bpm:'50% velocidade', desc:'Riff principal em A Lídio. Identifique o D# (#4). Toque devagar com intenção total. Partitura: Ultimate Guitar ou YouTube cover slow. Velocidade vem depois.' },
+      { n:'Improviso livre — sem objetivo técnico — 15 min', bpm:'Livre / prazer', desc:'Toque o que quiser, como quiser. A relação com o instrumento precisa incluir prazer puro. Guitarristas que só estudam perdem a alma do instrumento.' },
     ],
-    regra:'✅ Semana 1 cobriu: alternate picking, legato, bending/vibrato, Dórico, arpejos Am7/D7, improvisação com análise.'
+    regra:'✅ Semana 1: alternate picking avançado, harmonia funcional com modos, legato Govan, sweep integrado, expressividade total, sessão fusion gravada.'
   },
 };
+
 
 // ── TREINO ACADEMIA — SPLITS ──
 const TREINO_SPLITS = {
