@@ -74,13 +74,13 @@ async function saveDailySummary() {
 
 // ── QUOTES ──
 const QUOTES = [
-  { text: "You are in danger of living a life so comfortable and soft that you will die without ever realizing your true potential.", author: "DAVID GOGGINS", type: "GOGGINS" },
-  { text: "Don't stop when you're tired. Stop when you're done.", author: "DAVID GOGGINS", type: "GOGGINS" },
-  { text: "The most important conversations you'll ever have are the ones you'll have with yourself.", author: "DAVID GOGGINS", type: "GOGGINS" },
-  { text: "Motivation is crap. Motivation comes and goes. When you're driven, whatever is in front of you will get destroyed.", author: "DAVID GOGGINS", type: "GOGGINS" },
-  { text: "You have to build calluses on your brain just like how you build calluses on your hands.", author: "DAVID GOGGINS", type: "GOGGINS" },
-  { text: "The most powerful weapon on earth is the human soul on fire.", author: "DAVID GOGGINS", type: "GOGGINS" },
-  { text: "Only you can master your mind, which is what it takes to live a bold life filled with accomplishments most people consider beyond their capability.", author: "DAVID GOGGINS", type: "GOGGINS" },
+  { text: "Você está em perigo de viver uma vida tão confortável e mole que vai morrer sem jamais perceber o seu verdadeiro potencial.", author: "DAVID GOGGINS", type: "GOGGINS" },
+  { text: "Não pare quando estiver cansado. Pare quando terminar.", author: "DAVID GOGGINS", type: "GOGGINS" },
+  { text: "As conversas mais importantes que você terá são as que você terá consigo mesmo.", author: "DAVID GOGGINS", type: "GOGGINS" },
+  { text: "Motivação é uma merda. Motivação vai e vem. Quando você é movido por propósito, tudo que estiver na sua frente será destruído.", author: "DAVID GOGGINS", type: "GOGGINS" },
+  { text: "Você precisa construir calos no seu cérebro, assim como constrói calos nas suas mãos.", author: "DAVID GOGGINS", type: "GOGGINS" },
+  { text: "A arma mais poderosa da terra é a alma humana em chamas.", author: "DAVID GOGGINS", type: "GOGGINS" },
+  { text: "Só você pode dominar sua mente — e é isso que é preciso para viver uma vida ousada, repleta de conquistas que a maioria das pessoas considera impossível.", author: "DAVID GOGGINS", type: "GOGGINS" },
   { text: "Posso fazer tudo através daquele que me fortalece.", author: "FILIPENSES 4:13", type: "ESCRITURA" },
   { text: "Tudo o que você fizer, façam de todo o coração, como se fosse para o Senhor.", author: "COLOSSENSES 3:23", type: "ESCRITURA" },
   { text: "Seja forte e corajoso! Não se apavore, pois o Senhor, o seu Deus, estará com você por onde você andar.", author: "JOSUÉ 1:9", type: "ESCRITURA" },
