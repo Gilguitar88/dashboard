@@ -1,5 +1,6 @@
 // ═══════════════════════════════════════════════════════════
-//  GILMAR // OPS — app.js
+//  GILMAR // OPS — app.js v3
+//  Planos reais: Guitarra Semana 1 + Treino + Inglês
 // ═══════════════════════════════════════════════════════════
 
 // ── SUPABASE ──
@@ -26,7 +27,7 @@ const LOCAL = (() => {
   };
 })();
 
-// ── SAVE TO SUPABASE ──
+// ── SUPABASE SAVE ──
 let saveTimer = null;
 function schedSave(key, value) {
   LOCAL.set(key, value);
@@ -111,33 +112,236 @@ function initQuote() {
 }
 setInterval(nextQuote, 30000);
 
-// ── SCHEDULE ──
+// ══════════════════════════════════════════
+// PLANOS DETALHADOS
+// ══════════════════════════════════════════
+
+// ── GUITARRA — SEMANA 1 ──
+const GUITAR_PLAN = {
+  seg: { tipo:'TÉCNICA', foco:'Alternate Picking', dur:'60 min', cor:'#e8ff47',
+    exercicios:[
+      { n:'Cromático 1-2-3-4', bpm:'60 BPM', desc:'Todas as cordas, subindo e descendo o braço. Movimento mínimo de dedos.' },
+      { n:'Alternate Picking — Pentatônica Am', bpm:'80 BPM', desc:'Posição 1. Baixo-cima-baixo-cima estrito. Limpo 3x antes de acelerar.' },
+      { n:'Inside/Outside Picking', bpm:'72 BPM', desc:'2 notas por corda. Foco na troca: inside picking entre as cordas.' },
+      { n:'Sequência descendente — grupos de 3', bpm:'75 BPM', desc:'Padrão 5-4-3 / 4-3-2 / 3-2-1. Começa a criar fraseado musical.' },
+      { n:'Legato livre sobre backing Am', bpm:'Livre', desc:'Sem metrônomo. Hammer-ons e pull-offs. Objetivo: sentir o groove.' },
+    ],
+    regra:'⚠️ Se errar 2x seguidas na mesma nota → reduza 5 BPM imediatamente.'
+  },
+  ter: { tipo:'TEORIA', foco:'Modo Dórico', dur:'50 min', cor:'#4ecdc4',
+    exercicios:[
+      { n:'Anatomia do Modo Dórico', bpm:'Sem tempo', desc:'A Dórico = A-B-C-D-E-F#-G. O F# é a identidade. Compare com Am natural.' },
+      { n:'Posição 1 — A Dórico', bpm:'50 BPM', desc:'Raiz no 5º traste, 6ª corda. Cante cada nota enquanto toca.' },
+      { n:'Posição 2 — extensão agudo', bpm:'55 BPM', desc:'Raiz no 12º traste, 5ª corda. Conecte com posição 1. Sustente o F#.' },
+      { n:'Improviso sobre Am7 drone', bpm:'Livre', desc:'Corda A em bordão. Improvise em A Dórico. Toda vez que tocar F#, sustente.' },
+    ],
+    regra:'🎵 Referência: Santana usa Dórico em "Evil Ways" e "Oye Como Va". Ouça hoje.'
+  },
+  qua: { tipo:'TÉCNICA', foco:'Legato & Hammer-ons', dur:'60 min', cor:'#e8ff47',
+    exercicios:[
+      { n:'Cromático legato — 1h-2h-3h-4 / 4p-3p-2p-1', bpm:'55 BPM', desc:'h=hammer-on, p=pull-off. Cada nota deve soar igual em volume.' },
+      { n:'Legato contínuo — 3 notas/corda na pentatônica', bpm:'70 BPM tercinas', desc:'Ex 1ª corda Am: 5h7h8. Suba e desça sem palheta.' },
+      { n:'Trill 1-3 e 1-4 em todas as cordas', bpm:'30s cada', desc:'1º dedo fixo. Alterne hammer/pull com 3º e 4º dedos. Resistência e independência.' },
+      { n:'Legato sobre A Dórico — técnica Guthrie Govan', bpm:'65 BPM', desc:'Palheta apenas na 1ª nota de cada corda. Resto é hammer e pull.' },
+      { n:'Frase curta legato — crie e repita 10x', bpm:'80 BPM', desc:'4 compassos em A Dórico. Consistência é o objetivo, não criatividade.' },
+    ],
+    regra:'🎵 Referência: "Fives" do Guthrie Govan. Objetivo: fluidez, não velocidade.'
+  },
+  qui: { tipo:'TEORIA', foco:'Arpejos Am7 e D7', dur:'50 min', cor:'#4ecdc4',
+    exercicios:[
+      { n:'Por que arpejos no Dórico?', bpm:'Sem tempo', desc:'Am7 (I), Bm7 (II), Cmaj7 (III), D7 (IV). O D7 com F# confirma o sabor Dórico.' },
+      { n:'Arpejo Am7 — posição fechada (5º traste)', bpm:'65 BPM', desc:'Notas: A-C-E-G. Use alternate picking. Sustente cada nota antes da próxima.' },
+      { n:'Arpejo D7 — 5º traste', bpm:'65 BPM', desc:'Notas: D-F#-A-C. Destaque o F#: mais pressão, mais sustain.' },
+      { n:'Alternância Am7 → D7 em loop', bpm:'70 BPM', desc:'2 compassos cada sobre backing. Ouça o D7 "brilhar" — essa é a essência do Dórico.' },
+      { n:'Escala + arpejo misturados', bpm:'Livre', desc:'Escala Dórica → ao mudar para D7 na progressão, mude para o arpejo D7 por 1 compasso.' },
+    ],
+    regra:'💡 Guitarristas avançados tocam os acordes da progressão, não apenas "a escala".'
+  },
+  sex: { tipo:'TÉCNICA', foco:'Bending & Vibrato', dur:'60 min', cor:'#e8ff47',
+    exercicios:[
+      { n:'Cromático com dedos 2 e 3 apenas', bpm:'60 BPM', desc:'Ative os dedos mais fracos. 1-3 / 2-4 / 1-4 nas 6 cordas. Lento e articulado.' },
+      { n:'Bend de 1 tom — afinação cirúrgica', bpm:'10 reps cada', desc:'2ª corda 8ª casa (F#→G#). Toque o G# normal primeiro para memorizar o alvo. 3 dedos empurram juntos.' },
+      { n:'Pre-bend e release', bpm:'5 min', desc:'Suba o bend antes de atacar, toque, depois desça. Efeito "choro". Fundamental blues.' },
+      { n:'Vibrato com pulso — guitar vibrato', bpm:'60 BPM lento', desc:'Oscile empurrando e voltando à afinação. Pulso inteiro gira, não só o dedo. Nunca abaixo da nota.' },
+      { n:'Vibrato em frase musical', bpm:'Livre', desc:'4 notas retas + 1 nota longa com vibrato. Grave e ouça: deve soar intencional.' },
+    ],
+    regra:'🎵 Grave seu vibrato e compare com Gary Moore em "Still Got the Blues". Compare intenção, não velocidade.'
+  },
+  sab: { tipo:'IMPROVISAÇÃO', foco:'Sessão Livre + Análise', dur:'75 min', cor:'#ff6b35',
+    exercicios:[
+      { n:'Backing Am blues/funk — 15 min contínuos', bpm:'90 BPM', desc:'YouTube: "Am dorian backing track". Regra: não pare. Use tudo da semana. GRAVE EM VÍDEO.' },
+      { n:'Restrição criativa — apenas notas longas', bpm:'Lento/livre', desc:'Proibido colcheias. Apenas semínimas e mais longas com vibrato e bend. Pense no que dizer.' },
+      { n:'Call and Response — pergunta e resposta', bpm:'80-95 BPM', desc:'Frase de 2 compassos (pergunta) → pausa 2 → responde. Estrutura do blues. 10 minutos.' },
+      { n:'Análise: ouça a gravação — 3 pontos fortes', bpm:'15 min', desc:'Ouça com ouvido de produtor. Anote: momentos de intenção, boa dinâmica, frases que funcionaram.' },
+      { n:'Identifique 2 padrões repetitivos (licks de emergência)', bpm:'15 min', desc:'Todo guitarrista tem licks de fuga. Identifique 1 deles. Na próxima semana: proibido esse lick.' },
+    ],
+    regra:'🏆 Objetivo do sábado: descobrir onde você está. Gravação honesta > prática sem feedback.'
+  },
+  dom: { tipo:'REVISÃO', foco:'Repertório + Descanso', dur:'45 min', cor:'#c084fc',
+    exercicios:[
+      { n:'Flash review — exercícios da semana (2 min cada)', bpm:'Sem pressão', desc:'Alternate picking 80 BPM, Dórico posições 1 e 2, arpejo Am7, arpejo D7, 1 bend perfeito. Confirme a memória.' },
+      { n:'Intro de "Oye Como Va" (Santana) — A Dórico', bpm:'50% velocidade', desc:'Aprenda as 8 primeiras notas do solo. Reconheça o F#. Use o vibrato da sexta. Sem pressa.' },
+      { n:'Toque algo que você já sabe — por prazer', bpm:'Livre / alegre', desc:'10 min tocando o que você gosta, sem objetivo técnico. Sustente o amor pelo instrumento.' },
+    ],
+    regra:'✅ Semana 1 cobriu: alternate picking, legato, bending/vibrato, Dórico, arpejos Am7/D7, improvisação com análise.'
+  },
+};
+
+// ── TREINO ACADEMIA — SPLITS ──
+const TREINO_SPLITS = {
+  seg: { grupo:'PEITO + TRÍCEPS + HIIT', cor:'var(--neon)',
+    exercicios:[
+      'Supino reto — barra ou halteres (4x8-12)',
+      'Supino inclinado halteres (3x10-12)',
+      'Crucifixo polia ou halteres (3x12)',
+      'Tríceps corda (3x12-15)',
+      'Tríceps francês halteres (3x10-12)',
+      'HIIT bike: 6-8 rounds 20s máximo / 40s leve (~12 min)',
+    ]
+  },
+  ter: { grupo:'COSTAS + BÍCEPS', cor:'#38bdf8',
+    exercicios:[
+      'Puxada frontal aberta (4x10-12)',
+      'Remada curvada barra (4x8-10)',
+      'Remada sentada polia (3x12)',
+      'Pullover haltere (3x12)',
+      'Rosca direta barra (3x10-12)',
+      'Rosca martelo halteres (3x12)',
+    ]
+  },
+  qua: { grupo:'CARDIO BIKE + CORE', cor:'var(--amber)',
+    exercicios:[
+      'LISS bike 30-40 min (130-140 bpm — ritmo conversacional)',
+      'Prancha frontal 3x60s',
+      'Prancha lateral 3x45s cada lado',
+      'Abdominal infra elevação de pernas (3x15)',
+      'Crunch bicicleta (3x20)',
+    ]
+  },
+  qui: { grupo:'PERNAS + GLÚTEO', cor:'#c084fc',
+    exercicios:[
+      'Agachamento livre ou hack squat (4x8-12)',
+      'Leg press 45º (4x12-15)',
+      'Stiff halteres (3x12) — glúteo e isquiotibiais',
+      'Cadeira extensora (3x15)',
+      'Cadeira flexora (3x12)',
+      'Panturrilha em pé (4x15-20)',
+    ]
+  },
+  sex: { grupo:'OMBROS + TRAPÉZIO + CARDIO', cor:'var(--neon)',
+    exercicios:[
+      'Desenvolvimento halteres sentado (4x10-12)',
+      'Elevação lateral (4x12-15)',
+      'Elevação frontal alternada (3x12)',
+      'Remada alta barra (3x12) — trapézio',
+      'Encolhimento halteres (4x15)',
+      'HIIT bike ou 20 min LISS após treino',
+    ]
+  },
+  sab: { grupo:'DESCANSO ATIVO / ESPORTE', cor:'var(--amber)',
+    exercicios:[
+      'Futebol, natação ou corrida — esporte preferido',
+      'Aumentar carboidratos em 50-80g nesse dia',
+      'Refeeding day: comer na manutenção calórica (não déficit)',
+      'Mobilidade e alongamento 15-20 min',
+    ]
+  },
+  dom: { grupo:'DESCANSO TOTAL', cor:'var(--muted)',
+    exercicios:[
+      'Descanso e recuperação muscular',
+      'Manter proteína alta (200g/dia)',
+      'Refeeding calórico se sábado não foi possível',
+      'Sono 8h — GH noturno é fundamental no cutting',
+    ]
+  },
+};
+
+// ── INGLÊS — PLANO INTERMEDIÁRIO-AVANÇADO ──
+const INGLES_PLAN = {
+  seg: { foco:'LISTENING AVANÇADO', aula:'BBC Learning English — 6 Minute English', dur:'30 min',
+    atividades:[
+      'BBC Learning English "6 Minute English" — 1 episódio (6 min)',
+      'Anote 5 expressões idiomáticas do episódio',
+      'Repita as frases em voz alta (shadowing) 2x',
+      'Duolingo — mínimo 10 min (manter streak)',
+    ]
+  },
+  ter: { foco:'VOCABULÁRIO AVANÇADO', aula:'Anki — Deck Business & Academic English', dur:'30 min',
+    atividades:[
+      'Anki: 20 palavras novas (nível B2-C1)',
+      'Foco: collocations e phrasal verbs em contexto',
+      'Escreva 3 frases usando as palavras novas',
+      'App: Vocabulary.com — nível intermediário-avançado',
+    ]
+  },
+  qua: { foco:'SPEAKING & ACCENT', aula:'Rachel\'s English — American Accent', dur:'30 min',
+    atividades:[
+      'Rachel\'s English YouTube: 1 vídeo de pronúncia (redução/linking)',
+      'Shadowing: repita o vídeo 3x pausando e imitando',
+      'Grave sua voz 2 min falando sobre qualquer assunto',
+      'Compare com o nativo — identifique 1 diferença para corrigir',
+    ]
+  },
+  qui: { foco:'LEITURA — NÍVEL C1', aula:'The Economist ou Harvard Business Review', dur:'30 min',
+    atividades:[
+      'Leia 1 artigo do The Economist ou HBR (400-600 palavras)',
+      'Sublinhe 5 expressões desconhecidas — busque no contexto',
+      'Resuma o artigo em 3 frases em inglês (escrita)',
+      'Podcast paralelo: How I Built This (NPR) — 20 min enquanto faz algo',
+    ]
+  },
+  sex: { foco:'GRAMÁTICA EM CONTEXTO', aula:'EnglishClass101 — B2/C1 Grammar', dur:'30 min',
+    atividades:[
+      'Foco: conditionals avançadas (3rd, mixed) ou subjunctive mood',
+      'EnglishClass101 ou Perfect English Grammar — 1 lição',
+      'Exercícios práticos: 10 frases escrevendo com a estrutura nova',
+      'Revise erros da semana — patterns que você repete',
+    ]
+  },
+  sab: { foco:'OUTPUT — FALA OU ESCRITA LIVRE', aula:'Sessão livre ou italki/Tandem', dur:'30 min',
+    atividades:[
+      'Opção A: italki ou Tandem — 30 min de conversa com nativo/tutor',
+      'Opção B: grave um vídeo ou áudio de 5 min falando sobre um tema',
+      'Opção C: escreva um texto de 200 palavras sobre qualquer assunto',
+      'Revise o que produziu — identifique 2 erros recorrentes',
+    ]
+  },
+  dom: { foco:'REVISÃO + EXPOSIÇÃO PASSIVA', aula:'Série ou filme sem legenda PT', dur:'20 min',
+    atividades:[
+      'Revise os vocabulários da semana (Anki review)',
+      'Assista 20 min de série/filme em inglês — legenda em inglês (não PT)',
+      'Anote 2 expressões novas que ouviu e entendeu',
+      'Planeje o foco da semana seguinte',
+    ]
+  },
+};
+
+// ── SCHEDULE ROTINA ──
 const DAYS = { seg:'SEGUNDA-FEIRA', ter:'TERÇA-FEIRA', qua:'QUARTA-FEIRA', qui:'QUINTA-FEIRA', sex:'SEXTA-FEIRA', sab:'SÁBADO', dom:'DOMINGO' };
 const SCHED = {
   manha: [
-    { n:'Estudo de inglês',      s:'LISTENING + VOCABULÁRIO',          d:'30MIN', a:'06:00' },
-    { n:'Leitura do livro',      s:'20 PÁGINAS MÍNIMO',                d:'30MIN', a:'06:30' },
-    { n:'Estudo de guitarra',    s:'ESCALAS + MÚSICA EM ESTUDO',       d:'45MIN', a:'07:00' },
-    { n:'Treino físico',         s:'ACADEMIA / FUNCIONAL',             d:'60MIN', a:'07:45' },
-    { n:'Café da manhã & dieta', s:'PROTOCOLO ALIMENTAR',              d:'20MIN', a:'09:00' },
+    { n:'Estudo de inglês',      s:'VER ABA INGLÊS PARA DETALHES',      d:'30MIN', a:'06:00' },
+    { n:'Leitura do livro',      s:'20 PÁGINAS MÍNIMO',                  d:'30MIN', a:'06:30' },
+    { n:'Estudo de guitarra',    s:'VER ABA GUITARRA PARA DETALHES',     d:'45MIN', a:'07:00' },
+    { n:'Treino físico',         s:'VER ABA TREINO PARA SPLIT DO DIA',   d:'60MIN', a:'07:45' },
+    { n:'Café da manhã & dieta', s:'200G PROTEÍNA/DIA · PROTOCOLO MACRO',d:'20MIN', a:'09:00' },
   ],
   tarde: [
-    { n:'Foco — Insid360',       s:'CAMPANHAS · RELATÓRIOS · REUNIÕES', d:'3H',   a:'13:00' },
-    { n:'Revisão de métricas',   s:'GOOGLE/META ADS — TODOS PROJETOS', d:'45MIN', a:'16:00' },
+    { n:'Foco — Insid360',       s:'CAMPANHAS · RELATÓRIOS · REUNIÕES',  d:'3H',    a:'13:00' },
+    { n:'Revisão de métricas',   s:'GOOGLE/META ADS — TODOS PROJETOS',   d:'45MIN', a:'16:00' },
   ],
   noite: [
-    { n:'Leitura noturna',       s:'15 PÁGINAS ANTES DE DORMIR',       d:'20MIN', a:'21:30' },
-    { n:'Revisão do dia',        s:'O QUE FIZ / FICA PARA AMANHÃ',     d:'10MIN', a:'22:00' },
+    { n:'Leitura noturna',       s:'15 PÁGINAS ANTES DE DORMIR',         d:'20MIN', a:'21:30' },
+    { n:'Revisão do dia',        s:'O QUE FIZ / FICA PARA AMANHÃ',       d:'10MIN', a:'22:00' },
   ],
 };
 
 let currentDay = 'seg';
 let notifOn = false;
 const FIRED = {};
-
-// ── RENDER TASKS ──
 const PERIOD_COLORS = { manha: 'var(--amber)', tarde: '#38bdf8', noite: 'var(--neon)' };
 
+// ── RENDER TASKS ──
 function renderTasks(day) {
   ['manha','tarde','noite'].forEach(p => {
     const el = document.getElementById('t-'+p);
@@ -156,11 +360,8 @@ function renderTasks(day) {
         <div class="td">${t.d}</div>`;
       card.onclick = () => {
         const nv = !LOCAL.get(key);
-        LOCAL.set(key, nv);
-        schedSave(key, nv);
-        renderTasks(day);
-        calcStats();
-        saveDailySummary();
+        LOCAL.set(key, nv); schedSave(key, nv);
+        renderTasks(day); calcStats(); saveDailySummary();
       };
       el.appendChild(card);
     });
@@ -176,6 +377,79 @@ function toggleCard(el) {
 function toggleGoal(el) {
   el.classList.toggle('done');
   el.querySelector('.gck').textContent = el.classList.contains('done') ? '✓' : '';
+}
+
+// ── RENDER GUITARRA ──
+function renderGuitarTab(day) {
+  const wrap = document.getElementById('guitar-detail');
+  if (!wrap) return;
+  const plan = GUITAR_PLAN[day] || GUITAR_PLAN['seg'];
+  wrap.innerHTML = `
+    <div style="background:var(--bg2);border:1px solid var(--border2);border-left:3px solid ${plan.cor};padding:16px;margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px">
+        <span style="font-family:var(--condensed);font-size:11px;font-weight:800;letter-spacing:3px;color:${plan.cor}">${plan.tipo}</span>
+        <span style="font-family:var(--condensed);font-size:9px;color:var(--muted);font-weight:600">${plan.dur}</span>
+      </div>
+      <div style="font-family:var(--condensed);font-size:20px;font-weight:900;letter-spacing:1px;color:var(--text)">${plan.foco}</div>
+    </div>
+    ${plan.exercicios.map((ex, i) => `
+      <div class="task-card" onclick="toggleCard(this)" style="--lc:${plan.cor};margin-bottom:4px">
+        <div class="tck"></div>
+        <div class="tb2">
+          <div class="tn">${i+1}. ${ex.n}</div>
+          <div class="ts2">${ex.desc}</div>
+        </div>
+        <div class="td" style="background:${plan.cor};color:#000;box-shadow:0 0 8px ${plan.cor}44">${ex.bpm}</div>
+      </div>
+    `).join('')}
+    <div style="margin-top:12px;padding:10px 14px;background:var(--bg3);border-left:2px solid ${plan.cor};font-family:var(--condensed);font-size:11px;color:var(--muted)">
+      ${plan.regra}
+    </div>`;
+}
+
+// ── RENDER TREINO ──
+function renderTreinoTab(day) {
+  const wrap = document.getElementById('treino-detail');
+  if (!wrap) return;
+  const split = TREINO_SPLITS[day] || TREINO_SPLITS['seg'];
+  wrap.innerHTML = `
+    <div style="background:var(--bg2);border:1px solid var(--border2);border-left:3px solid ${split.cor};padding:14px;margin-bottom:12px">
+      <div style="font-family:var(--condensed);font-size:9px;font-weight:800;letter-spacing:3px;color:var(--muted);margin-bottom:3px">SPLIT DE HOJE</div>
+      <div style="font-family:var(--condensed);font-size:22px;font-weight:900;letter-spacing:2px;color:${split.cor}">${split.grupo}</div>
+    </div>
+    ${split.exercicios.map((ex, i) => `
+      <div class="task-card" onclick="toggleCard(this)" style="--lc:${split.cor};margin-bottom:4px">
+        <div class="tck"></div>
+        <div class="tb2"><div class="tn">${ex}</div></div>
+      </div>
+    `).join('')}
+    <div style="margin-top:16px;background:var(--bg2);border:1px solid var(--border2);padding:14px">
+      <div style="font-family:var(--condensed);font-size:9px;font-weight:800;letter-spacing:2px;color:var(--muted);margin-bottom:8px">MACROS DO DIA</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center">
+        <div><div style="font-family:var(--condensed);font-size:20px;font-weight:900;color:var(--neon)">200g</div><div style="font-family:var(--condensed);font-size:8px;color:var(--muted);letter-spacing:1px">PROTEÍNA</div></div>
+        <div><div style="font-family:var(--condensed);font-size:20px;font-weight:900;color:var(--amber)">220g</div><div style="font-family:var(--condensed);font-size:8px;color:var(--muted);letter-spacing:1px">CARBOIDRATO</div></div>
+        <div><div style="font-family:var(--condensed);font-size:20px;font-weight:900;color:#38bdf8">75g</div><div style="font-family:var(--condensed);font-size:8px;color:var(--muted);letter-spacing:1px">GORDURA</div></div>
+      </div>
+    </div>`;
+}
+
+// ── RENDER INGLÊS ──
+function renderInglesTab(day) {
+  const wrap = document.getElementById('ingles-detail');
+  if (!wrap) return;
+  const plan = INGLES_PLAN[day] || INGLES_PLAN['seg'];
+  wrap.innerHTML = `
+    <div style="background:var(--bg2);border:1px solid var(--border2);border-left:3px solid var(--neon);padding:14px;margin-bottom:12px">
+      <div style="font-family:var(--condensed);font-size:9px;font-weight:800;letter-spacing:3px;color:var(--muted);margin-bottom:3px">FOCO DO DIA · ${plan.dur}</div>
+      <div style="font-family:var(--condensed);font-size:18px;font-weight:900;letter-spacing:1px;color:var(--neon)">${plan.foco}</div>
+      <div style="font-family:var(--condensed);font-size:11px;color:var(--muted);margin-top:4px">${plan.aula}</div>
+    </div>
+    ${plan.atividades.map((at, i) => `
+      <div class="task-card" onclick="toggleCard(this)" style="--lc:var(--neon);margin-bottom:4px">
+        <div class="tck"></div>
+        <div class="tb2"><div class="tn">${at}</div></div>
+      </div>
+    `).join('')}`;
 }
 
 // ── STATS ──
@@ -203,6 +477,10 @@ function autoSelectToday() {
   if (btn) { document.querySelectorAll('.ds').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
   currentDay = k;
   document.getElementById('pg-day-title').textContent = DAYS[k];
+  // Render detail tabs with today's data
+  renderGuitarTab(k);
+  renderTreinoTab(k);
+  renderInglesTab(k);
 }
 
 // ── TABS ──
@@ -217,19 +495,15 @@ function goTab(name) {
 function tick() {
   const n   = new Date();
   const hm  = n.toTimeString().slice(0,5);
-  const hms = n.toTimeString().slice(0,8);
   document.getElementById('tb-clock').textContent = hm;
   const dm = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
   const mo = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
   document.getElementById('tb-date').textContent = `${dm[n.getDay()]} ${n.getDate()} ${mo[n.getMonth()]}`;
-
   const start=5*60+30, end=23*60, cur=n.getHours()*60+n.getMinutes();
   const pct = Math.min(100, Math.max(0, Math.round((cur-start)/(end-start)*100)));
   document.getElementById('db-fill').style.width  = pct+'%';
   document.getElementById('db-head').style.left   = pct+'%';
   document.getElementById('db-pct').textContent   = pct+'%';
-
-  // Alarms
   if (notifOn) {
     const dk = ['dom','seg','ter','qua','qui','sex','sab'][n.getDay()];
     ['manha','tarde','noite'].forEach(p => {
@@ -257,12 +531,11 @@ const HABITS = [
   { l:'Oração',   c:'#38bdf8'      },
   { l:'Gratidão', c:'#38bdf8'      },
 ];
-const DDLBLS = ['S','T','Q','Q','S','S','D'];
 const DDKEYS = ['seg','ter','qua','qui','sex','sab','dom'];
+const DDLBLS = ['S','T','Q','Q','S','S','D'];
 
 function renderHabits() {
   const wrap = document.getElementById('habit-grid');
-  // Header
   const hdr = document.createElement('div');
   hdr.style.cssText = 'display:flex;gap:8px;padding-bottom:8px;border-bottom:1px solid var(--border);margin-bottom:2px;';
   hdr.innerHTML = '<div style="width:76px;flex-shrink:0"></div><div style="display:flex;gap:3px">' +
@@ -272,14 +545,12 @@ function renderHabits() {
     const row = document.createElement('div');
     row.className = 'habit-row';
     const lbl = document.createElement('div');
-    lbl.className = 'habit-lbl';
-    lbl.textContent = h.l;
+    lbl.className = 'habit-lbl'; lbl.textContent = h.l;
     row.appendChild(lbl);
     const days = document.createElement('div');
     days.className = 'habit-days';
     DDKEYS.forEach((dk, di) => {
-      const k  = `h-${hi}-${di}`;
-      const on = LOCAL.get(k);
+      const k = `h-${hi}-${di}`, on = LOCAL.get(k);
       const cell = document.createElement('div');
       cell.className = 'hcell' + (on ? ' on' : '');
       if (on) { cell.style.background = h.c; cell.style.color = '#000'; cell.style.boxShadow = `0 0 6px ${h.c}`; }
@@ -307,8 +578,9 @@ const RING_DEFS = [
 ];
 function renderRings() {
   const wrap = document.getElementById('rings-ingles');
+  if (!wrap) return;
   RING_DEFS.forEach(r => {
-    const v    = parseInt(LOCAL.get(r.k) || r.v);
+    const v = parseInt(LOCAL.get(r.k) || r.v);
     const circ = 2*Math.PI*26;
     const off  = circ*(1-v/100);
     const card = document.createElement('div');
@@ -338,17 +610,13 @@ function renderRings() {
 // ── READING WEEK ──
 function renderReadWeek() {
   const wrap = document.getElementById('rw-row');
+  if (!wrap) return;
   ['S','T','Q','Q','S','S','D'].forEach((d,i) => {
-    const k  = `rw-${i}`;
-    const on = LOCAL.get(k);
+    const k = `rw-${i}`, on = LOCAL.get(k);
     const cell = document.createElement('div');
     cell.className = 'rw-cell' + (on ? ' on' : '');
     cell.textContent = d;
-    cell.onclick = () => {
-      const nv = !LOCAL.get(k);
-      LOCAL.set(k, nv); schedSave(k, nv);
-      cell.classList.toggle('on', nv);
-    };
+    cell.onclick = () => { const nv = !LOCAL.get(k); LOCAL.set(k, nv); schedSave(k, nv); cell.classList.toggle('on', nv); };
     wrap.appendChild(cell);
   });
 }
@@ -375,15 +643,14 @@ function loadBook() {
 // ── MEALS ──
 function renderMeals() {
   const wrap = document.getElementById('meals-wrap');
+  if (!wrap) return;
   ['Café da manhã','Almoço','Lanche','Jantar'].forEach((m,i) => {
-    const k  = `meal-${i}`;
-    const on = LOCAL.get(k);
+    const k = `meal-${i}`, on = LOCAL.get(k);
     const row = document.createElement('div');
     row.className = 'meal-row';
     row.innerHTML = `<span class="meal-name">${m}</span><span class="meal-status" style="color:${on?'var(--neon)':'var(--muted)'}" id="ms-${i}">${on?'✓ FEITO':'—'}</span>`;
     row.onclick = () => {
-      const nv = !LOCAL.get(k);
-      LOCAL.set(k, nv); schedSave(k, nv);
+      const nv = !LOCAL.get(k); LOCAL.set(k, nv); schedSave(k, nv);
       const el = document.getElementById('ms-'+i);
       el.textContent = nv ? '✓ FEITO' : '—';
       el.style.color = nv ? 'var(--neon)' : 'var(--muted)';
@@ -404,9 +671,7 @@ function addWater(ml) {
   LOCAL.set('water', waterMl); schedSave('water', waterMl); syncWater();
   if (waterMl>=3000) showPopup('HIDRATAÇÃO COMPLETA', '3L ATINGIDOS. DISCIPLINA TOTAL.');
 }
-function resetWater() {
-  waterMl = 0; LOCAL.set('water',0); schedSave('water',0); syncWater();
-}
+function resetWater() { waterMl = 0; LOCAL.set('water',0); schedSave('water',0); syncWater(); }
 
 // ── STREAK ──
 function calcStreak() {
@@ -433,9 +698,9 @@ function showPopup(title, body) {
 async function reqNotif() {
   if (!('Notification' in window)) { showPopup('NÃO SUPORTADO','Use Chrome Android.'); return; }
   const r = await Notification.requestPermission();
-  const btn = document.getElementById('notif-btn');
   if (r==='granted') {
-    notifOn = true; btn.classList.add('on');
+    notifOn = true;
+    document.getElementById('notif-btn').classList.add('on');
     showPopup('ALERTAS ATIVADOS','SISTEMA DE LEMBRETES OPERACIONAL.');
     new Notification('GILMAR OPS', { body: 'Sistema de alertas ativo.' });
   } else {
