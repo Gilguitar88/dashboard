@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#F5F2EE">
+<title>Gilmar — Dashboard Pessoal</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+<!-- Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ═══ QUOTE HERO ═══ -->
+<div id="quote-hero">
+  <div class="quote-label" id="quote-src">Goggins</div>
+  <div id="quote-text">Carregando...</div>
+  <div id="quote-author"></div>
+  <div class="quote-dots" id="qdots"></div>
+</div>
+
+<!-- ═══ TOP BAR ═══ -->
+<div id="topbar">
+  <div class="tb-name">Gilmar</div>
+  <div class="tb-right">
+    <div id="tb-clock">--:--</div>
+    <div id="tb-date"></div>
+    <div id="sync-status" class="sync-dot sync-idle" title="Status Supabase"></div>
+    <button id="notif-btn" onclick="reqNotif()">🔔 Alertas</button>
+  </div>
+</div>
+
+<!-- ═══ STATS ═══ -->
+<div id="stats-strip">
+  <div class="stat-cell">
+    <div class="stat-n" id="s-done" style="color:var(--teal)">0</div>
+    <div class="stat-l">Concluídas</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n" id="s-left" style="color:var(--wine)">—</div>
+    <div class="stat-l">Pendentes</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n" id="s-pct" style="color:var(--earth)">0%</div>
+    <div class="stat-l">Eficiência</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n" id="s-streak" style="color:var(--wine)">1</div>
+    <div class="stat-l">Dias seguidos</div>
+  </div>
+  <div class="stat-cell">
+    <div class="stat-n" id="s-total" style="color:var(--muted)">—</div>
+    <div class="stat-l">Total tarefas</div>
+  </div>
+</div>
+
+<!-- ═══ DAY PROGRESS ═══ -->
+<div id="dpbar">
+  <div class="dp-label">Progresso do dia</div>
+  <div class="dp-track"><div class="dp-fill" id="dp-fill" style="width:0%"></div></div>
+  <div class="dp-pct" id="dp-pct">0%</div>
+</div>
+
+<!-- ═══ TABS ═══ -->
+<div id="tabnav">
+  <button class="tnav active" onclick="goTab('rotina')"   id="t-rotina">Rotina</button>
+  <button class="tnav"        onclick="goTab('ingles')"   id="t-ingles">Inglês</button>
+  <button class="tnav"        onclick="goTab('leitura')"  id="t-leitura">Leitura</button>
+  <button class="tnav"        onclick="goTab('guitarra')" id="t-guitarra">Guitarra</button>
+  <button class="tnav"        onclick="goTab('treino')"   id="t-treino">Treino & Dieta</button>
+  <button class="tnav"        onclick="goTab('negocios')" id="t-negocios">Insid360</button>
+  <button class="tnav"        onclick="goTab('outros')"   id="t-outros">Objetivos</button>
+</div>
+
+<!-- ════ PAGE: ROTINA ════ -->
+<div class="page active" id="page-rotina">
+  <div class="pg-hdr">
+    <div>
+      <div class="pg-title" id="pg-day-title">Segunda-feira</div>
+      <div class="pg-sub">Protocolo diário de operações</div>
+    </div>
+    <div class="day-sel">
+      <button class="ds-btn active" onclick="selDay(this,'seg')">Seg</button>
+      <button class="ds-btn" onclick="selDay(this,'ter')">Ter</button>
+      <button class="ds-btn" onclick="selDay(this,'qua')">Qua</button>
+      <button class="ds-btn" onclick="selDay(this,'qui')">Qui</button>
+      <button class="ds-btn" onclick="selDay(this,'sex')">Sex</button>
+      <button class="ds-btn" onclick="selDay(this,'sab')">Sáb</button>
+      <button class="ds-btn" onclick="selDay(this,'dom')">Dom</button>
+    </div>
+  </div>
+
+  <div class="sec-lbl"><span class="period-badge pb-manha">Manhã</span><span class="sec-time">05:30 – 12:00</span><div class="sec-line"></div></div>
+  <div id="t-manha"></div>
+
+  <div class="sec-lbl"><span class="period-badge pb-tarde">Tarde</span><span class="sec-time">12:00 – 18:00</span><div class="sec-line"></div></div>
+  <div id="t-tarde"></div>
+
+  <div class="sec-lbl"><span class="period-badge pb-noite">Noite</span><span class="sec-time">18:00 – 23:00</span><div class="sec-line"></div></div>
+  <div id="t-noite"></div>
+
+  <div class="sec-lbl" style="margin-top:32px">
+    <span class="sec-lbl-text" style="color:var(--wine)">Hábitos semanais</span>
+    <div class="sec-line"></div>
+  </div>
+  <div style="background:var(--surface);border:1px solid var(--border2);padding:16px 16px 8px;border-radius:2px">
+    <div id="habit-grid"></div>
+  </div>
+</div>
+
+<!-- ════ PAGE: INGLÊS ════ -->
+<div class="page" id="page-ingles">
+  <div class="pg-hdr">
+    <div><div class="pg-title" style="color:var(--teal)">Inglês</div><div class="pg-sub">Aquisição linguística</div></div>
+  </div>
+  <div class="sec-lbl"><span class="sec-lbl-text">Progresso semanal</span><div class="sec-line"></div></div>
+  <div class="rings-wrap" id="rings-ingles"></div>
+  <div class="sec-lbl"><span class="sec-lbl-text">Atividades de hoje</span><div class="sec-line"></div></div>
+  <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--teal)">
+    <div class="tc-check">✓</div>
+    <div class="tc-info"><div class="tc-name">Duolingo / Anki — vocabulário</div><div class="tc-sub">Meta: 20 palavras novas</div></div>
+    <div class="tc-alarm">06:30</div><div class="tc-dur">20 min</div>
+  </div>
+  <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--teal)">
+    <div class="tc-check">✓</div>
+    <div class="tc-info"><div class="tc-name">Podcast em inglês — escuta ativa</div><div class="tc-sub">NPR / HBR IdeaCast</div></div>
+    <div class="tc-alarm">07:00</div><div class="tc-dur">30 min</div>
+  </div>
+  <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--teal)">
+    <div class="tc-check">✓</div>
+    <div class="tc-info"><div class="tc-name">Shadowing — pronúncia oral</div><div class="tc-sub">Repetição de frases nativas</div></div>
+    <div class="tc-alarm">07:30</div><div class="tc-dur">15 min</div>
+  </div>
+  <div class="sec-lbl" style="margin-top:20px"><span class="sec-lbl-text">Anotações</span><div class="sec-line"></div></div>
+  <textarea class="notes-area" placeholder="Frases novas, expressões, anotações de aula..."></textarea>
+</div>
+
+<!-- ════ PAGE: LEITURA ════ -->
+<div class="page" id="page-leitura">
+  <div class="pg-hdr">
+    <div><div class="pg-title" style="color:var(--earth)">Leitura</div><div class="pg-sub">Desenvolvimento contínuo</div></div>
+  </div>
+  <div class="sec-lbl"><span class="sec-lbl-text">Livro em leitura</span><div class="sec-line"></div></div>
+  <div class="book-card">
+    <input class="book-title-in" id="book-title" placeholder="Título do livro atual..." oninput="saveBookMeta()">
+    <input class="book-author-in" id="book-author" placeholder="Autor..." oninput="saveBookMeta()">
+    <div class="prog-wrap">
+      <div class="prog-meta"><span>Progresso</span><span id="bk-pct">0%</span></div>
+      <div class="prog-track"><div class="prog-fill" id="bk-fill" style="width:0%"></div></div>
+      <input type="range" min="0" max="100" value="0" id="bk-range" oninput="bkProg(this.value)" style="width:100%;margin-top:8px;accent-color:var(--earth)">
+    </div>
+  </div>
+  <div class="sec-lbl"><span class="sec-lbl-text">Registro semanal</span><div class="sec-line"></div></div>
+  <div class="rw-row" id="rw-row" style="margin-bottom:24px"></div>
+  <div class="sec-lbl"><span class="sec-lbl-text">Notas & insights</span><div class="sec-line"></div></div>
+  <textarea class="notes-area" style="min-height:180px" placeholder="Citações, ideias principais, reflexões..."></textarea>
+</div>
+
+<!-- ════ PAGE: GUITARRA ════ -->
+<div class="page" id="page-guitarra">
+  <div class="pg-hdr">
+    <div><div class="pg-title" style="color:var(--wine)">Guitarra</div><div class="pg-sub">20 anos de prática — maestria contínua</div></div>
+  </div>
+  <div class="sec-lbl"><span class="sec-lbl-text">Sessão de hoje</span><div class="sec-line"></div></div>
+  <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--wine)">
+    <div class="tc-check">✓</div>
+    <div class="tc-info"><div class="tc-name">Aquecimento — exercícios cromáticos</div><div class="tc-sub">Lento → progressivo com metrônomo</div></div>
+    <div class="tc-dur">10 min</div>
+  </div>
+  <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--wine)">
+    <div class="tc-check">✓</div>
+    <div class="tc-info"><div class="tc-name">Escala / modo do dia</div><div class="tc-sub">Pentatônica menor + Blues scale</div></div>
+    <div class="tc-dur">15 min</div>
+  </div>
+  <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--wine)">
+    <div class="tc-check">✓</div>
+    <div class="tc-info"><div class="tc-name">Música em estudo — trecho difícil</div><div class="tc-sub">Isolar, repetir, incorporar</div></div>
+    <div class="tc-dur">20 min</div>
+  </div>
+  <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--wine)">
+    <div class="tc-check">✓</div>
+    <div class="tc-info"><div class="tc-name">Improviso livre</div><div class="tc-sub">Expressar, criar, evoluir</div></div>
+    <div class="tc-dur">15 min</div>
+  </div>
+  <div class="sec-lbl" style="margin-top:20px"><span class="sec-lbl-text">Metrônomo</span><div class="sec-line"></div></div>
+  <div style="background:var(--surface);border:1px solid var(--border2);padding:28px 20px;text-align:center;border-radius:2px;margin-bottom:16px">
+    <span id="bpm-num">80</span>
+    <div style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin:4px 0 18px;font-weight:600">BPM</div>
+    <input type="range" min="40" max="240" value="80" oninput="document.getElementById('bpm-num').textContent=this.value" style="width:80%;accent-color:var(--wine)">
+    <div style="display:flex;justify-content:space-between;width:80%;margin:6px auto 0;font-size:9px;color:var(--stone-dk);font-weight:500"><span>40</span><span>120</span><span>240</span></div>
+  </div>
+  <div class="sec-lbl"><span class="sec-lbl-text">Log da sessão</span><div class="sec-line"></div></div>
+  <textarea class="notes-area" placeholder="O que praticou, conquistas, próximos desafios..."></textarea>
+</div>
+
+<!-- ════ PAGE: TREINO ════ -->
+<div class="page" id="page-treino">
+  <div class="pg-hdr">
+    <div><div class="pg-title" style="color:var(--wine)">Treino & Dieta</div><div class="pg-sub">Protocolo físico e nutricional</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div>
+      <div class="sec-lbl"><span class="sec-lbl-text" style="color:var(--wine)">Treino</span><div class="sec-line"></div></div>
+      <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--wine)">
+        <div class="tc-check">✓</div><div class="tc-info"><div class="tc-name">Aquecimento</div><div class="tc-sub">10 min cardio leve</div></div><div class="tc-dur">10 min</div>
+      </div>
+      <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--wine)">
+        <div class="tc-check">✓</div><div class="tc-info"><div class="tc-name">Treino principal</div><div class="tc-sub">Seu split do dia</div></div><div class="tc-dur">45 min</div>
+      </div>
+      <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--wine)">
+        <div class="tc-check">✓</div><div class="tc-info"><div class="tc-name">Alongamento</div><div class="tc-sub">Mobilidade e recuperação</div></div><div class="tc-dur">10 min</div>
+      </div>
+    </div>
+    <div>
+      <div class="sec-lbl"><span class="sec-lbl-text" style="color:var(--teal)">Hidratação</span><div class="sec-line"></div></div>
+      <div style="background:var(--surface);border:1px solid var(--border2);padding:14px;border-radius:2px;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;font-size:10px;font-weight:600;color:var(--muted);margin-bottom:8px">
+          <span>Água</span><span id="w-lbl" style="color:var(--teal)">0 / 3000ml</span>
+        </div>
+        <div class="water-track-wrap"><div class="water-track-bg"><div class="water-fill-bar" id="w-bar" style="width:0%"></div></div></div>
+        <div class="water-btns">
+          <button class="w-btn" onclick="addWater(250)">+250ml</button>
+          <button class="w-btn" onclick="addWater(500)">+500ml</button>
+          <button class="w-btn" onclick="resetWater()">Reset</button>
+        </div>
+      </div>
+      <div class="sec-lbl"><span class="sec-lbl-text" style="color:var(--earth)">Refeições</span><div class="sec-line"></div></div>
+      <div style="background:var(--surface);border:1px solid var(--border2);border-radius:2px;overflow:hidden" id="meals-wrap"></div>
+    </div>
+  </div>
+  <div class="sec-lbl" style="margin-top:20px"><span class="sec-lbl-text">Log de treino</span><div class="sec-line"></div></div>
+  <textarea class="notes-area" placeholder="Carga, repetições, sensações, ajustes..."></textarea>
+</div>
+
+<!-- ════ PAGE: INSID360 ════ -->
+<div class="page" id="page-negocios">
+  <div class="pg-hdr">
+    <div><div class="pg-title" style="color:var(--teal)">Insid360</div><div class="pg-sub">Portfólio de operações</div></div>
+  </div>
+  <div class="sec-lbl"><span class="sec-lbl-text">Projetos ativos</span><div class="sec-line"></div></div>
+  <table class="proj-tbl" style="margin-bottom:24px">
+    <thead><tr><th>Projeto</th><th>Segmento</th><th>Status</th><th>Prioridade</th></tr></thead>
+    <tbody>
+      <tr><td>Mazon &amp; Bigliazzi — Clínica</td><td class="td-muted">Odontologia</td><td><span class="sdot" style="background:var(--teal)"></span>Ativo</td><td class="td-wine">Alta</td></tr>
+      <tr><td>Instituto Mazon e Bigliazzi</td><td class="td-muted">Educação</td><td><span class="sdot" style="background:var(--teal)"></span>Ativo</td><td class="td-wine">Alta</td></tr>
+      <tr><td>Moema Talks Podcast</td><td class="td-muted">Conteúdo</td><td><span class="sdot" style="background:var(--earth)"></span>Alerta</td><td class="td-earth">Média</td></tr>
+      <tr><td>Five Saúde Corporativa</td><td class="td-muted">B2B Saúde</td><td><span class="sdot" style="background:var(--earth)"></span>Prospecção</td><td class="td-wine">Alta</td></tr>
+      <tr><td>Focus Odontologia</td><td class="td-muted">Odontologia</td><td><span class="sdot" style="background:var(--teal)"></span>Ativo</td><td class="td-earth">Média</td></tr>
+    </tbody>
+  </table>
+  <div class="sec-lbl"><span class="sec-lbl-text">Tarefas do dia</span><div class="sec-line"></div></div>
+  <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--teal)">
+    <div class="tc-check">✓</div><div class="tc-info"><div class="tc-name">Revisar métricas — todas as contas</div><div class="tc-sub">CPA, ROAS, ajuste de lances</div></div><div class="tc-alarm">13:00</div><div class="tc-dur">30 min</div>
+  </div>
+  <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--teal)">
+    <div class="tc-check">✓</div><div class="tc-info"><div class="tc-name">Sync com Danilo Santiago</div><div class="tc-sub">Alinhamento semanal do portfólio</div></div><div class="tc-alarm">14:00</div><div class="tc-dur">45 min</div>
+  </div>
+  <div class="task-card" onclick="toggleCard(this)" style="border-left-color:var(--teal)">
+    <div class="tc-check">✓</div><div class="tc-info"><div class="tc-name">Relatório de performance</div><div class="tc-sub">Compilar resultados do período</div></div><div class="tc-dur">60 min</div>
+  </div>
+  <div class="sec-lbl" style="margin-top:20px"><span class="sec-lbl-text">Intel estratégica</span><div class="sec-line"></div></div>
+  <textarea class="notes-area" style="min-height:160px" placeholder="Ideias, estratégias, próximos movimentos..."></textarea>
+</div>
+
+<!-- ════ PAGE: OUTROS ════ -->
+<div class="page" id="page-outros">
+  <div class="pg-hdr">
+    <div><div class="pg-title" style="color:var(--earth)">Objetivos Pessoais</div><div class="pg-sub">Metas de vida — família, saúde e patrimônio</div></div>
+  </div>
+  <div class="sec-lbl"><span class="sec-lbl-text" style="color:var(--wine)">Metas ativas</span><div class="sec-line"></div></div>
+  <div class="goal-card" onclick="toggleGoal(this)"><div class="gc-check">✓</div><div class="gc-info"><div class="gc-name">Plano de saúde — família</div><div class="gc-sub">Pesquisar opções e fechar contrato</div></div><span class="gc-badge badge-wine">Urgente</span></div>
+  <div class="goal-card" onclick="toggleGoal(this)"><div class="gc-check">✓</div><div class="gc-info"><div class="gc-name">Escola particular — filha</div><div class="gc-sub">Matrícula e planejamento financeiro</div></div><span class="gc-badge badge-teal">Em andamento</span></div>
+  <div class="goal-card" onclick="toggleGoal(this)"><div class="gc-check">✓</div><div class="gc-info"><div class="gc-name">Apartamento — São Caetano do Sul</div><div class="gc-sub">Adiantar parcelas · Entrega 2028</div></div><span class="gc-badge badge-earth">Planejamento</span></div>
+  <div class="goal-card" onclick="toggleGoal(this)"><div class="gc-check">✓</div><div class="gc-info"><div class="gc-name">Tiro esportivo — retomar treinos</div><div class="gc-sub">Clube em SP — agendar sessão</div></div><span class="gc-badge badge-muted">Pendente</span></div>
+  <div class="goal-card" onclick="toggleGoal(this)"><div class="gc-check">✓</div><div class="gc-info"><div class="gc-name">Acompanhamento médico</div><div class="gc-sub">Exames e consulta cardiovascular</div></div><span class="gc-badge badge-wine">Urgente</span></div>
+  <div class="sec-lbl" style="margin-top:24px"><span class="sec-lbl-text">Bloco livre</span><div class="sec-line"></div></div>
+  <textarea class="notes-area" style="min-height:180px" placeholder="Anotações livres, ideias, lembretes..."></textarea>
+</div>
+
+<!-- ═══ POPUP ═══ -->
+<div id="popup">
+  <button id="popup-close" onclick="this.parentElement.classList.remove('show')">×</button>
+  <div id="popup-title">Lembrete</div>
+  <div id="popup-body">—</div>
+</div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
