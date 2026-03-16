@@ -124,6 +124,8 @@
       <button class="ds" onclick="selDay(this,'dom')">DOM</button>
     </div>
   </div>
+  <!-- Session Timer -->
+  <div id="timer-wrap"></div>
   <div class="period-hdr"><span class="pb pb-am">MANHÃ</span><span class="pt">05:30→12:00</span><div class="pl"></div></div>
   <div id="t-manha"></div>
   <div class="period-hdr"><span class="pb pb-pm">TARDE</span><span class="pt">12:00→18:00</span><div class="pl"></div></div>
@@ -255,4 +257,21 @@
   </svg>
   <div class="popup-content">
     <div id="popup-title">ALERTA</div>
-    <div id="popup-body">—
+    <div id="popup-body">—</div>
+  </div>
+  <button id="popup-close" onclick="this.parentElement.classList.remove('show')">×</button>
+</div>
+
+<!-- CELEBRATION OVERLAY -->
+<div id="celebration" style="display:none">
+  <div class="celebration-card">
+    <span class="celebration-emoji">🏆</span>
+    <div class="celebration-title">MISSÃO COMPLETA</div>
+    <div class="celebration-sub">TODAS AS TAREFAS EXECUTADAS · DISCIPLINA TOTAL</div>
+  </div>
+</div>
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

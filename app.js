@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════
-//  GILMAR // OPS — app.js v3
-//  Planos reais: Guitarra Semana 2 + Treino + Inglês
+//  GILMAR // OPS — app.js v4
+//  Guitarra Semana 2 · Timer · Celebrações · UX melhorado
 // ═══════════════════════════════════════════════════════════
 
 // ── SUPABASE ──
@@ -116,75 +116,76 @@ setInterval(nextQuote, 30000);
 // PLANOS DETALHADOS
 // ══════════════════════════════════════════
 
-// ── GUITARRA — SEMANA 1 — NÍVEL AVANÇADO (Guthrie Govan / Alex Hutchings style) ──
+// ── GUITARRA — SEMANA 2 — NÍVEL AVANÇADO (Guthrie Govan / Alex Hutchings style) ──
 const GUITAR_PLAN = {
-  seg: { tipo:'TÉCNICA', foco:'Alternate Picking — Precisão Cirúrgica', dur:'60 min', cor:'#e8ff47',
+  seg: { tipo:'TÉCNICA', foco:'Outside Playing + Pentatônica Aumentada', dur:'60 min', cor:'#e8ff47',
     exercicios:[
-      { n:'Aquecimento: Cromático com muting de palma', bpm:'80 BPM / 5 min', desc:'1-2-3-4 em todas as cordas com palm mute controlado. Foco: ataque uniforme entre palheta pra cima e pra baixo.' },
-      { n:'Sequências de 6 notas — pentatônica Am em 3 posições', bpm:'100–120 BPM', desc:'Padrão 1-2-1-2-1-2 em grupos de 6 subindo e descendo o braço. Conecte as 5 posições sem parar. Metrônomo em semínimas.' },
-      { n:'Inside vs Outside Picking — troca de cordas deliberada', bpm:'90 BPM', desc:'2 notas por corda, alternando inside (palheta entre as cordas) e outside. Grave e escute: sem ruído nas trocas. Base do som de Guthrie em "Erotic Cakes".' },
-      { n:'Licks de 3 notas/corda — modo Lídio (A Lídio)', bpm:'95 BPM', desc:'A-B-C#-D#-E-F#-G#-A com alternate picking puro. O #4 (D#) é o sabor Lídio — destaque-o. 3 notas por corda, todas as 6 cordas.' },
-      { n:'Frase fusion: escala + cromatismo de aproximação', bpm:'Livre', desc:'Crie uma frase de 4 compassos usando a escala mais 1 nota cromática antes de cada nota alvo. Técnica central de Alex Hutchings — tensão controlada.' },
+      { n:'Aquecimento: Revisão Semana 1 — lick inside/outside picking', bpm:'100 BPM / 5 min', desc:'Revise o padrão de troca de cordas inside vs outside. Confirme que está limpo e automático antes de avançar. Esta é sua base.' },
+      { n:'Outside Playing — sair da tonalidade intencionalmente', bpm:'80 BPM', desc:'Sobre um vamp Dm7, toque 1 compasso em Am pentatônica (inside) e mude para 1 compasso em Ebm pentatônica (outside — meio tom acima). Ouça a tensão e resolução. Isso é o som "errado certo" de Guthrie.' },
+      { n:'Pentatônica Aumentada — A-C#-D#-E-G#-A', bpm:'90 BPM', desc:'Substitua o 3º menor pelo 3º maior e adicione o #4. Escala entre pentatônica e escala inteira de tom. Soa exótico e tenso. 3 posições no braço, alternate picking limpo.' },
+      { n:'Half-step approach — entrar em qualquer nota por semitom', bpm:'85 BPM', desc:'Antes de cada nota alvo da pentatônica Am, toque a nota um semitom abaixo. A→G#→A, C→B→C, E→Eb→E. Cria cromatismo funcional sem sair do vocabulário fusion.' },
+      { n:'Frase outside de 8 compassos — gravada', bpm:'Backing Am / livre', desc:'YouTube: "Am funk fusion backing". 4 compassos inside → 4 compassos outside → resolva de volta. Grave e escute: a tensão soa intencional ou perdida? Essa distinção define o nível.' },
     ],
-    regra:'⚠️ Regra de ouro: se não está limpo a 100 BPM, não avance. Limpo lento > sujo rápido.'
+    regra:'⚠️ Outside playing SÓ funciona se você resolve de volta. Sair sem resolver é erro. Sair e resolver é arte.'
   },
-  ter: { tipo:'TEORIA APLICADA', foco:'Harmonia Funcional — Modos por Acorde', dur:'60 min', cor:'#4ecdc4',
+  ter: { tipo:'TEORIA APLICADA', foco:'Progressões Modais — Dorian e Lydian Vamps', dur:'60 min', cor:'#4ecdc4',
     exercicios:[
-      { n:'7 modos — cor sonora por acorde alvo', bpm:'Sem tempo', desc:'Jônico=Maj7, Dórico=m7, Frígio=m7b9, Lídio=Maj7#11, Mixolídio=dom7, Eólio=m7, Lócrio=m7b5. Toque cada um sobre o acorde e ouça a cor. Associe som, não nome.' },
-      { n:'Progressão ii-V-I em C com modo correto por acorde', bpm:'80 BPM', desc:'Dm7=Dórico, G7=Mixolídio, Cmaj7=Jônico. Não mude de escala — mude de foco dentro da mesma tonalidade. Técnica central de Guthrie Govan.' },
-      { n:'Tritone substitution — G7 substituído por Db7', bpm:'Livre', desc:'Troque G7 por Db7 na progressão ii-V-I. Improvise sobre esse acorde. Note como as notas características resolvem diferente. Jazz aplicado no fusion.' },
-      { n:'Arpejos com extensões — Am9, D13, Gmaj7#11', bpm:'70 BPM', desc:'Am9: A-C-E-G-B. D13: D-F#-A-C-B. Gmaj7#11: G-B-D-F#-C#. Toque subindo e descendo com alternate picking. Extensões são o vocabulário do fusion.' },
-      { n:'Improviso sobre Dm7→G7→Cmaj7 aplicando modos por acorde', bpm:'Backing track', desc:'YouTube: "jazz fusion backing track C major". 10 min contínuos aplicando os modos por acorde. GRAVE obrigatório — compare com semana anterior.' },
+      { n:'Dorian Vamp — Am7→G7 (I→bVII) — reconheça a cor', bpm:'Backing track', desc:'A Dórico: A-B-C-D-E-F#-G. O F# natural (6ª maior) é o sabor característico. Sobre Am7→G7, improvise focando no F#. YouTube: "A Dorian vamp backing". Compare com Eólico.' },
+      { n:'Lydian Vamp — Dmaj7→E (I→II) — leveza pura', bpm:'Backing track', desc:'D Lídio: D-E-F#-G#-A-B-C#. O G# (#4) é o sabor Lídio — puro, levitante. Sobre Dmaj7→E, destaque o G#. Isso é o som de abertura e espaço que Guthrie usa em composições.' },
+      { n:'Mixolídio — A7→G (I7→bVII) — groove e blues fusion', bpm:'Backing track', desc:'A Mixolídio: A-B-C#-D-E-F#-G. O G natural (b7) é o sabor. Sobre A7→G, improvise como uma mistura de blues e fusion. É o modo que conecta rock e jazz.' },
+      { n:'Troca modal em tempo real — 3 modos em 1 frase', bpm:'80 BPM', desc:'Crie uma frase de 12 compassos: 4 Dórico + 4 Lídio + 4 Mixolídio. Mude de modo quando o acorde mudar. Não pause para pensar — treine a percepção instintiva de cor modal.' },
+      { n:'Análise: identifique o modo usado por Guthrie em "Wonderful Slippery Thing"', bpm:'30 min estudo', desc:'Ouça a música 3x. Identifique: qual modo é o intro? Quando muda? Tente reproduzir 8 compassos lentamente. Não é cópia — é vocabulário. Anote o que descobriu.' },
     ],
-    regra:'🎵 Referência: "Wonderful Slippery Thing" — Guthrie pensa por acorde, não por tonalidade. Ouça hoje.'
+    regra:'🎵 Modo não é escala. Modo é perspectiva sobre a mesma escala. Pense em cores, não em fórmulas.'
   },
-  qua: { tipo:'TÉCNICA', foco:'Legato Total — Técnica Govan Completa', dur:'65 min', cor:'#e8ff47',
+  qua: { tipo:'TÉCNICA', foco:'Tapping Avançado — 2 Dedos + Integração Musical', dur:'65 min', cor:'#e8ff47',
     exercicios:[
-      { n:'Legato de 4 notas/corda — 3 cordas contínuas', bpm:'80 BPM tercinas', desc:'4 notas por corda (hammer + pull) em 3 cordas sem palheta. Ex Am: corda 1: 5h7h8h10 → corda 2: 5h7h8h10 → corda 3: 5h7h9h10. Volume uniforme é fundamental.' },
-      { n:'Hammer-on from nowhere (HFN) — técnica Govan', bpm:'Livre / 10 min', desc:'Martele a 1ª nota sem atacar com palheta. Cria articulação impossível de outro modo. Pratique HFN no início de frases em Am pentatônica e A Dórico.' },
-      { n:'Legato com tapping integrado — esquerda + tapping direita', bpm:'75 BPM', desc:'Padrão: esquerda 5h8h10, tapping direita no 13, pull-off 10-8-5. Tapping funcional estilo Hutchings — não decorativo, serve a frase musical.' },
-      { n:'Legato cromático + resolução diatônica', bpm:'90 BPM', desc:'4 notas cromáticas (ex: 5-6-7-8 na 1ª corda) resolvendo na nota da escala mais próxima. Cria tensão e resolução automáticas — harmonia implícita.' },
-      { n:'Frase Alex Hutchings style — legato over chord changes', bpm:'Backing funk/fusion', desc:'YouTube: "Dm7 funk fusion backing". Improvise com legato puro, trocando conscientemente quando o acorde muda. Palheta proibida por 5 min.' },
+      { n:'Tapping com 2 dedos da mão direita — posições independentes', bpm:'60 BPM', desc:'Dedo 1 (indicador) no 12, dedo 2 (médio) no 15. Esquerda no 5. Padrão: esq5-tap12-pull-tap15-pull. Tapping em duas posições diferentes muda o vocabulário completamente. Comece lento.' },
+      { n:'Arpejos de 3 oitavas com tapping — Am Em Dm', bpm:'70 BPM', desc:'Am 3 oitavas: esq A(5ª/5), C(4ª/5), E(3ª/5), tap A(1ª/17). Soa quase clássico. Requer precisão milimétrica. Diminua para 50 BPM se necessário — limpeza primeiro.' },
+      { n:'Legato + tapping integrado — sem costuras audíveis', bpm:'75 BPM', desc:'4 notas legato (esq) + tap + pull-off voltando para legato. A junção não pode soar como "transição de técnica". É uma frase contínua. Hutchings faz isso invisível.' },
+      { n:'Tapping cromático — tensão máxima', bpm:'80 BPM', desc:'Padrão: esq 5h6h7h8, tap 12, pull-off 8-7-6-5. O cromatismo embaixo + tap alto cria tensão intensa. Resolva na nota A. Contraste entre tensão e resolução é a emoção.' },
+      { n:'Composição: frase musical com tapping como elemento central', bpm:'Livre', desc:'30 min: crie uma frase de 8 compassos onde o tapping serve a melodia, não é exibição. Se tirar o tapping e a frase perde sentido musical, ele está integrado. Grave obrigatório.' },
     ],
-    regra:'🎵 Referência: "Fives" e "Uncle Buck" — Guthrie Govan. Legato não é técnica, é voz.'
+    regra:'🎵 Referência: Joe Satriani "Midnight" + Hutchings "Live in Japan". Tapping que serve a melodia, nunca o contrário.'
   },
-  qui: { tipo:'TÉCNICA', foco:'Sweep Picking Integrado + Economy Picking', dur:'60 min', cor:'#e8ff47',
+  qui: { tipo:'TÉCNICA', foco:'Whammy Bar — Expressão e Microtones', dur:'60 min', cor:'#e8ff47',
     exercicios:[
-      { n:'Sweep 3 cordas — Am, Dm, Em posições fechadas', bpm:'80 BPM', desc:'Am: 5ª corda 7ª casa → 4ª 5ª → 3ª 5ª, sweep down e up. Palm mute leve no início para limpar. Cada nota soa individual — não é acorde.' },
-      { n:'Sweep 5 cordas — Amaj7 e Am7 alternados', bpm:'75 BPM', desc:'Amaj7: A-C#-E-G# / Am7: A-C-E-G em 5 cordas. Alterne em loop. Foco na transição no topo — tapping opcional no pico da frase.' },
-      { n:'Arpejo + escala integrados — sair do sweep direto na escala', bpm:'Livre', desc:'Sweep de Am7 → topo → direto para lick A Dórico com legato. Isso é o que separa guitarrista de músico: conectar técnicas em frases musicais.' },
-      { n:'Economy picking — 3 notas/corda em sequência', bpm:'95 BPM', desc:'Na troca de corda continue o movimento (down→down ou up→up). Mais eficiente para velocidade. Compare com alternate no mesmo lick — sinta a diferença.' },
-      { n:'Composição: 8 compassos sweep + legato + picking', bpm:'Livre', desc:'Monte uma frase de 8 compassos combinando as 3 técnicas. Não precisa ser rápido — precisa ser intencional e musical. Grave.' },
+      { n:'Flutter/dive bomb controlado — com retorno perfeito à afinação', bpm:'Backing track livre', desc:'Dip curto (1/4 de tom, 1/2 tom) com retorno imediato à nota original. A afinação de retorno é tudo. Se não volta na nota, é efeito de impacto, não expressão. Guthrie retorna sempre.' },
+      { n:'Vibrato com whammy — tom mais largo que dedos permitem', bpm:'Lento / expressivo', desc:'Mantenha nota longa + whammy em oscilação regular. Mais largo que vibrato de dedo (1 tom completo de variação). Cria voz de instrumento de sopro. Controle de velocidade é fundamental.' },
+      { n:'Microtones — notas entre os semitons (blue notes avançadas)', bpm:'Livre / 10 min', desc:'Com whammy, desça 1/4 de tom de qualquer nota da pentatônica. São as "notas fantasma" que não existem no piano. Pure blues e world music. Guthrie usa extensivamente em solos lentos.' },
+      { n:'Chord swells com whammy + volume knob', bpm:'Backing pad', desc:'Ataque acorde + dip imediato no whammy + volume knob subindo. Imita seção de cordas de orquestra. 2 técnicas integradas criando timbre completamente novo. Contexto: partes lentas e cinematográficas.' },
+      { n:'Frase expressiva de 4 compassos — apenas whammy e vibrato', bpm:'Lento e emocional', desc:'Proibido: picking rápido, legato extenso, sweep. Permitido: notas longas, whammy, vibrato, bends. 4 compassos. Prove que velocidade não é expressão. Grave e ouça como ouvinte.' },
     ],
-    regra:'💡 Sweep limpo a 80 BPM > sweep sujo a 130 BPM. Guthrie nunca toca sweep de exibição — sempre serve a frase.'
+    regra:'💡 Whammy bar no Stratocaster é extensão da voz, não efeito. Guthrie Govan tem o vibrato de whammy mais musical da cena fusion.'
   },
-  sex: { tipo:'EXPRESSIVIDADE', foco:'Vibrato & Bending — Voz Própria', dur:'60 min', cor:'#ff6b35',
+  sex: { tipo:'COMPOSIÇÃO', foco:'16 Compassos Completos — Fusão de Técnicas', dur:'75 min', cor:'#ff6b35',
     exercicios:[
-      { n:'Vibrato em 4 velocidades — lento / médio / rápido / wide', bpm:'Metrônomo livre', desc:'Lento e largo (Gary Moore), médio expressivo (Guthrie), rápido tenso (blues), wide com pulso (SRV). 3 min cada. São "palavras" diferentes na sua linguagem.' },
-      { n:'Micro-bends — 1/4 de tom intencional (blue note)', bpm:'Livre / 10 min', desc:'Suba apenas 1/4 de tom — nem chega no semitom. Na pentatônica Am, aplique nas notas C e G. Som blue note puro. Isso é o que Guthrie faz em "Wonderful Slippery Thing".' },
-      { n:'Pre-bend invisível — sobe antes, ataque, release lento', bpm:'Lento', desc:'Suba o bend ANTES de atacar. Ataque na nota aguda. Desça devagar até a original. Efeito de descida emocional. 10 min na nota G, 3ª corda.' },
-      { n:'Vibrato no bend — benda e vibra simultaneamente', bpm:'Livre', desc:'Bend de 1 tom + vibrato no topo do bend. Difícil: a maioria perde a afinação. Foco: manter o bend enquanto oscila. 3 dedos sempre, pulso como eixo.' },
-      { n:'Frase de 4 notas — expressão máxima em cada uma', bpm:'Lento/livre', desc:'Apenas 4 notas — mas com vibrato, bend, dinâmica e intenção total. Grave e ouça: você tocou algo ou executou técnica? Hutchings faz isso constantemente.' },
+      { n:'Planejamento estrutural — harmonia primeiro, técnica depois', bpm:'20 min / sem guitarra', desc:'Decida: progressão de 4 acordes (ex: Am7→Dm7→G7→Cmaj7). Desenhe a jornada emocional: intro tenso → desenvolvimento → climax → resolução. Anote em papel. A técnica serve a estrutura.' },
+      { n:'Construção: compassos 1-4 — estabelecer o tema melódico', bpm:'70 BPM', desc:'Crie uma melodia de 4 notas que defina a peça. Simples e memorável. Não toque mais de 6 notas por compasso. O tema principal deve poder ser cantarolado.' },
+      { n:'Desenvolvimento: compassos 5-8 — variar o tema com técnicas', bpm:'75 BPM', desc:'Pegue o tema dos compassos 1-4 e transforme: adicione legato, mude o ritmo, inverta. É o mesmo tema mas com novo vocabulário técnico. Coerência temática é o que separa solo de composição.' },
+      { n:'Climax: compassos 9-12 — ponto de maior tensão e velocidade', bpm:'90 BPM', desc:'Agora libere: sweep, tapping, outside playing, whammy — mas servindo à progressão harmônica. O clímax funciona porque foi construído, não porque é tecnicamente impressionante.' },
+      { n:'Resolução + gravação completa: compassos 13-16 — retorno e conclusão', bpm:'70 BPM', desc:'Volte ao tema original, mas transformado pelo que a peça viveu. Grave todos os 16 compassos do início ao fim. Ouça 3x. Analise: existe narrativa? A peça conta uma história?' },
     ],
-    regra:'🎵 Referência: Alex Hutchings "At Large" + Guthrie "Fives". Cada nota tem personalidade própria.'
+    regra:'🏆 Composição é a maior habilidade musical. Todo técnico é substituível. Um compositor com voz própria é único.'
   },
-  sab: { tipo:'IMPROVISAÇÃO', foco:'Sessão Fusion Completa — Análise', dur:'90 min', cor:'#ff6b35',
+  sab: { tipo:'IMPROVISAÇÃO', foco:'Sessão Análise + Integração Total — Metas Semana 3', dur:'90 min', cor:'#ff6b35',
     exercicios:[
-      { n:'Warm-up técnico — 10 min percorrendo a semana', bpm:'Confortável', desc:'2 min cada: alternate picking licks, legato 4 notas/corda, sweep 3 cordas, vibrato 4 velocidades. Não pratique — confirme que entrou no corpo.' },
-      { n:'Backing fusion Am — 20 min GRAVADO (vídeo ou áudio)', bpm:'Backing track', desc:'YouTube: "Am fusion backing track Guthrie style". Regra absoluta: não pare por nenhum erro. Use tudo: sweep, legato, bends, modos, arpejos, economia de picking.' },
-      { n:'Restrição 1: apenas 3 notas por frase — 10 min', bpm:'Lento', desc:'Proibido mais de 3 notas consecutivas sem silêncio ou nota longa. Força pensar melodicamente, não tecnicamente. Isso separa Guthrie de 99% dos guitarristas.' },
-      { n:'Restrição 2: apenas groove e timing — 5 min', bpm:'Groove/funk', desc:'Foque no ritmo. Uma nota longa + vibrato no tempo certo é mais musical que 16 notas sem intenção rítmica. Alex Hutchings faz isso constantemente.' },
-      { n:'Análise crítica da gravação — 3 metas para semana 2', bpm:'20 min', desc:'Ouça 2x: 1ª como ouvinte (o que soou bem?), 2ª como professor (o que repetiu demais? onde perdeu a musicalidade?). Anote 3 metas específicas para semana 2.' },
+      { n:'Warm-up: revisão das técnicas novas da semana 2', bpm:'Confortável', desc:'2 min cada: outside playing (pentatônica aumentada), progressão modal (dórico), tapping 2 dedos, whammy expression. Não pratique — confirme que entrou no corpo desta semana.' },
+      { n:'Backing fusion Am — 30 min GRAVADO em vídeo', bpm:'Backing track', desc:'YouTube: "Am fusion backing track Guthrie style". Grave em vídeo (não só áudio). Regra: não pare por nenhum erro. Use TUDO das 2 semanas. A câmera não mente sobre a linguagem corporal.' },
+      { n:'Restrição criativa: improviso com apenas 3 notas — 10 min', bpm:'Lento', desc:'A, C, E (Am). Nada mais. Explore vibrato, whammy, tapping dessas 3 notas. Crie dinâmicas, silêncios, swells. Isso força pensar em timbre e expressão, não em notas.' },
+      { n:'Análise crítica da gravação em vídeo — comparação com semana 1', bpm:'20 min', desc:'Ouça a gravação de hoje E a da semana passada. O que melhorou especificamente? O que ainda está mecânico? Onde perdeu a musicalidade? Identifique 3 padrões que você repete demais.' },
+      { n:'Definir 3 metas específicas e técnicas para a Semana 3', bpm:'10 min', desc:'Não escreva "melhorar velocidade". Escreva: "Executar sweep Am7 5 cordas limpo a 95 BPM" ou "Integrar outside playing em 1 frase por solo". Métricas reais. Anote no app de notas ou papel.' },
     ],
-    regra:'🏆 A sessão de sábado é seu espelho real. Gravação honesta é o feedback mais valioso que existe.'
+    regra:'🏆 A gravação em vídeo da sessão de sábado é o feedback mais honesto que existe. Assista sem cringe — com análise fria de músico.'
   },
-  dom: { tipo:'REVISÃO + REPERTÓRIO', foco:'Música Real + Descanso Mental', dur:'45 min', cor:'#c084fc',
+  dom: { tipo:'REVISÃO + REPERTÓRIO', foco:'Música Real + Escuta Profunda + Descanso', dur:'45 min', cor:'#c084fc',
     exercicios:[
-      { n:'Flash review — 1 exercício de cada dia (2 min cada)', bpm:'Confortável', desc:'Seg: lick alternate picking inside/outside. Ter: ii-V-I com modos por acorde. Qua: legato 4 notas/corda HFN. Qui: sweep Am7 5 cordas. Sex: vibrato + micro-bend.' },
-      { n:'Aprenda o intro de "Wonderful Slippery Thing" — Guthrie Govan', bpm:'50% velocidade', desc:'Riff principal em A Lídio. Identifique o D# (#4). Toque devagar com intenção total. Partitura: Ultimate Guitar ou YouTube cover slow. Velocidade vem depois.' },
-      { n:'Improviso livre — sem objetivo técnico — 15 min', bpm:'Livre / prazer', desc:'Toque o que quiser, como quiser. A relação com o instrumento precisa incluir prazer puro. Guitarristas que só estudam perdem a alma do instrumento.' },
+      { n:'Flash review semanal — 1 exercício chave de cada dia', bpm:'Confortável', desc:'Seg: frase outside playing. Ter: lick modal (Dórico + Lídio). Qua: tapping 2 dedos em Am. Qui: dive bomb controlado. Sex: tema principal da composição. Tudo junto, 2 min cada.' },
+      { n:'Repertório: aprender o intro completo de "Fives" — Guthrie Govan', bpm:'50% velocidade', desc:'Riff em E pentatônica com elementos Lídios. Identifique o sweep e os legato fills. YouTube: "Fives Guthrie Govan full lesson" ou "Fives tab slow". Você não precisa velocidade — precisa a frase.' },
+      { n:'Escuta ativa — análise de 10 min de Alex Hutchings', bpm:'YouTube / livre', desc:'YouTube: "Alex Hutchings live". Ouça com papel na mão. Anote: 3 técnicas identificadas, 1 frase que quer aprender, 1 escolha harmônica surpreendente. Ouvido ativo é prática também.' },
+      { n:'Improviso livre — prazer puro — 10 min', bpm:'Livre / prazer', desc:'Sem objetivo técnico. Toque o que quiser, como quiser. Relação com o instrumento precisa incluir prazer puro e sem julgamento. Descanso mental é parte do protocolo avançado.' },
     ],
-    regra:'✅ Semana 1: alternate picking avançado, harmonia funcional com modos, legato Govan, sweep integrado, expressividade total, sessão fusion gravada.'
+    regra:'✅ Semana 2: outside playing, progressões modais, tapping 2 dedos, whammy expression, composição completa, sessão gravada analisada.'
   },
 };
 
@@ -343,6 +344,47 @@ let notifOn = false;
 const FIRED = {};
 const PERIOD_COLORS = { manha: 'var(--amber)', tarde: '#38bdf8', noite: 'var(--neon)' };
 
+// ── CELEBRATION ──
+let celebrationShown = false;
+function triggerCelebration() {
+  if (celebrationShown) return;
+  const cel = document.getElementById('celebration');
+  if (!cel) return;
+  cel.style.display = 'flex';
+  cel.classList.add('show');
+  celebrationShown = true;
+  // Confetti
+  const colors = ['#FF6B00','#F59E0B','#ff4444','#38bdf8','#c084fc','#e8ff47'];
+  for (let i = 0; i < 20; i++) {
+    setTimeout(() => {
+      const p = document.createElement('div');
+      p.className = 'confetti-piece';
+      p.style.cssText = `
+        left:${Math.random()*100}vw;
+        top:${20 + Math.random()*30}vh;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        animation-duration:${0.6 + Math.random()*0.6}s;
+        animation-delay:${Math.random()*0.3}s;
+        transform:rotate(${Math.random()*360}deg);
+      `;
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 1200);
+    }, i * 80);
+  }
+  setTimeout(() => {
+    cel.classList.remove('show');
+    setTimeout(() => { cel.style.display = 'none'; celebrationShown = false; }, 400);
+  }, 3500);
+}
+
+function checkCelebration() {
+  const all  = document.querySelectorAll('#page-rotina .task-card').length;
+  const done = document.querySelectorAll('#page-rotina .task-card.done').length;
+  if (all > 0 && done === all) {
+    setTimeout(triggerCelebration, 400);
+  }
+}
+
 // ── RENDER TASKS ──
 function renderTasks(day) {
   ['manha','tarde','noite'].forEach(p => {
@@ -363,7 +405,10 @@ function renderTasks(day) {
       card.onclick = () => {
         const nv = !LOCAL.get(key);
         LOCAL.set(key, nv); schedSave(key, nv);
+        // Flash animation on completion
+        if (nv) { card.classList.add('just-done'); setTimeout(() => card.classList.remove('just-done'), 600); }
         renderTasks(day); calcStats(); saveDailySummary();
+        checkCelebration();
       };
       el.appendChild(card);
     });
@@ -374,6 +419,10 @@ function renderTasks(day) {
 function toggleCard(el) {
   el.classList.toggle('done');
   el.querySelector('.tck').textContent = el.classList.contains('done') ? '✓' : '';
+  if (el.classList.contains('done')) {
+    el.classList.add('just-done');
+    setTimeout(() => el.classList.remove('just-done'), 600);
+  }
   calcStats();
 }
 function toggleGoal(el) {
@@ -462,6 +511,11 @@ function calcStats() {
   document.getElementById('s-done').textContent  = done;
   document.getElementById('s-left').textContent  = all - done;
   document.getElementById('s-pct').textContent   = all > 0 ? Math.round(done/all*100)+'%' : '0%';
+  // Update progress bar if present
+  const ps = document.getElementById('ps-fill');
+  if (ps) ps.style.width = (all > 0 ? Math.round(done/all*100) : 0) + '%';
+  const pn = document.getElementById('ps-number');
+  if (pn) pn.textContent = all > 0 ? Math.round(done/all*100)+'%' : '0%';
 }
 
 // ── DAY SELECT ──
@@ -479,7 +533,6 @@ function autoSelectToday() {
   if (btn) { document.querySelectorAll('.ds').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); }
   currentDay = k;
   document.getElementById('pg-day-title').textContent = DAYS[k];
-  // Render detail tabs with today's data
   renderGuitarTab(k);
   renderTreinoTab(k);
   renderInglesTab(k);
@@ -506,6 +559,8 @@ function tick() {
   document.getElementById('db-fill').style.width  = pct+'%';
   document.getElementById('db-head').style.left   = pct+'%';
   document.getElementById('db-pct').textContent   = pct+'%';
+  // Session timer tick
+  if (timerRunning) timerTick();
   if (notifOn) {
     const dk = ['dom','seg','ter','qua','qui','sex','sab'][n.getDay()];
     ['manha','tarde','noite'].forEach(p => {
@@ -522,6 +577,117 @@ function tick() {
 }
 setInterval(tick, 1000);
 tick();
+
+// ── SESSION TIMER ──
+let timerSeconds = 0;
+let timerRunning = false;
+let timerTarget = 0;
+let timerLastTick = 0;
+
+function timerTick() {
+  const now = Date.now();
+  if (timerLastTick === 0) { timerLastTick = now; return; }
+  const elapsed = Math.floor((now - timerLastTick) / 1000);
+  if (elapsed < 1) return;
+  timerLastTick = now;
+  timerSeconds += elapsed;
+  updateTimerDisplay();
+  // Check if reached target
+  if (timerTarget > 0 && timerSeconds >= timerTarget) {
+    stopTimer();
+    showPopup('TEMPO COMPLETO! ✓', 'Sessão de ' + formatTime(timerTarget) + ' concluída. MISSÃO EXECUTADA.');
+    const disp = document.getElementById('timer-disp');
+    if (disp) disp.classList.add('done-timer');
+  }
+}
+
+function formatTime(secs) {
+  const m = Math.floor(secs / 60).toString().padStart(2,'0');
+  const s = (secs % 60).toString().padStart(2,'0');
+  return m + ':' + s;
+}
+
+function updateTimerDisplay() {
+  const disp = document.getElementById('timer-disp');
+  if (!disp) return;
+  if (timerTarget > 0) {
+    const remaining = Math.max(0, timerTarget - timerSeconds);
+    disp.textContent = formatTime(remaining);
+  } else {
+    disp.textContent = formatTime(timerSeconds);
+  }
+}
+
+function startTimer() {
+  if (timerRunning) return;
+  timerRunning = true;
+  timerLastTick = Date.now();
+  const disp = document.getElementById('timer-disp');
+  if (disp) { disp.classList.add('running'); disp.classList.remove('done-timer'); }
+  const startBtn = document.getElementById('timer-start-btn');
+  const pauseBtn = document.getElementById('timer-pause-btn');
+  if (startBtn) startBtn.style.display = 'none';
+  if (pauseBtn) pauseBtn.style.display = '';
+}
+
+function pauseTimer() {
+  timerRunning = false;
+  timerLastTick = 0;
+  const disp = document.getElementById('timer-disp');
+  if (disp) disp.classList.remove('running');
+  const startBtn = document.getElementById('timer-start-btn');
+  const pauseBtn = document.getElementById('timer-pause-btn');
+  if (startBtn) startBtn.style.display = '';
+  if (pauseBtn) pauseBtn.style.display = 'none';
+}
+
+function stopTimer() {
+  timerRunning = false;
+  timerLastTick = 0;
+  const disp = document.getElementById('timer-disp');
+  if (disp) disp.classList.remove('running');
+  const startBtn = document.getElementById('timer-start-btn');
+  const pauseBtn = document.getElementById('timer-pause-btn');
+  if (startBtn) startBtn.style.display = '';
+  if (pauseBtn) pauseBtn.style.display = 'none';
+}
+
+function resetTimer() {
+  stopTimer();
+  timerSeconds = 0;
+  timerTarget = 0;
+  updateTimerDisplay();
+  const disp = document.getElementById('timer-disp');
+  if (disp) { disp.classList.remove('done-timer'); disp.textContent = '00:00'; }
+}
+
+function setTimerPreset(minutes) {
+  resetTimer();
+  timerTarget = minutes * 60;
+  updateTimerDisplay();
+}
+
+function renderTimer() {
+  const wrap = document.getElementById('timer-wrap');
+  if (!wrap) return;
+  wrap.innerHTML = `
+    <div class="timer-card">
+      <div class="timer-label">CRONÔMETRO DA SESSÃO</div>
+      <div class="timer-display" id="timer-disp">00:00</div>
+      <div class="timer-presets">
+        <button class="timer-preset" onclick="setTimerPreset(25)">25 MIN</button>
+        <button class="timer-preset" onclick="setTimerPreset(30)">30 MIN</button>
+        <button class="timer-preset" onclick="setTimerPreset(45)">45 MIN</button>
+        <button class="timer-preset" onclick="setTimerPreset(60)">60 MIN</button>
+        <button class="timer-preset" onclick="setTimerPreset(90)">90 MIN</button>
+      </div>
+      <div class="timer-btns">
+        <button class="timer-btn primary" id="timer-start-btn" onclick="startTimer()">▶ INICIAR</button>
+        <button class="timer-btn" id="timer-pause-btn" onclick="pauseTimer()" style="display:none">⏸ PAUSAR</button>
+        <button class="timer-btn" onclick="resetTimer()">↺ RESET</button>
+      </div>
+    </div>`;
+}
 
 // ── HABITS ──
 const HABITS = [
@@ -694,6 +860,8 @@ function showPopup(title, body) {
   document.getElementById('popup-title').textContent = title;
   document.getElementById('popup-body').textContent  = body;
   const p = document.getElementById('popup');
+  p.classList.remove('show');
+  void p.offsetWidth; // reflow to restart animation
   p.classList.add('show');
   setTimeout(() => p.classList.remove('show'), 5500);
 }
@@ -719,8 +887,8 @@ if ('serviceWorker' in navigator) {
 async function boot() {
   setSyncStatus('idle');
   initQuote();
- autoSelectToday();
- renderTasks(currentDay);
+  autoSelectToday();
+  renderTasks(currentDay);
   renderHabits();
   renderRings();
   renderReadWeek();
@@ -729,10 +897,12 @@ async function boot() {
   syncWater();
   calcStreak();
   calcStats();
+  renderTimer();
   setTimeout(() => {
     const h  = new Date().getHours();
     const gr = h<12 ? 'BOM DIA' : h<18 ? 'BOA TARDE' : 'BOA NOITE';
-    showPopup(gr + ', GILMAR.', 'SISTEMA OPERACIONAL. EXECUTE A MISSÃO.');
-  }, 800);loadTodayState().then(() => renderTasks(currentDay));
+    showPopup(gr + ', GILMAR.', 'SISTEMA OPERACIONAL — SEMANA 2. EXECUTE A MISSÃO.');
+  }, 800);
+  loadTodayState().then(() => renderTasks(currentDay));
 }
 boot();
