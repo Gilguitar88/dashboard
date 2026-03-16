@@ -73,229 +73,186 @@
 <!-- STATSBAR -->
 <div id="statsbar">
   <div class="sv"><div class="sn" id="s-done">0</div><div class="sk">FEITAS</div></div>
-  <div class="sd<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#080808">
-<title>GILMAR // OPS</title>
-<link rel="manifest" href="manifest.json">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <div class="sdivider"></div>
+  <div class="sv"><div class="sn neon-n" id="s-pct">0%</div><div class="sk">EFICIÊNCIA</div></div>
+  <div class="sdivider"></div>
+  <div class="sv"><div class="sn" id="s-left">—</div><div class="sk">PENDENTES</div></div>
+  <div class="sdivider"></div>
+  <div class="sv"><div class="sn amber-n" id="s-streak">1</div><div class="sk">STREAK</div></div>
+  <div class="sdivider"></div>
+  <div class="sv"><div class="sn dim-n" id="s-total">—</div><div class="sk">TOTAL</div></div>
+</div>
 
-<!-- BG ELEMENTS -->
-<div class="skull-bg" aria-hidden="true">
-  <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
-    <path d="M100 8C52 8 15 46 15 94C15 126 32 152 58 166L58 192C58 197 62 202 68 202L132 202C138 202 142 197 142 192L142 166C168 152 185 126 185 94C185 46 148 8 100 8Z"/>
-    <ellipse cx="70" cy="92" rx="24" ry="28"/>
-    <ellipse cx="130" cy="92" rx="24" ry="28"/>
-    <rect x="86" y="124" width="28" height="7" rx="3.5"/>
-    <rect x="68" y="207" width="20" height="24" rx="3"/>
-    <rect x="90" y="207" width="20" height="24" rx="3"/>
-    <rect x="112" y="207" width="20" height="24" rx="3"/>
+<!-- DAYBAR -->
+<div id="daybar">
+  <span class="db-lbl">DIA</span>
+  <div class="db-track">
+    <div class="db-fill" id="db-fill" style="width:0%"></div>
+    <div class="db-head" id="db-head" style="left:0%"></div>
+  </div>
+  <span class="db-pct" id="db-pct">0%</span>
+</div>
+
+<!-- TABNAV -->
+<div id="tabnav">
+  <button class="tnav active" onclick="goTab('rotina')"   id="t-rotina">ROTINA</button>
+  <button class="tnav"        onclick="goTab('ingles')"   id="t-ingles">INGLÊS</button>
+  <button class="tnav"        onclick="goTab('leitura')"  id="t-leitura">LEITURA</button>
+  <button class="tnav"        onclick="goTab('guitarra')" id="t-guitarra">GUITARRA</button>
+  <button class="tnav"        onclick="goTab('treino')"   id="t-treino">TREINO</button>
+  <button class="tnav"        onclick="goTab('negocios')" id="t-negocios">INSID360</button>
+  <button class="tnav"        onclick="goTab('outros')"   id="t-outros">METAS</button>
+</div>
+
+<!-- PAGE: ROTINA -->
+<div class="page active" id="page-rotina">
+  <div class="pg-hdr">
+    <div class="pgh-left">
+      <span class="chess-icon">♔</span>
+      <div>
+        <h1 class="pg-title" id="pg-day-title">SEGUNDA-FEIRA</h1>
+        <div class="pg-sub">PROTOCOLO DIÁRIO · EXECUTE A MISSÃO</div>
+      </div>
+    </div>
+    <div class="day-sel">
+      <button class="ds active" onclick="selDay(this,'seg')">SEG</button>
+      <button class="ds" onclick="selDay(this,'ter')">TER</button>
+      <button class="ds" onclick="selDay(this,'qua')">QUA</button>
+      <button class="ds" onclick="selDay(this,'qui')">QUI</button>
+      <button class="ds" onclick="selDay(this,'sex')">SEX</button>
+      <button class="ds" onclick="selDay(this,'sab')">SÁB</button>
+      <button class="ds" onclick="selDay(this,'dom')">DOM</button>
+    </div>
+  </div>
+  <div class="period-hdr"><span class="pb pb-am">MANHÃ</span><span class="pt">05:30→12:00</span><div class="pl"></div></div>
+  <div id="t-manha"></div>
+  <div class="period-hdr"><span class="pb pb-pm">TARDE</span><span class="pt">12:00→18:00</span><div class="pl"></div></div>
+  <div id="t-tarde"></div>
+  <div class="period-hdr"><span class="pb pb-nt">NOITE</span><span class="pt">18:00→23:00</span><div class="pl"></div></div>
+  <div id="t-noite"></div>
+  <div class="sec-hdr" style="margin-top:32px"><span class="sec-lbl">HÁBITOS SEMANAIS</span><div class="sec-line"></div></div>
+  <div id="habit-grid"></div>
+</div>
+
+<!-- PAGE: INGLÊS -->
+<div class="page" id="page-ingles">
+  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:var(--neon)">♟</span><div><h1 class="pg-title" style="color:var(--neon)">INGLÊS</h1><div class="pg-sub">AQUISIÇÃO LINGUÍSTICA</div></div></div></div>
+  <div class="sec-hdr"><span class="sec-lbl">PLANO DO DIA — INTERMEDIÁRIO/AVANÇADO</span><div class="sec-line"></div></div>
+  <div id="ingles-detail"></div>
+  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">PROGRESSO SEMANAL</span><div class="sec-line"></div></div>
+  <div class="rings-row" id="rings-ingles"></div>
+  <div class="sec-hdr" style="margin-top:12px"><span class="sec-lbl">INTEL</span><div class="sec-line"></div></div>
+  <textarea class="notes" placeholder="// FRASES NOVAS, EXPRESSÕES, ANOTAÇÕES..."></textarea>
+</div>
+
+<!-- PAGE: LEITURA -->
+<div class="page" id="page-leitura">
+  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:var(--amber)">♜</span><div><h1 class="pg-title" style="color:var(--amber)">LEITURA</h1><div class="pg-sub">INTELIGÊNCIA E DESENVOLVIMENTO</div></div></div></div>
+  <div class="sec-hdr"><span class="sec-lbl">LIVRO EM OPERAÇÃO</span><div class="sec-line"></div></div>
+  <div class="book-card">
+    <div class="book-spine" style="background:var(--amber)"></div>
+    <div class="book-body">
+      <input class="bk-title" id="bk-title" placeholder="TÍTULO DO LIVRO..." oninput="saveBookMeta()">
+      <input class="bk-author" id="bk-author" placeholder="// autor" oninput="saveBookMeta()">
+      <div class="prog-row"><span>PROGRESSO</span><span id="bk-pct">0%</span></div>
+      <div class="prog-track"><div id="bk-fill" class="prog-fill" style="width:0%;background:var(--amber)"></div></div>
+      <input type="range" min="0" max="100" value="0" id="bk-range" oninput="bkProg(this.value)" class="range-amber" style="width:100%;margin-top:10px">
+    </div>
+  </div>
+  <div class="sec-hdr"><span class="sec-lbl">REGISTRO SEMANAL</span><div class="sec-line"></div></div>
+  <div id="rw-row" class="rw-row"></div>
+  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">NOTAS & INSIGHTS</span><div class="sec-line"></div></div>
+  <textarea class="notes" style="min-height:180px" placeholder="// CITAÇÕES · IDEIAS-CHAVE · REFLEXÕES..."></textarea>
+</div>
+
+<!-- PAGE: GUITARRA -->
+<div class="page" id="page-guitarra">
+  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:#c084fc">♛</span><div><h1 class="pg-title" style="color:#c084fc">GUITARRA</h1><div class="pg-sub">20 ANOS · MAESTRIA CONTÍNUA</div></div></div></div>
+  <div class="sec-hdr"><span class="sec-lbl">SESSÃO DE HOJE — SEMANA 2</span><div class="sec-line"></div></div>
+  <div id="guitar-detail"></div>
+  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">METRÔNOMO</span><div class="sec-line"></div></div>
+  <div class="bpm-card">
+    <div class="bpm-num" id="bpm-num">80</div>
+    <div class="bpm-unit">BPM</div>
+    <input type="range" min="40" max="240" value="80" oninput="document.getElementById('bpm-num').textContent=this.value" class="range-purple" style="width:80%;margin-top:18px">
+    <div class="bpm-scale"><span>40</span><span>120</span><span>240</span></div>
+  </div>
+  <div class="sec-hdr"><span class="sec-lbl">LOG DA SESSÃO</span><div class="sec-line"></div></div>
+  <textarea class="notes" placeholder="// O QUE PRATICOU · CONQUISTAS · PRÓXIMOS DESAFIOS..."></textarea>
+</div>
+
+<!-- PAGE: TREINO -->
+<div class="page" id="page-treino">
+  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:var(--neon)">♞</span><div><h1 class="pg-title" style="color:var(--neon)">TREINO & DIETA</h1><div class="pg-sub">PROTOCOLO FÍSICO E NUTRICIONAL</div></div></div></div>
+  <div class="two-col">
+    <div>
+      <div class="sec-hdr"><span class="sec-lbl" style="color:var(--neon)">TREINO DO DIA</span><div class="sec-line"></div></div>
+      <div id="treino-detail"></div>
+    </div>
+    <div>
+      <div class="sec-hdr"><span class="sec-lbl" style="color:#38bdf8">HIDRATAÇÃO</span><div class="sec-line"></div></div>
+      <div class="water-card">
+        <div class="water-top"><span>ÁGUA</span><span id="w-lbl" style="color:#38bdf8">0 / 3000ml</span></div>
+        <div class="water-track"><div id="w-fill" class="water-fill" style="width:0%"></div></div>
+        <div class="water-btns">
+          <button class="wbtn" onclick="addWater(250)">+250ml</button>
+          <button class="wbtn" onclick="addWater(500)">+500ml</button>
+          <button class="wbtn ghost-btn" onclick="resetWater()">RST</button>
+        </div>
+      </div>
+      <div class="sec-hdr" style="margin-top:14px"><span class="sec-lbl" style="color:var(--amber)">REFEIÇÕES</span><div class="sec-line"></div></div>
+      <div id="meals-wrap"></div>
+    </div>
+  </div>
+  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">LOG DE TREINO</span><div class="sec-line"></div></div>
+  <textarea class="notes" placeholder="// CARGA · REPETIÇÕES · SENSAÇÕES · AJUSTES..."></textarea>
+</div>
+
+<!-- PAGE: INSID360 -->
+<div class="page" id="page-negocios">
+  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:#38bdf8">♚</span><div><h1 class="pg-title" style="color:#38bdf8">INSID360</h1><div class="pg-sub">CENTRO DE COMANDO · PORTFÓLIO</div></div></div></div>
+  <div class="sec-hdr"><span class="sec-lbl">PROJETOS ATIVOS</span><div class="sec-line"></div></div>
+  <div class="proj-grid">
+    <div class="proj-row"><div class="pdot green-dot"></div><div class="pinfo"><div class="pname">Mazon &amp; Bigliazzi — Clínica</div><div class="pseg">ODONTOLOGIA</div></div><span class="ppri red-pri">ALTA</span></div>
+    <div class="proj-row"><div class="pdot green-dot"></div><div class="pinfo"><div class="pname">Instituto Mazon e Bigliazzi</div><div class="pseg">EDUCAÇÃO</div></div><span class="ppri red-pri">ALTA</span></div>
+    <div class="proj-row"><div class="pdot amber-dot"></div><div class="pinfo"><div class="pname">Moema Talks Podcast</div><div class="pseg">CONTEÚDO</div></div><span class="ppri amber-pri">MÉDIA</span></div>
+    <div class="proj-row"><div class="pdot amber-dot"></div><div class="pinfo"><div class="pname">Five Saúde Corporativa</div><div class="pseg">B2B SAÚDE</div></div><span class="ppri red-pri">ALTA</span></div>
+    <div class="proj-row"><div class="pdot green-dot"></div><div class="pinfo"><div class="pname">Focus Odontologia</div><div class="pseg">ODONTOLOGIA</div></div><span class="ppri amber-pri">MÉDIA</span></div>
+  </div>
+  <div class="sec-hdr" style="margin-top:8px"><span class="sec-lbl">MISSÕES DO DIA</span><div class="sec-line"></div></div>
+  <div class="task-card" onclick="toggleCard(this)" style="--lc:#38bdf8"><div class="tck"></div><div class="tb2"><div class="tn">Revisar métricas — todas as contas</div><div class="ts2">CPA · ROAS · AJUSTE DE LANCES</div></div><div class="tt">13:00</div><div class="td">30MIN</div></div>
+  <div class="task-card" onclick="toggleCard(this)" style="--lc:#38bdf8"><div class="tck"></div><div class="tb2"><div class="tn">Sync com Danilo Santiago</div><div class="ts2">ALINHAMENTO SEMANAL DO PORTFÓLIO</div></div><div class="tt">14:00</div><div class="td">45MIN</div></div>
+  <div class="task-card" onclick="toggleCard(this)" style="--lc:#38bdf8"><div class="tck"></div><div class="tb2"><div class="tn">Relatório de performance</div><div class="ts2">COMPILAR RESULTADOS DO PERÍODO</div></div><div class="td">60MIN</div></div>
+  <div class="task-card" onclick="toggleCard(this)" style="--lc:#ff4444"><div class="tck"></div><div class="tb2"><div class="tn">🚨 Pesquisar plano de saúde — família</div><div class="ts2">URGENTE · COMPARAR OPÇÕES E FECHAR CONTRATO</div></div><div class="td">URGENTE</div></div>
+  <div class="task-card" onclick="toggleCard(this)" style="--lc:#ff4444"><div class="tck"></div><div class="tb2"><div class="tn">🚨 Agendar consulta cardiovascular</div><div class="ts2">URGENTE · EXAMES E ACOMPANHAMENTO MÉDICO</div></div><div class="td">URGENTE</div></div>
+  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">INTEL ESTRATÉGICA</span><div class="sec-line"></div></div>
+  <textarea class="notes" style="min-height:160px" placeholder="// IDEIAS · ESTRATÉGIAS · PRÓXIMOS MOVIMENTOS..."></textarea>
+</div>
+
+<!-- PAGE: METAS -->
+<div class="page" id="page-outros">
+  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:var(--amber)">♝</span><div><h1 class="pg-title" style="color:var(--amber)">METAS</h1><div class="pg-sub">VIDA · FAMÍLIA · PATRIMÔNIO</div></div></div></div>
+  <div class="sec-hdr"><span class="sec-lbl" style="color:var(--neon)">OBJETIVOS ATIVOS</span><div class="sec-line"></div></div>
+  <div class="goal-row" onclick="toggleGoal(this)"><div class="gck"></div><div class="ginfo"><div class="gname">Plano de saúde — família</div><div class="gsub">PESQUISAR OPÇÕES E FECHAR CONTRATO</div></div><span class="gbadge red-badge">URGENTE</span></div>
+  <div class="goal-row" onclick="toggleGoal(this)"><div class="gck"></div><div class="ginfo"><div class="gname">Escola particular — filha</div><div class="gsub">MATRÍCULA E PLANEJAMENTO FINANCEIRO</div></div><span class="gbadge neon-badge">EM ANDAMENTO</span></div>
+  <div class="goal-row" onclick="toggleGoal(this)"><div class="gck"></div><div class="ginfo"><div class="gname">Apartamento — São Caetano do Sul</div><div class="gsub">ADIANTAR PARCELAS · ENTREGA 2028</div></div><span class="gbadge amber-badge">PLANEJAMENTO</span></div>
+  <div class="goal-row" onclick="toggleGoal(this)"><div class="gck"></div><div class="ginfo"><div class="gname">Tiro esportivo — retomar treinos</div><div class="gsub">CLUBE EM SP · AGENDAR SESSÃO</div></div><span class="gbadge dim-badge">PENDENTE</span></div>
+  <div class="goal-row" onclick="toggleGoal(this)"><div class="gck"></div><div class="ginfo"><div class="gname">Acompanhamento médico</div><div class="gsub">EXAMES E CONSULTA CARDIOVASCULAR</div></div><span class="gbadge red-badge">URGENTE</span></div>
+  <div class="sec-hdr" style="margin-top:24px"><span class="sec-lbl">BLOCO LIVRE</span><div class="sec-line"></div></div>
+  <textarea class="notes" style="min-height:180px" placeholder="// ANOTAÇÕES LIVRES · IDEIAS · LEMBRETES..."></textarea>
+</div>
+
+<!-- POPUP -->
+<div id="popup">
+  <svg class="popup-icon" viewBox="0 0 50 56" xmlns="http://www.w3.org/2000/svg">
+    <path d="M25 2C12 2 3 11 3 23C3 31 7 37 14 41L14 46C14 48 15 49 17 49L33 49C35 49 36 48 36 46L36 41C43 37 47 31 47 23C47 11 38 2 25 2Z" fill="currentColor"/>
+    <ellipse cx="18" cy="22" rx="6" ry="7" fill="#080808"/>
+    <ellipse cx="32" cy="22" rx="6" ry="7" fill="#080808"/>
+    <rect x="22" y="30" width="6" height="2.5" rx="1.25" fill="#080808"/>
+    <rect x="17" y="51" width="5" height="6" rx="1" fill="currentColor"/>
+    <rect x="23" y="51" width="5" height="6" rx="1" fill="currentColor"/>
+    <rect x="29" y="51" width="5" height="6" rx="1" fill="currentColor"/>
   </svg>
-</div>
-<div class="chess-bg" aria-hidden="true"></div>
-<div class="noise-bg" aria-hidden="true"></div>
-
-<!-- QUOTE HERO -->
-<div id="quote-hero">
-  <div class="qh-wrap">
-    <div class="qh-tag" id="qh-tag">GOGGINS</div>
-    <blockquote id="quote-text">—</blockquote>
-    <cite id="quote-author"></cite>
-    <div class="qh-controls">
-      <button class="qh-btn" onclick="prevQuote()">&#8592;</button>
-      <span class="qh-count" id="qh-count">1 / 13</span>
-      <button class="qh-btn" onclick="nextQuote()">&#8594;</button>
-    </div>
-  </div>
-</div>
-
-<!-- TOPBAR -->
-<div id="topbar">
-  <div class="tb-brand">
-    <svg class="tb-skull" viewBox="0 0 100 112" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50 4C26 4 8 22 8 46C8 62 16 74 29 81L29 92C29 95 31 97 34 97L66 97C69 97 71 95 71 92L71 81C84 74 92 62 92 46C92 22 74 4 50 4Z" fill="currentColor"/>
-      <ellipse cx="35" cy="45" rx="11" ry="13" fill="#080808"/>
-      <ellipse cx="65" cy="45" rx="11" ry="13" fill="#080808"/>
-      <rect x="43" y="58" width="14" height="4" rx="2" fill="#080808"/>
-      <rect x="34" y="100" width="10" height="12" rx="2" fill="currentColor"/>
-      <rect x="45" y="100" width="10" height="12" rx="2" fill="currentColor"/>
-      <rect x="56" y="100" width="10" height="12" rx="2" fill="currentColor"/>
-    </svg>
-    <div class="tb-id">
-      <div class="tb-name">GILMAR</div>
-      <div class="tb-role">INSID360 · OPS</div>
-    </div>
-  </div>
-  <div class="tb-right">
-    <div class="tb-clock-wrap">
-      <div id="tb-clock">--:--</div>
-      <div id="tb-date">—</div>
-    </div>
-    <div id="sync-dot" class="sdot sdot-idle" title="Sync status"></div>
-    <button id="notif-btn" onclick="reqNotif()" title="Ativar alertas">🔔</button>
-  </div>
-</div>
-
-<!-- STATSBAR -->
-<div id="statsbar">
-  <div class="sv"><div class="sn" id="s-done">0</div><div class="sk">FEITAS</div></div>
-  <div class="sd<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#080808">
-<title>GILMAR // OPS</title>
-<link rel="manifest" href="manifest.json">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- BG ELEMENTS -->
-<div class="skull-bg" aria-hidden="true">
-  <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
-    <path d="M100 8C52 8 15 46 15 94C15 126 32 152 58 166L58 192C58 197 62 202 68 202L132 202C138 202 142 197 142 192L142 166C168 152 185 126 185 94C185 46 148 8 100 8Z"/>
-    <ellipse cx="70" cy="92" rx="24" ry="28"/>
-    <ellipse cx="130" cy="92" rx="24" ry="28"/>
-    <rect x="86" y="124" width="28" height="7" rx="3.5"/>
-    <rect x="68" y="207" width="20" height="24" rx="3"/>
-    <rect x="90" y="207" width="20" height="24" rx="3"/>
-    <rect x="112" y="207" width="20" height="24" rx="3"/>
-  </svg>
-</div>
-<div class="chess-bg" aria-hidden="true"></div>
-<div class="noise-bg" aria-hidden="true"></div>
-
-<!-- QUOTE HERO -->
-<div id="quote-hero">
-  <div class="qh-wrap">
-    <div class="qh-tag" id="qh-tag">GOGGINS</div>
-    <blockquote id="quote-text">—</blockquote>
-    <cite id="quote-author"></cite>
-    <div class="qh-controls">
-      <button class="qh-btn" onclick="prevQuote()">&#8592;</button>
-      <span class="qh-count" id="qh-count">1 / 13</span>
-      <button class="qh-btn" onclick="nextQuote()">&#8594;</button>
-    </div>
-  </div>
-</div>
-
-<!-- TOPBAR -->
-<div id="topbar">
-  <div class="tb-brand">
-    <svg class="tb-skull" viewBox="0 0 100 112" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50 4C26 4 8 22 8 46C8 62 16 74 29 81L29 92C29 95 31 97 34 97L66 97C69 97 71 95 71 92L71 81C84 74 92 62 92 46C92 22 74 4 50 4Z" fill="currentColor"/>
-      <ellipse cx="35" cy="45" rx="11" ry="13" fill="#080808"/>
-      <ellipse cx="65" cy="45" rx="11" ry="13" fill="#080808"/>
-      <rect x="43" y="58" width="14" height="4" rx="2" fill="#080808"/>
-      <rect x="34" y="100" width="10" height="12" rx="2" fill="currentColor"/>
-      <rect x="45" y="100" width="10" height="12" rx="2" fill="currentColor"/>
-      <rect x="56" y="100" width="10" height="12" rx="2" fill="currentColor"/>
-    </svg>
-    <div class="tb-id">
-      <div class="tb-name">GILMAR</div>
-      <div class="tb-role">INSID360 · OPS</div>
-    </div>
-  </div>
-  <div class="tb-right">
-    <div class="tb-clock-wrap">
-      <div id="tb-clock">--:--</div>
-      <div id="tb-date">—</div>
-    </div>
-    <div id="sync-dot" class="sdot sdot-idle" title="Sync status"></div>
-    <button id="notif-btn" onclick="reqNotif()" title="Ativar alertas">🔔</button>
-  </div>
-</div>
-
-<!-- STATSBAR -->
-<div id="statsbar">
-  <div class="sv"><div class="sn" id="s-done">0</div><div class="sk">FEITAS</div></div>
-  <div class="sd<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#080808">
-<title>GILMAR // OPS</title>
-<link rel="manifest" href="manifest.json">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<!-- BG ELEMENTS -->
-<div class="skull-bg" aria-hidden="true">
-  <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg">
-    <path d="M100 8C52 8 15 46 15 94C15 126 32 152 58 166L58 192C58 197 62 202 68 202L132 202C138 202 142 197 142 192L142 166C168 152 185 126 185 94C185 46 148 8 100 8Z"/>
-    <ellipse cx="70" cy="92" rx="24" ry="28"/>
-    <ellipse cx="130" cy="92" rx="24" ry="28"/>
-    <rect x="86" y="124" width="28" height="7" rx="3.5"/>
-    <rect x="68" y="207" width="20" height="24" rx="3"/>
-    <rect x="90" y="207" width="20" height="24" rx="3"/>
-    <rect x="112" y="207" width="20" height="24" rx="3"/>
-  </svg>
-</div>
-<div class="chess-bg" aria-hidden="true"></div>
-<div class="noise-bg" aria-hidden="true"></div>
-
-<!-- QUOTE HERO -->
-<div id="quote-hero">
-  <div class="qh-wrap">
-    <div class="qh-tag" id="qh-tag">GOGGINS</div>
-    <blockquote id="quote-text">—</blockquote>
-    <cite id="quote-author"></cite>
-    <div class="qh-controls">
-      <button class="qh-btn" onclick="prevQuote()">&#8592;</button>
-      <span class="qh-count" id="qh-count">1 / 13</span>
-      <button class="qh-btn" onclick="nextQuote()">&#8594;</button>
-    </div>
-  </div>
-</div>
-
-<!-- TOPBAR -->
-<div id="topbar">
-  <div class="tb-brand">
-    <svg class="tb-skull" viewBox="0 0 100 112" xmlns="http://www.w3.org/2000/svg">
-      <path d="M50 4C26 4 8 22 8 46C8 62 16 74 29 81L29 92C29 95 31 97 34 97L66 97C69 97 71 95 71 92L71 81C84 74 92 62 92 46C92 22 74 4 50 4Z" fill="currentColor"/>
-      <ellipse cx="35" cy="45" rx="11" ry="13" fill="#080808"/>
-      <ellipse cx="65" cy="45" rx="11" ry="13" fill="#080808"/>
-      <rect x="43" y="58" width="14" height="4" rx="2" fill="#080808"/>
-      <rect x="34" y="100" width="10" height="12" rx="2" fill="currentColor"/>
-      <rect x="45" y="100" width="10" height="12" rx="2" fill="currentColor"/>
-      <rect x="56" y="100" width="10" height="12" rx="2" fill="currentColor"/>
-    </svg>
-    <div class="tb-id">
-      <div class="tb-name">GILMAR</div>
-      <div class="tb-role">INSID360 · OPS</div>
-    </div>
-  </div>
-  <div class="tb-right">
-    <div class="tb-clock-wrap">
-      <div id="tb-clock">--:--</div>
-      <div id="tb-date">—</div>
-    </div>
-    <div id="sync-dot" class="sdot sdot-idle" title="Sync status"></div>
-    <button id="notif-btn" onclick="reqNotif()" title="Ativar alertas">🔔</button>
-  </div>
-</div>
-
-<!-- STATSBAR -->
-<div id="statsbar">
-  <div class="sv"><div class="sn" id="s-done">0</div><div class="sk">FEITAS</div></div>
-  <div class="sd
+  <div class="popup-content">
+    <div id="popup-title">ALERTA</div>
+    <div id="popup-body">—
