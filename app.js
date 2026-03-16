@@ -470,6 +470,80 @@ function getInglesPlano() {
 }
 const INGLES_PLAN = INGLES_S2; // compatibilidade — sobrescrito em boot
 
+// ── LEITURA — PLANO DIÁRIO ──
+const LEITURA_PLAN = {
+  seg: { foco:'LEITURA ATIVA — ABSORÇÃO PROFUNDA', meta:'20 páginas mínimo', cor:'var(--amber)',
+    tarefas:[
+      { n:'Leia 20 páginas mínimo sem interrupção — telefone no silencioso', desc:'Blocos de 25 min (Pomodoro). Aceite não entender tudo de início — leia até o fim do trecho antes de voltar. Compreensão aumenta com o contexto completo.' },
+      { n:'Sublinhe no máximo 5 frases por capítulo — as que mais impactam', desc:'Regra de ouro: se você sublinhou tudo, não sublinhou nada. Escolha as frases que mudaram como você pensa sobre o assunto. Menos é mais.' },
+      { n:'Escreva 1 insight da leitura de hoje nas NOTAS abaixo', desc:'Uma frase sua, não do autor. O que você vai fazer diferente por causa do que leu? Isso é o que transforma leitura em ação.' },
+    ]
+  },
+  ter: { foco:'LEITURA + ANOTAÇÕES ESTRATÉGICAS', meta:'20 páginas + notas', cor:'var(--amber)',
+    tarefas:[
+      { n:'Leia o trecho de hoje — foco nos argumentos centrais do autor', desc:'Pergunte: qual é a tese principal deste capítulo? O autor está tentando mudar sua crença, seu comportamento ou sua perspectiva? Identifique a intenção.' },
+      { n:'Anote 3 ideias-chave com suas próprias palavras (não copie)', desc:'Se você não consegue explicar a ideia com suas palavras, ainda não entendeu. Reescreva como explicaria para um amigo. Esse é o teste real de compreensão.' },
+      { n:'Relacione 1 ideia do livro com algo que viveu ou observou', desc:'Conhecimento que não conecta com experiência não fica. Escreva: "Isso me lembra quando..." ou "Isso explica por que..." nas notas. Essa conexão é a memória.' },
+    ]
+  },
+  qua: { foco:'LEITURA CRÍTICA — QUESTIONE O AUTOR', meta:'20 páginas + análise', cor:'var(--amber)',
+    tarefas:[
+      { n:'Leia o trecho de hoje com postura de advogado do diabo', desc:'Enquanto lê, anote onde discorda ou onde o argumento parece fraco. Livros bons resistem ao questionamento. Livros medíocres não. Descobrir qual é esse já é aprendizado.' },
+      { n:'Identifique 1 ponto que o autor não considera ou ignora', desc:'Todo autor tem viés. Qual contexto, pessoa ou situação contraria o argumento? Escreva nas notas. Você está desenvolvendo pensamento independente, não aceitação passiva.' },
+      { n:'Pesquise rapidamente 1 referência que o autor cita (5 min)', desc:'Veja se a fonte diz o que o autor diz que diz. Isso desenvolve pensamento crítico real e frequentemente leva a leituras ainda melhores.' },
+    ]
+  },
+  qui: { foco:'REVISÃO + CONTEXTO — CONSOLIDE O APRENDIZADO', meta:'Revisão + 15 novas páginas', cor:'var(--amber)',
+    tarefas:[
+      { n:'Releia suas anotações dos últimos 3 dias antes de continuar', desc:'A revisão espaçada é a única técnica de memorização com respaldo científico sólido. 5 minutos de revisão valem mais que 30 minutos de releitura.' },
+      { n:'Leia 15 novas páginas — foco em conectar com o que já leu', desc:'O objetivo hoje não é velocidade, é coerência. Como o capítulo de hoje se encaixa com o que o autor construiu antes? Onde ele está indo?' },
+      { n:'Pesquise brevemente quem é o autor — 10 min no máximo', desc:'Entender o contexto e a experiência do autor ilumina por que ele pensa assim. Não é gossip — é hermenêutica. O livro muda quando você sabe de onde veio.' },
+    ]
+  },
+  sex: { foco:'LEITURA RÁPIDA — AVANÇO E RITMO', meta:'25+ páginas', cor:'var(--amber)',
+    tarefas:[
+      { n:'Leia 25 páginas hoje — deixe o ritmo fluir sem parar para anotar', desc:'Sexta é dia de avanço. Leia com velocidade, confie na sua compreensão. Anote só o que for absolutamente urgente — o cérebro filtra o importante com familiaridade.' },
+      { n:'Ao final, escreva 1 parágrafo resumindo os capítulos da semana', desc:'Sem abrir o livro. Escreva o que você lembra. O que ficou é o que importou. O que esqueceu talvez não precisasse ficar. Esse exercício calibra o que absorveu.' },
+      { n:'Defina a meta de páginas para o fim de semana', desc:'Quantas páginas para terminar o capítulo ou a parte atual? Escreva o número exato nas notas. Meta específica é executada — meta vaga é esquecida.' },
+    ]
+  },
+  sab: { foco:'LEITURA PROFUNDA — RELEITURA E EXTRAÇÃO', meta:'20 páginas + extração', cor:'var(--amber)',
+    tarefas:[
+      { n:'Releia o trecho mais importante da semana — aquele que você sublinhou', desc:'Segunda leitura de um trecho difícil ou poderoso revela camadas que a primeira não captou. Grandes leitores releem. Leitores mediocres só avançam.' },
+      { n:'Escreva 3 aplicações práticas do livro na sua vida e trabalho', desc:'"Isso poderia mudar como faço X", "Vou aplicar Y quando Z acontecer", "Preciso parar de fazer W porque...". Concreto, específico, acionável.' },
+      { n:'Atualize o progresso no slider acima e celebre o avanço', desc:'Progresso visível é motivação sustentável. Rastrear é respeitar o próprio esforço. Veja o quanto avançou desde o início do livro.' },
+    ]
+  },
+  dom: { foco:'REVISÃO TOTAL + PLANEJAMENTO', meta:'Revisão + planejamento', cor:'var(--amber)',
+    tarefas:[
+      { n:'Folheie todo o livro lido até aqui — veja os seus grifos e notas', desc:'10 minutos de revisão de tudo que sublinhou. É como rever uma viagem pelas fotos. Consolida a narrativa do livro na sua memória de longo prazo.' },
+      { n:'Escreva nas notas: qual é a tese central do livro até agora?', desc:'Uma ou duas frases. Se você não consegue, o livro está te derrotando na compreensão — mude a estratégia de leitura. Se consegue, está internalizando o argumento.' },
+      { n:'Planeje: quantas páginas por dia para terminar o livro em X semanas?', desc:'Divida as páginas restantes pelos dias disponíveis. Coloque no campo de progresso. Leitura com prazo é leitura que termina. Sem prazo é intenção sem comprometimento.' },
+    ]
+  },
+};
+
+// ── RENDER LEITURA ──
+function renderLeituraTab(day) {
+  const wrap = document.getElementById('leitura-detail');
+  if (!wrap) return;
+  const plan = LEITURA_PLAN[day] || LEITURA_PLAN['seg'];
+  wrap.innerHTML = `
+    <div style="background:var(--bg2);border:1px solid var(--border2);border-left:3px solid ${plan.cor};padding:14px;margin-bottom:12px">
+      <div style="font-family:var(--condensed);font-size:9px;font-weight:800;letter-spacing:3px;color:var(--muted);margin-bottom:3px">MISSÃO DE HOJE · ${plan.meta}</div>
+      <div style="font-family:var(--condensed);font-size:18px;font-weight:900;letter-spacing:1px;color:${plan.cor}">${plan.foco}</div>
+    </div>
+    ${plan.tarefas.map((t, i) => `
+      <div class="task-card" onclick="toggleCard(this)" style="--lc:${plan.cor};margin-bottom:4px">
+        <div class="tck"></div>
+        <div class="tb2">
+          <div class="tn">${i+1}. ${t.n}</div>
+          <div class="ts2">${t.desc}</div>
+        </div>
+      </div>
+    `).join('')}`;
+}
+
 // ── SCHEDULE ROTINA ──
 const DAYS = { seg:'SEGUNDA-FEIRA', ter:'TERÇA-FEIRA', qua:'QUARTA-FEIRA', qui:'QUINTA-FEIRA', sex:'SEXTA-FEIRA', sab:'SÁBADO', dom:'DOMINGO' };
 const SCHED = {
@@ -680,6 +754,7 @@ function selDay(btn, day) {
   renderGuitarTab(day);
   renderTreinoTab(day);
   renderInglesTab(day);
+  renderLeituraTab(day);
 }
 function autoSelectToday() {
   const keys = ['dom','seg','ter','qua','qui','sex','sab'];
@@ -691,6 +766,7 @@ function autoSelectToday() {
   renderGuitarTab(k);
   renderTreinoTab(k);
   renderInglesTab(k);
+  renderLeituraTab(k);
 }
 
 // ── TABS ──
@@ -1053,6 +1129,7 @@ async function boot() {
   calcStreak();
   calcStats();
   renderTimer();
+  renderLeituraTab(currentDay);
   // Update semana label on page
   const semanaAtual = getCurrentSemana();
   const semanaEls = document.querySelectorAll('.semana-label');
