@@ -259,65 +259,216 @@ const TREINO_SPLITS = {
   },
 };
 
-// ── INGLÊS — PLANO INTERMEDIÁRIO-AVANÇADO ──
-const INGLES_PLAN = {
-  seg: { foco:'LISTENING AVANÇADO', aula:'BBC Learning English — 6 Minute English', dur:'30 min',
+// ── SEMANA DETECTION SYSTEM ──
+// Semana 1 = 09/03/2026. A cada 7 dias avança 1 semana.
+// Use local date arithmetic to avoid timezone issues
+function getCurrentSemana() {
+  const now = new Date();
+  const inicio = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // local midnight today
+  const ref = new Date(2026, 2, 9); // March 9, 2026 local (month is 0-indexed)
+  const diff = Math.floor((inicio - ref) / (7*24*60*60*1000));
+  return Math.max(1, Math.min(diff + 1, 8)); // Semana 1-8
+}
+
+// ── INGLÊS — SEMANA 1 (BASE) ──
+const INGLES_S1 = {
+  seg: { foco:'LISTENING — IMERSÃO INICIAL', aula:'BBC Learning English — 6 Minute English', dur:'30 min',
     atividades:[
-      'BBC Learning English "6 Minute English" — 1 episódio (6 min)',
-      'Anote 5 expressões idiomáticas do episódio',
-      'Repita as frases em voz alta (shadowing) 2x',
-      'Duolingo — mínimo 10 min (manter streak)',
+      'BBC Learning English "6 Minute English" — 1 episódio completo (6 min)',
+      'Anote 5 expressões idiomáticas do episódio — escreva no caderno',
+      'Shadowing básico: repita as frases em voz alta pausando o vídeo 2x',
+      'Duolingo — mínimo 10 min para manter streak ativo',
     ]
   },
-  ter: { foco:'VOCABULÁRIO AVANÇADO', aula:'Anki — Deck Business & Academic English', dur:'30 min',
+  ter: { foco:'VOCABULÁRIO B2 — CONSTRUÇÃO DE BASE', aula:'Anki — Deck Business & Academic English', dur:'30 min',
     atividades:[
-      'Anki: 20 palavras novas (nível B2-C1)',
-      'Foco: collocations e phrasal verbs em contexto',
-      'Escreva 3 frases usando as palavras novas',
-      'App: Vocabulary.com — nível intermediário-avançado',
+      'Anki: 20 palavras novas (nível B2) — sem pular',
+      'Foco: collocations e phrasal verbs mais comuns em contexto',
+      'Escreva 3 frases originais usando as palavras novas do dia',
+      'Vocabulary.com — 10 min no nível intermediário para fixar',
     ]
   },
-  qua: { foco:'SPEAKING & ACCENT', aula:'Rachel\'s English — American Accent', dur:'30 min',
+  qua: { foco:'PRONÚNCIA — SONS BÁSICOS', aula:"Rachel's English — American Accent Training", dur:'30 min',
     atividades:[
-      'Rachel\'s English YouTube: 1 vídeo de pronúncia (redução/linking)',
-      'Shadowing: repita o vídeo 3x pausando e imitando',
-      'Grave sua voz 2 min falando sobre qualquer assunto',
-      'Compare com o nativo — identifique 1 diferença para corrigir',
+      "Rachel's English YouTube: 1 vídeo sobre sounds específicos (linking words)",
+      'Shadowing: repita o vídeo completo 3x imitando o ritmo e tom',
+      'Grave sua voz por 2 min falando sobre o dia — sem parar',
+      'Ouça a gravação e identifique 1 som que precisa corrigir',
     ]
   },
-  qui: { foco:'LEITURA — NÍVEL C1', aula:'The Economist ou Harvard Business Review', dur:'30 min',
+  qui: { foco:'LEITURA — TEXTOS INTERMEDIÁRIOS', aula:'The Guardian ou BBC News em inglês', dur:'30 min',
     atividades:[
-      'Leia 1 artigo do The Economist ou HBR (400-600 palavras)',
-      'Sublinhe 5 expressões desconhecidas — busque no contexto',
-      'Resuma o artigo em 3 frases em inglês (escrita)',
-      'Podcast paralelo: How I Built This (NPR) — 20 min enquanto faz algo',
+      'Leia 1 artigo de notícias em inglês (300-500 palavras)',
+      'Sublinhe 5 palavras desconhecidas — adivinhe pelo contexto antes de buscar',
+      'Escreva um resumo do artigo em 2 frases em inglês',
+      'Podcast: This American Life — 15 min de exposição passiva',
     ]
   },
-  sex: { foco:'GRAMÁTICA EM CONTEXTO', aula:'EnglishClass101 — B2/C1 Grammar', dur:'30 min',
+  sex: { foco:'GRAMÁTICA — ESTRUTURAS ESSENCIAIS', aula:'Perfect English Grammar — B2 Level', dur:'30 min',
     atividades:[
-      'Foco: conditionals avançadas (3rd, mixed) ou subjunctive mood',
-      'EnglishClass101 ou Perfect English Grammar — 1 lição',
-      'Exercícios práticos: 10 frases escrevendo com a estrutura nova',
-      'Revise erros da semana — patterns que você repete',
+      'Foco: present perfect vs simple past — regras e uso natural',
+      'Perfect English Grammar (site gratuito) — 1 lição com exercícios',
+      '10 frases escritas aplicando a estrutura no contexto do dia a dia',
+      'Revise e corrija seus próprios erros — identifique o padrão',
     ]
   },
-  sab: { foco:'OUTPUT — FALA OU ESCRITA LIVRE', aula:'Sessão livre ou italki/Tandem', dur:'30 min',
+  sab: { foco:'OUTPUT — PRIMEIRA PRODUÇÃO LIVRE', aula:'Gravação ou escrita guiada', dur:'30 min',
     atividades:[
-      'Opção A: italki ou Tandem — 30 min de conversa com nativo/tutor',
-      'Opção B: grave um vídeo ou áudio de 5 min falando sobre um tema',
-      'Opção C: escreva um texto de 200 palavras sobre qualquer assunto',
-      'Revise o que produziu — identifique 2 erros recorrentes',
+      'Opção A: grave um áudio de 3 min descrevendo sua semana em inglês',
+      'Opção B: escreva 150 palavras sobre um tema que você domina',
+      'Opção C: Tandem/HelloTalk — encontre 1 parceiro de conversação',
+      'Avalie o que produziu — o que foi fácil? O que travou?',
     ]
   },
-  dom: { foco:'REVISÃO + EXPOSIÇÃO PASSIVA', aula:'Série ou filme sem legenda PT', dur:'20 min',
+  dom: { foco:'REVISÃO + EXPOSIÇÃO LEVE', aula:'Série/filme em inglês', dur:'20 min',
     atividades:[
-      'Revise os vocabulários da semana (Anki review)',
-      'Assista 20 min de série/filme em inglês — legenda em inglês (não PT)',
-      'Anote 2 expressões novas que ouviu e entendeu',
-      'Planeje o foco da semana seguinte',
+      'Revise os Anki cards desta semana — reforce os que erraram',
+      'Assista 20 min de série em inglês com legenda em inglês (não PT)',
+      'Anote 2 expressões novas que ouviu e entendeu no contexto',
+      'Planeje: qual é sua maior dificuldade? Foco da semana 2.',
     ]
   },
 };
+
+// ── INGLÊS — SEMANA 2 (PROGRESSÃO B2 AVANÇADO) ──
+const INGLES_S2 = {
+  seg: { foco:'LISTENING AVANÇADO — TED TALKS + NOTE-TAKING', aula:'TED.com — Talk de 10-15 min com transcrição', dur:'35 min',
+    atividades:[
+      'TED.com: escolha um talk sobre negócios, tecnologia ou comportamento (10-15 min)',
+      'Ouça 1x sem parar — anote as ideias principais em inglês (não traduza)',
+      'Ouça 2x prestando atenção no vocabulário técnico e nas transições ("moreover", "however", "consequently")',
+      'Leia a transcrição oficial do TED e compare com suas notas — quantas ideias capturou?',
+      'Escreva 1 parágrafo em inglês resumindo o ponto mais importante do talk',
+    ]
+  },
+  ter: { foco:'VOCABULÁRIO EM CONTEXTO — CHUNKS & COLLOCATIONS', aula:'EnglishClass101 — Advanced Vocabulary + Ludwig Guru', dur:'35 min',
+    atividades:[
+      'Ludwig Guru (ludwig.guru): pesquise 5 expressões que você usa errado — veja como nativos usam',
+      'Estude 10 collocations de negócios: "make a decision", "take responsibility", "drive results" — em contexto de frase',
+      'Anki: adicione as 10 collocations como novos cards — exemplo de frase obrigatório',
+      'Escreva um e-mail fictício de trabalho (5 frases) usando pelo menos 4 das collocations do dia',
+    ]
+  },
+  qua: { foco:'FALA CONECTADA — INTONAÇÃO & RITMO AVANÇADO', aula:'Pronunciation Pro — Sentence Stress & Connected Speech', dur:'35 min',
+    atividades:[
+      'YouTube: "English connected speech for advanced learners" — 1 vídeo sobre reduction & linking',
+      'Escolha 5 frases complexas do seu dia a dia de trabalho e pratique a redução de palavras funcionais (a→uh, and→n, of→uh)',
+      'Shadowing avançado: grave você falando e compare com o nativo — foco no ritmo, não nas palavras individuais',
+      'Pratique dizer 3 frases de opinião complex: "I believe that...", "What strikes me most is...", "It\'s worth noting that..."',
+      'Grave 2 min descrevendo um projeto de trabalho — ouça e identifique onde seu ritmo trava',
+    ]
+  },
+  qui: { foco:'LEITURA ANALÍTICA — THE ECONOMIST NÍVEL C1', aula:'The Economist ou Harvard Business Review', dur:'35 min',
+    atividades:[
+      'Leia 1 artigo completo do The Economist (assine free trial ou busque artigos gratuitos)',
+      'Identifique a tese principal, os argumentos de suporte e a conclusão — anote em inglês',
+      'Sublinhe 8 expressões sofisticadas que você nunca usaria: "amid growing concerns", "a watershed moment", "to pivot strategy"',
+      'Resuma o artigo em 5 frases: 1 tese + 3 argumentos + 1 sua opinião — tudo em inglês',
+      'Adicione as 8 expressões ao Anki com contexto da frase original',
+    ]
+  },
+  sex: { foco:'ESCRITA AVANÇADA — COESÃO & ARGUMENTAÇÃO', aula:'Purdue OWL — Academic Writing + Hemingway Editor', dur:'35 min',
+    atividades:[
+      'Escreva 1 parágrafo argumentativo de 120 palavras sobre qualquer tema que você domina (marketing, música, saúde)',
+      'Estrutura obrigatória: Topic sentence → 2 evidências → análise → concluding sentence',
+      'Cole o texto no Hemingway Editor (hemingwayapp.com) — reduza até grade 8 ou menos',
+      'Reescreva eliminando frases passivas e palavras fracas — substitua por verbos de ação',
+      'Foco em transitions: "As a result,", "In contrast,", "This suggests that," — use pelo menos 3',
+    ]
+  },
+  sab: { foco:'CONVERSAÇÃO DE ALTO NÍVEL — DEBATE & OPINIÃO', aula:'italki / Tandem — Sessão de conversação avançada', dur:'40 min',
+    atividades:[
+      'italki ou Tandem: marque sessão com tutor ou parceiro — tema: current events ou business',
+      'Prepare 3 perguntas complexas antes da sessão para não ficar sem assunto',
+      'Durante a conversa: use pelo menos 5 expressões novas da semana — anote quando usar',
+      'Discuta um tópico polêmico (AI, marketing, saúde mental): pratique discordar educadamente: "That\'s an interesting point, but..."',
+      'Após a sessão: escreva 3 coisas que melhorou em relação à semana 1',
+    ]
+  },
+  dom: { foco:'AUTOAVALIAÇÃO + ESTRATÉGIA SEMANA 3', aula:'Revisão profunda de progresso', dur:'25 min',
+    atividades:[
+      'Revise TODOS os Anki cards desta semana — foque nos que errou 2x ou mais',
+      'Assista 20 min de série/filme em inglês — desta vez sem legenda por 5 min, depois inglês',
+      'Avaliação honesta: rate seu progresso de Listening / Speaking / Reading / Writing de 1-10',
+      'Identifique sua maior fraqueza atual e planeje 1 ação específica para a Semana 3 corrigir',
+    ]
+  },
+};
+
+// ── INGLÊS — SEMANA 3 (FLUÊNCIA C1) ──
+const INGLES_S3 = {
+  seg: { foco:'LISTENING IMERSIVO — PODCASTS NATIVOS SEM TRANSCRIÇÃO', aula:'Lex Fridman Podcast ou Tim Ferriss Show', dur:'40 min',
+    atividades:[
+      'Escolha 30 min de podcast com 2 falantes nativos (não educativo — conversa natural)',
+      'Escute sem parar — aceite não entender tudo, foque no fluxo e confiança',
+      'Anote 10 expressões ou frases que ouviu e entendeu pelo contexto — sem pausar',
+      'Pesquise 3 das expressões no Ludwig Guru e adicione ao Anki com exemplo de uso natural',
+      'Desafio: resuma o tema do podcast em 1 minuto de áudio gravado — sem preparação',
+    ]
+  },
+  ter: { foco:'VOCABULÁRIO ESPECIALIZADO — ÁREA DE TRABALHO', aula:'Jargão de marketing digital / business em inglês', dur:'35 min',
+    atividades:[
+      'Liste 10 termos técnicos do seu trabalho (marketing, vendas, gestão) que você usa em PT',
+      'Pesquise como profissionais nativos usam esses termos — LinkedIn, HBR, Hubspot blog',
+      'Monte um "pitch" de 60 segundos sobre seu trabalho usando os 10 termos técnicos em inglês',
+      'Grave o pitch 3x — cada vez mais fluido e confiante — sem olhar para o texto na 3ª vez',
+    ]
+  },
+  qua: { foco:'ACCENT REDUCTION — SONS PROBLEMÁTICOS DO PT-BR', aula:'Minimal pairs + Mouth position training', dur:'35 min',
+    atividades:[
+      'Identifique seus 3 sons mais problemáticos (comuns para BR: TH, V/W, vowel reduction)',
+      'YouTube: "minimal pairs for Brazilian learners" — pratique TH/D, V/B, short vs long vowels',
+      'Grave 10 frases com os sons problemáticos — compare com nativo frame a frame',
+      'Pratique "mouth position" físico na frente do espelho — língua, lábios e mandíbula',
+      'Sessão de 5 min de tongue twisters avançados para agilidade articulatória',
+    ]
+  },
+  qui: { foco:'LEITURA CRÍTICA — ANÁLISE E CONTRA-ARGUMENTO', aula:'Long-form journalism: The Atlantic, Wired, Vox', dur:'40 min',
+    atividades:[
+      'Leia 1 artigo longo (800-1200 palavras) de The Atlantic ou Wired',
+      'Identifique: qual é o argumento principal? Quais as premissas? O que está faltando?',
+      'Escreva 1 parágrafo concordando E 1 parágrafo discordando — use evidências do texto',
+      'Pesquise 1 dado ou fonte que contradiz o artigo — pratique pensamento crítico em inglês',
+      'Adicione 5 novas expressões acadêmicas ao Anki com contexto completo',
+    ]
+  },
+  sex: { foco:'ESCRITA PROFISSIONAL — E-MAILS & RELATÓRIOS', aula:'Business Writing Pro — HBR Writing Tips', dur:'35 min',
+    atividades:[
+      'Escreva 1 e-mail profissional completo em inglês (para cliente ou parceiro imaginário)',
+      'Inclua: subject line forte, abertura formal, 3 pontos principais, call to action, fechamento',
+      'Revise usando Grammarly (free) para erros gramaticais e tom profissional',
+      'Reescreva o e-mail sendo 30% mais conciso — elimine advérbios e frases redundantes',
+      'Estude 5 frases padrão de e-mail business que todo profissional C1 usa',
+    ]
+  },
+  sab: { foco:'APRESENTAÇÃO EM INGLÊS — SIMULE UMA PITCH MEETING', aula:'Simulação de reunião profissional', dur:'45 min',
+    atividades:[
+      'Prepare uma mini-apresentação de 5 min sobre um projeto seu (real ou imaginário)',
+      'Use estrutura: Hook → Problem → Solution → Results → Next Steps',
+      'Grave a apresentação completa em vídeo — sem cortes, sem parar',
+      'Assista o vídeo com olhar crítico: postura, clareza, velocidade, vocabulário',
+      'Refaça a apresentação integrando as melhorias — grave novamente e compare',
+    ]
+  },
+  dom: { foco:'FLUÊNCIA TOTAL — IMERSÃO LIVRE', aula:'Dia de imersão voluntária', dur:'30 min',
+    atividades:[
+      'Mude o idioma do celular para inglês por 24h — leia tudo em inglês',
+      'Assista 30 min de conteúdo em inglês SEM legenda — aceite o desconforto',
+      'Pense em inglês por 10 min — descreva mentalmente o que está fazendo no momento',
+      'Revise Anki: foco total nos cards que errou esta semana — reforce com frases novas',
+      'Escreva: o que você consegue fazer em inglês hoje que não conseguia na Semana 1?',
+    ]
+  },
+};
+
+// ── INGLÊS — PLANO ATIVO (auto-detecta semana) ──
+function getInglesPlano() {
+  const s = getCurrentSemana();
+  if (s >= 3) return INGLES_S3;
+  if (s === 2) return INGLES_S2;
+  return INGLES_S1;
+}
+const INGLES_PLAN = INGLES_S2; // compatibilidade — sobrescrito em boot
 
 // ── SCHEDULE ROTINA ──
 const DAYS = { seg:'SEGUNDA-FEIRA', ter:'TERÇA-FEIRA', qua:'QUARTA-FEIRA', qui:'QUINTA-FEIRA', sex:'SEXTA-FEIRA', sab:'SÁBADO', dom:'DOMINGO' };
@@ -488,7 +639,8 @@ function renderTreinoTab(day) {
 function renderInglesTab(day) {
   const wrap = document.getElementById('ingles-detail');
   if (!wrap) return;
-  const plan = INGLES_PLAN[day] || INGLES_PLAN['seg'];
+  const activePlan = getInglesPlano();
+  const plan = activePlan[day] || activePlan['seg'];
   wrap.innerHTML = `
     <div style="background:var(--bg2);border:1px solid var(--border2);border-left:3px solid var(--neon);padding:14px;margin-bottom:12px">
       <div style="font-family:var(--condensed);font-size:9px;font-weight:800;letter-spacing:3px;color:var(--muted);margin-bottom:3px">FOCO DO DIA · ${plan.dur}</div>
@@ -901,10 +1053,14 @@ async function boot() {
   calcStreak();
   calcStats();
   renderTimer();
+  // Update semana label on page
+  const semanaAtual = getCurrentSemana();
+  const semanaEls = document.querySelectorAll('.semana-label');
+  semanaEls.forEach(el => { el.textContent = 'SEMANA ' + semanaAtual; });
   setTimeout(() => {
     const h  = new Date().getHours();
     const gr = h<12 ? 'BOM DIA' : h<18 ? 'BOA TARDE' : 'BOA NOITE';
-    showPopup(gr + ', GILMAR.', 'SISTEMA OPERACIONAL — SEMANA 2. EXECUTE A MISSÃO.');
+    showPopup(gr + ', GILMAR.', 'SISTEMA OPERACIONAL — SEMANA ' + semanaAtual + '. EXECUTE A MISSÃO.');
   }, 800);
   loadTodayState().then(() => renderTasks(currentDay));
 }
