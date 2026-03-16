@@ -525,6 +525,9 @@ function selDay(btn, day) {
   currentDay = day;
   document.getElementById('pg-day-title').textContent = DAYS[day];
   renderTasks(day);
+  renderGuitarTab(day);
+  renderTreinoTab(day);
+  renderInglesTab(day);
 }
 function autoSelectToday() {
   const keys = ['dom','seg','ter','qua','qui','sex','sab'];
