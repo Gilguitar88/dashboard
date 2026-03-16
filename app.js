@@ -1,6 +1,6 @@
 // ═══════════════════════════════════════════════════════════
 //  GILMAR // OPS — app.js v3
-//  Planos reais: Guitarra Semana 1 + Treino + Inglês
+//  Planos reais: Guitarra Semana 2 + Treino + Inglês
 // ═══════════════════════════════════════════════════════════
 
 // ── SUPABASE ──
