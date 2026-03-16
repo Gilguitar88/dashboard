@@ -719,9 +719,8 @@ if ('serviceWorker' in navigator) {
 async function boot() {
   setSyncStatus('idle');
   initQuote();
-  autoSelectToday();
-  await loadTodayState();
-  renderTasks(currentDay);
+ autoSelectToday();
+ renderTasks(currentDay);
   renderHabits();
   renderRings();
   renderReadWeek();
@@ -734,6 +733,6 @@ async function boot() {
     const h  = new Date().getHours();
     const gr = h<12 ? 'BOM DIA' : h<18 ? 'BOA TARDE' : 'BOA NOITE';
     showPopup(gr + ', GILMAR.', 'SISTEMA OPERACIONAL. EXECUTE A MISSÃO.');
-  }, 800);
+  }, 800);loadTodayState().then(() => renderTasks(currentDay));
 }
 boot();
