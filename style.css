@@ -1,7 +1,7 @@
 /* ═══════════════════════════════════════════
-   GILMAR // OPS — style.css v2
-   Dark · Punisher · Chess · Neon Orange
-   Enhanced: Animations · Timer · Celebrations
+   GILMAR // OPS — style.css v3
+   Dark Premium · Clean · Neon Orange
+   Grid BG · Monogram · Design System
 ═══════════════════════════════════════════ */
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow:wght@300;400;500;600&display=swap');
 
@@ -41,33 +41,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─── BG SKULL ─── */
-.skull-bg {
+/* ─── BG GRID (clean dot grid) ─── */
+.grid-bg {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  background-image: radial-gradient(circle, rgba(255,107,0,0.09) 1px, transparent 1px);
+  background-size: 28px 28px;
+  background-position: 0 0;
+}
+
+/* ─── BG GLOW (subtle radial accent) ─── */
+.glow-bg {
   position: fixed;
-  right: -60px; bottom: -60px;
-  width: min(420px, 80vw);
-  opacity: 0.028;
-  pointer-events: none;
-  z-index: 0;
-  color: var(--neon);
-}
-.skull-bg svg { width: 100%; height: auto; fill: currentColor; }
-
-/* ─── CHESS GRID ─── */
-.chess-bg {
-  position: fixed; inset: 0;
+  bottom: -20%; right: -10%;
+  width: 55vw; height: 55vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,107,0,0.04) 0%, transparent 70%);
   pointer-events: none; z-index: 0;
-  background-image:
-    linear-gradient(rgba(255,107,0,0.018) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,107,0,0.018) 1px, transparent 1px);
-  background-size: 44px 44px;
-}
-
-/* ─── NOISE ─── */
-.noise-bg {
-  position: fixed; inset: 0;
-  pointer-events: none; z-index: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
 }
 
 /* ─── QUOTE HERO ─── */
@@ -135,10 +125,18 @@ body {
   display: flex; align-items: center; justify-content: space-between;
 }
 .tb-brand { display: flex; align-items: center; gap: 10px; }
-.tb-skull {
-  width: 26px; height: 26px;
-  color: var(--neon);
-  filter: drop-shadow(0 0 6px var(--neon-glow));
+/* ─── MONOGRAM ─── */
+.tb-monogram {
+  width: 30px; height: 30px;
+  border-radius: 6px;
+  background: var(--neon);
+  color: #000;
+  font-family: var(--display);
+  font-size: 16px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  letter-spacing: 0;
+  box-shadow: 0 0 12px var(--neon-glow);
+  flex-shrink: 0;
 }
 .tb-name {
   font-family: var(--display);
@@ -780,7 +778,11 @@ input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.3); }
   transition: all .4s cubic-bezier(.34,1.56,.64,1);
 }
 #popup.show { transform: translateY(0); opacity: 1; pointer-events: all; animation: slideInRight .4s cubic-bezier(.34,1.56,.64,1); }
-.popup-icon { width: 20px; height: 20px; color: var(--neon); flex-shrink: 0; margin-top: 2px; fill: currentColor; }
+.popup-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--neon); flex-shrink: 0; margin-top: 4px;
+  box-shadow: 0 0 8px var(--neon-glow);
+}
 #popup-title {
   font-family: var(--condensed); font-size: 9px; font-weight: 800;
   letter-spacing: 3px; color: var(--neon); text-transform: uppercase; margin-bottom: 3px;
