@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════════════
-//  GILMAR // OPS — app.js v6
-//  Guitarra S3 · Inglês S3 · Leitura S3 · Treino S3
-//  Design clean · Planos 100% dinâmicos por semana
+//  GILMAR // OPS — app.js v7
+//  Guitarra S4 · Inglês S4 · Leitura S4 · Treino S4 (Deload)
+//  Semana 4 · 30 mar 2026
 // ═══════════════════════════════════════════════════════════
 
 // ── SUPABASE ──
@@ -266,10 +266,81 @@ const GUITAR_PLAN_S3 = {
 
 
 // ── GUITARRA — FUNÇÃO DINÂMICA POR SEMANA ──
+// ── GUITARRA — SEMANA 4: LEGATO · HYBRID PICKING · HARMÔNICOS ──
+const GUITAR_PLAN_S4 = {
+  seg: { tipo:'TÉCNICA', foco:'Legato Completo — Cascatas & Fluidez Guthrie', dur:'65 min', cor:'#4ecdc4',
+    exercicios:[
+      { n:'Hammer-ons em cascata: 5 notas por corda sem palhetar', bpm:'50 BPM / 10 min', desc:'Dedo 1 faz o anchor, dedos 2-3-4 fazem hammer-on em sequência na mesma corda. A nota deve soar igual com ou sem palheta. Se estiver fraca, o dedo não está caindo com força suficiente — corrija antes de acelerar.' },
+      { n:'Pull-offs em cascata: ligado descendente limpo', bpm:'55 BPM / 10 min', desc:'Pull-off correto: o dedo que sai "puxa" levemente a corda para baixo antes de soltar. Isso amplifica o som. Sem esse movimento, o pull-off morre no silêncio. Pratique até a última nota soar tão forte quanto a primeira.' },
+      { n:'Legato de 3 oitavas na escala Am — sem palheta', bpm:'60–80 BPM', desc:'Am pentatônica, 3 oitavas, apenas legato. Subida: hammer-ons. Descida: pull-offs. Nenhuma nota palheta exceto a primeira de cada corda. Esse exercício revela onde seus dedos são fracos — é aí que o trabalho está.' },
+      { n:'Guthrie lick: legato + string skipping (H-S-P pattern)', bpm:'70 BPM', desc:'Hammer + skip + pull-off na próxima corda. Padrão HSP em Am: 5ª(7h9)→3ª(9p7)→5ª(7). É a construção básica do vocabulário fusion de Guthrie. Grave a 70 BPM e ouça: está fluido ou mecânico? A resposta dita o trabalho.' },
+      { n:'Improviso 10 min — legato como principal vocabulário', bpm:'Backing Am 80 BPM', desc:'Regra: cada frase deve ter pelo menos 4 notas em legato. Use palheta apenas para atacar a primeira nota de cada frase. Pense em sopro — cada "ar" é uma frase legato. A guitarra deve soar como saxofone.' },
+    ],
+    regra:'🎵 Legato puro é o que dá à guitarra a ilusão de ser outro instrumento. Guthrie, Holdsworth e Satriani construíram identidade sobre isso.'
+  },
+  ter: { tipo:'TÉCNICA', foco:'Hybrid Picking — Palheta + Dedos Simultâneos', dur:'65 min', cor:'#ff6b35',
+    exercicios:[
+      { n:'Anatomia do hybrid: palheta no indicador + médio e anelar livres', bpm:'Sem metrônomo / 10 min', desc:'Posição: palheta entre polegar e indicador como sempre. Médio (m) e anelar (a) ficam curvados prontos para puxar cordas. Pratique apenas o movimento dos dedos livres — puxe a 1ª corda com o médio sem palheta. O som deve ser limpo e forte.' },
+      { n:'Padrão básico: palheta na grave + dedo na aguda simultaneamente', bpm:'60 BPM', desc:'Corda 4 (palheta downstroke) + corda 1 (médio puxando) ao mesmo tempo. Depois corda 4 (upstroke) + corda 1. O desafio é a coordenação: palheta e dedo em sincronia perfeita. Comece devagar até virar automático.' },
+      { n:'Arpejo em hybrid picking: baixo + 3 notas em arpejo com dedos', bpm:'65 BPM', desc:'Am: A(5ª/palheta) + E(3ª/médio) + A(2ª/anelar) + E(1ª/mindinho). Som de violão fingerstyle na guitarra elétrica. Eric Johnson usa isso em "Cliffs of Dover". Com distorção soa cinematográfico. Experimente nos dois.' },
+      { n:'Chicken picking: o som country / Guthrie / Brent Mason', bpm:'75 BPM', desc:'Alternate picking na grave + snap do dedo médio na aguda com leve mute. O "snap" cria o som percussivo característico do country. Guthrie usa em contexto fusion para adicionar textura rítmica. Pratique o snap isolado primeiro.' },
+      { n:'Composição de 8 compassos usando hybrid como assinatura', bpm:'80 BPM / backing', desc:'Crie uma frase onde hybrid picking é obrigatório — não pode ser tocada igual com só palheta. Isso força integração real da técnica. Grave. Ouça: o hybrid está adicionando cor ou só dificultando? Deve soar diferente.' },
+    ],
+    regra:'🤌 Hybrid picking é o que separa guitarristas "de palheta" de guitarristas completos. Expande o vocabulário de cor e dinâmica infinitamente.'
+  },
+  qua: { tipo:'EXPRESSÃO', foco:'Harmônicos — Natural, Artificial e Tap', dur:'60 min', cor:'#c084fc',
+    exercicios:[
+      { n:'Harmônicos naturais: 12ª, 7ª, 5ª e 4ª casa — mapa completo', bpm:'Livre / 10 min', desc:'Casa 12: oitava. Casa 7: quinta. Casa 5: segunda oitava. Casa 4: terça maior. Toque cada um nas 6 cordas. Perceba as diferenças de timbre. Harmônicos naturais são o "sino" da guitarra — usados com whammy criam texturas orquestrais.' },
+      { n:'Harmônicos artificiais: toque + pinch harmonic no ponto exato', bpm:'Exercício estático', desc:'Pinch harmonic: palheta toca a corda e o polegar imediatamente roça o nó da série harmônica. O "squeal" que você ouve em Zakk Wylde e Billy Gibbons. O ponto exato muda por nota — experimente mover a mão para cima/baixo da captação para achar o nó certo.' },
+      { n:'Tap harmonics: mão direita toca levemente a 12ª acima da nota fretada', bpm:'Slow / 10 min', desc:'Frete a 5ª casa do Mi. Toque levemente (tap) com o dedo indicador direito na 17ª casa (5+12). Soa a oitava do Mi fretado em timbre cristalino. Harp harmonics = fazer isso em sequência de notas. Lindo em melodias limpas.' },
+      { n:'Sequência harmônica em Am: melodia com harmônicos artificiais', bpm:'50 BPM / backing suave', desc:'Toque a melodia Am (A-C-E-G) usando pinch harmonics em cada nota. A melodia ganha timbre completamente diferente — etéreo, vocal. Pipa Gonzalez e Eddie Van Halen usam muito. É a mesma nota, outra dimensão sonora.' },
+      { n:'Composição ambient: whammy + harmônicos naturais', bpm:'Livre / sem metrônomo', desc:'10 minutos de exploração livre. Whammy bar + harmônicos naturais + volume knob para swells. Sem palheta. Deixe o som guiar. Às vezes os melhores licks nascem sem intenção técnica — apenas escuta e reação. Grave tudo.' },
+    ],
+    regra:'✨ Harmônicos transformam a guitarra em um instrumento de outra dimensão. São a "cor extra" na paleta de qualquer guitarrista com identidade.'
+  },
+  qui: { tipo:'TÉCNICA', foco:'Alternate Picking Extremo — Velocidade com Controle', dur:'65 min', cor:'#e8ff47',
+    exercicios:[
+      { n:'Tremolo picking: nota única a 150–180 BPM — relaxamento total', bpm:'60 → 180 BPM / 10 min', desc:'1 nota (corda 1, casa 12). Alternate picking contínuo. Aumente o metrônomo 10 BPM a cada 2 min. A regra de ouro: se o antebraço ficar tenso, voltou 20 BPM. Velocidade sustentável é construída no relaxamento, não na tensão.' },
+      { n:'Inside picking: mudança de corda para dentro da palheta', bpm:'80 BPM', desc:'Inside = upstroke em corda grave + downstroke em corda aguda. É o movimento mais difícil do alternate picking. Petrucci e Gambale passaram anos nisso. Padrão: 2 notas na 4ª corda + 2 notas na 3ª corda alternando. 100% alternate.' },
+      { n:'Escala cromática com alternate picking em 4 oitavas', bpm:'100 BPM', desc:'1-2-3-4 em cada corda subindo e descendo. 4 oitavas completas, alternate picking perfeito. É o exercício de John Petrucci do Guitar World Lessons. Não há atalho — apenas repetição limpa constrói o circuito motor.' },
+      { n:'Lick de Petrucci estilo: 6 notas por compasso, 3 por corda', bpm:'90 BPM', desc:'Padrão 3-3 em cordas adjacentes: 3 notas na 5ª + 3 notas na 4ª, alternate puro. Repita em todo o braço. Esse padrão é a espinha dorsal do picking técnico de dream theater. A 90 BPM limpo é o objetivo da semana.' },
+      { n:'Aplicar alternate picking numa frase musical real', bpm:'95 BPM / backing Am', desc:'Não é sobre exercícios mecânicos — é sobre transportar a técnica para música. Improvise 5 minutos com a intenção explícita de usar alternate picking como base. A técnica deve estar tão internalizada que você não pensa nela.' },
+    ],
+    regra:'⚡ Picking extremo sem relaxamento é lesão. Picking com relaxamento é velocidade sustentável por décadas. Escolha o segundo.'
+  },
+  sex: { tipo:'INTEGRAÇÃO S4', foco:'Composição Completa — 4 Semanas de Vocabulário', dur:'90 min', cor:'#ff6b35',
+    exercicios:[
+      { n:'Planejamento: mapa técnico de 16 compassos com todas as técnicas S1–S4', bpm:'20 min / papel', desc:'Divida 16 compassos em seções: compassos 1-4 (legato + economy), 5-8 (sweep S3), 9-12 (hybrid picking), 13-16 (alternate picking + harmônicos). Cada técnica tem seu espaço. A estrutura não limita — libera, porque elimina a paralisia de escolha.' },
+      { n:'Record session: 5 takes sem parar', bpm:'85 BPM / backing Am7→Dm7→G7→Cmaj7', desc:'5 takes completos. Sem editar, sem parar por erros. O take 3 será o melhor na maioria das vezes — o cérebro já internalizou a estrutura mas ainda está em modo "exploratório". Após os 5 takes, escolha o melhor e analise.' },
+      { n:'Análise comparativa: S3 vs S4 — o vocabulário cresceu?', bpm:'15 min / escuta', desc:'Coloque o solo da S4 lado a lado com o da S3. Pergunta: quantas técnicas diferentes você usou? A frase soou mais intencional? O silêncio foi usado? Uma técnica nova entrou no vocabulário real (não só no exercício)? Escreva nas notas.' },
+      { n:'Take final refinado: integração com consciência total', bpm:'85 BPM', desc:'1 take final incorporando o que aprendeu dos 5 anteriores. Foco em musicalidade: cada nota tem intenção, cada técnica serve a frase, não o contrário. Se uma técnica parecer forçada, tire. Autenticidade > demonstração.' },
+    ],
+    regra:'🏆 4 semanas = 28 sessões de prática focada. Cada técnica saiu do exercício e entrou na música. Este é o documento sonoro dessa jornada.'
+  },
+  sab: { tipo:'CRIAÇÃO', foco:'Repertório — Gravar 3 Covers ou Composições', dur:'120 min', cor:'#e8ff47',
+    exercicios:[
+      { n:'Escolha 3 músicas: 1 técnica, 1 melódica, 1 livre', bpm:'Preparação 20 min', desc:'Técnica: algo que desafia seu picking ou legato. Melódica: algo que expressa emoção sobre técnica. Livre: uma improvisação ou composição própria. O equilíbrio dos 3 tipos define a completude do seu repertório atual.' },
+      { n:'Gravação 1 — música técnica: 3 takes, escolha o melhor', bpm:'Tempo da música', desc:'Sem edição entre takes. Cada take completo do início ao fim. Ouça os 3 e escolha por musicalidade, não por menor quantidade de erros. Erros musicais em boas frases valem mais que limpeza mecânica em frases sem alma.' },
+      { n:'Gravação 2 — música melódica: foco em dinâmica e expressão', bpm:'Tempo da música', desc:'Volume knob, vibrato controlado, whammy se tiver. A dinâmica (forte/piano) é o que transforma uma boa melodia em uma grande performance. 3 takes. Avalie: onde a emoção apareceu? Como replicar isso intencionalmente?' },
+      { n:'Gravação 3 — improvisação ou composição: 3 min livres', bpm:'Livre / backing ou sem', desc:'Sem estrutura predeterminada além do primeiro acorde. 3 minutos contínuos. Após, ouça do começo ao fim sem parar. Identifique 1 momento onde você se surpreendeu com o que tocou. Esse momento é o próximo vocabulário a desenvolver.' },
+    ],
+    regra:'🎙️ Gravar é o espelho mais honesto. Você pensa que está tocando X — o áudio mostra Y. A lacuna entre os dois é exatamente o que estudar na S5.'
+  },
+  dom: { tipo:'REVISÃO + PLANEJAMENTO', foco:'Avaliação 4 Semanas + Metas S5', dur:'45 min', cor:'#4ecdc4',
+    exercicios:[
+      { n:'Flash review técnico: 2 min cada — sweep, economy, chord melody, legato, hybrid', bpm:'70 BPM / confortável', desc:'Não para avaliar — para confirmar que entrou no corpo. Se travar em alguma técnica, ela é o foco extra da S5. Se fluir em todas, a S5 pode avançar para ritmo fusion, improvisação avançada ou composição de série.' },
+      { n:'Escuta analítica: Guthrie Govan "Erotic Cakes" — álbum completo', bpm:'YouTube / 40 min', desc:'Ouça o álbum completo com foco técnico nas primeiras 2 faixas. Identifique: sweep, economy, legato, hybrid picking, chord melody. Você agora tem o vocabulário para reconhecer tudo que ele faz. Anote 3 coisas que quer desenvolver.' },
+      { n:'Definir 3 metas específicas e mensuráveis para a Semana 5', bpm:'10 min / reflexão', desc:'Ex: "Sweep Am 5 cordas limpo a 100 BPM". "Chord melody de 32 compassos gravado". "Hybrid picking em 1 música de repertório gravada". Metas mensuráveis são cumpridas. Metas vagas são esquecidas.' },
+    ],
+    regra:'✅ S4 concluída: legato cascata, hybrid picking, harmônicos, alternate extremo, composição 16c, repertório gravado. Evolução documentada.'
+  },
+};
+
 function getGuitarPlano() {
   const s = getCurrentSemana();
-  if (s >= 3) return GUITAR_PLAN_S3;
-  return GUITAR_PLAN; // Semana 1 e 2
+  if (s >= 4) return GUITAR_PLAN_S4;
+  if (s === 3) return GUITAR_PLAN_S3;
+  return GUITAR_PLAN;
 }
 
 
@@ -416,9 +487,77 @@ const TREINO_S3 = {
 };
 
 // ── TREINO — FUNÇÃO DINÂMICA ──
+// ── TREINO — SEMANA 4: DELOAD + TESTE DE PRs ──
+const TREINO_S4 = {
+  seg: { grupo:'PEITO + TRÍCEPS — DELOAD', cor:'var(--neon)',
+    exercicios:[
+      'Supino reto — teste de 5RM (peso máximo em 5 reps limpas)',
+      'Supino inclinado halteres — 2x10 (60% da carga da S3)',
+      'Crucifixo polia — 2x12, foco em alongamento e contração',
+      'Tríceps corda — 2x15 leve, foco em sentir o músculo',
+      'Sem HIIT — caminhada 15 min pós-treino',
+    ]
+  },
+  ter: { grupo:'COSTAS + BÍCEPS — DELOAD', cor:'#38bdf8',
+    exercicios:[
+      'Puxada frontal — teste de 5RM (carga máxima em 5 reps)',
+      'Remada curvada barra — 2x8 (60% da carga S3)',
+      'Remada sentada polia — 2x12 leve, pausa 3s na contração',
+      'Rosca direta — 2x12 leve, ROM completo',
+      'Foam roller costas + bíceps: 5 min de recuperação ativa',
+    ]
+  },
+  qua: { grupo:'MOBILIDADE + CORE — RECUPERAÇÃO ATIVA', cor:'var(--amber)',
+    exercicios:[
+      'Yoga ou mobilidade: 30 min (quadril, ombros, coluna torácica)',
+      'Prancha frontal: 3x30s (intensidade reduzida)',
+      'Dead bug lento: 3x8 cada lado — qualidade máxima',
+      'Caminhada 30 min (zona 1 — recuperação total)',
+      'Sem cardio intenso — deixe o corpo recuperar',
+    ]
+  },
+  qui: { grupo:'PERNAS — DELOAD + TESTE', cor:'#c084fc',
+    exercicios:[
+      'Agachamento livre — teste de 3RM (máximo em 3 reps)',
+      'Leg press — 2x12 (50% da carga S3)',
+      'Stiff halteres — 2x12 leve, foco em flexibilidade',
+      'Panturrilha em pé: 3x20 leve',
+      'Alongamento quadríceps + isquiotibiais: 10 min',
+    ]
+  },
+  sex: { grupo:'OMBROS + FULL BODY LEVE', cor:'var(--neon)',
+    exercicios:[
+      'Desenvolvimento halteres — 2x10 (60% da carga S3)',
+      'Elevação lateral leve: 3x15 sem carga excessiva',
+      'Face pull: 3x20 — saúde do manguito rotador',
+      'Core: 10 min de prancha + dead bug',
+      'Cardio leve: 20 min bike zona 1',
+    ]
+  },
+  sab: { grupo:'ESPORTE LIVRE + REFEEDING', cor:'var(--amber)',
+    exercicios:[
+      'Esporte preferido: futebol, natação, tenis — 40-60 min',
+      'Refeeding completo: carbs +100g, come na manutenção calórica',
+      'Sem peso — apenas prazer e movimento espontâneo',
+      'Alongamento completo + foam roller após esporte',
+      'Sono 9h — deload de verdade é no sono, não só na academia',
+    ]
+  },
+  dom: { grupo:'DESCANSO TOTAL — PREPARAÇÃO PARA S5', cor:'var(--muted)',
+    exercicios:[
+      'Descanso total — zero treino',
+      'Avalie os PRs da semana: supino, puxada, agachamento',
+      'Defina cargas iniciais da Semana 5 com base nos PRs',
+      'Proteína: 220g — síntese proteica ativa mesmo no descanso',
+      'Planejamento S5: nova divisão ou continuidade do split?',
+    ]
+  },
+};
+
 function getTreinoPlano() {
   const s = getCurrentSemana();
-  if (s >= 3) return TREINO_S3;
+  if (s >= 4) return TREINO_S4;
+  if (s === 3) return TREINO_S3;
   return TREINO_SPLITS;
 }
 
@@ -626,9 +765,71 @@ const INGLES_S3 = {
 };
 
 // ── INGLÊS — PLANO ATIVO (auto-detecta semana) ──
+// ── INGLÊS — SEMANA 4: MAESTRIA C1 · INTEGRAÇÃO REAL ──
+const INGLES_S4 = {
+  seg: { foco:'LISTENING NATIVO — REUNIÕES E CALLS EM INGLÊS', aula:'Real business calls · Harvard Business Review Podcast', dur:'45 min',
+    atividades:[
+      'Ouça 1 episódio completo do HBR IdeaCast (20–25 min) sem parar',
+      'Anote 5 expressões que profissionais nativos usam em contexto de negócios que você nunca usaria',
+      'Transcreva 3 frases do episódio de memória (sem reouvir) — teste de retenção auditiva real',
+      'Simule: grave 2 min respondendo à tese principal do episódio como se fosse uma reunião',
+      'Identifique: qual foi a ideia mais complexa que você entendeu sem precisar pausar?',
+    ]
+  },
+  ter: { foco:'VOCABULÁRIO AVANÇADO — IDIOMS & PHRASAL VERBS PROFISSIONAIS', aula:'Idioms in Use Advanced (Cambridge) · Merriam-Webster', dur:'40 min',
+    atividades:[
+      'Estude 8 idioms de negócios de alto nível: "move the needle", "boil the ocean", "circle back", "low-hanging fruit", "bandwidth", "skin in the game", "double down", "needle-mover"',
+      'Para cada idiom: escreva 1 frase no contexto exato da Insid360 — campanhas, clientes, resultados',
+      'Grave um áudio de 3 min simulando uma reunião de briefing usando pelo menos 5 dos 8 idioms naturalmente',
+      'Pesquise 3 expressões que você usa em português no trabalho — como profissionais nativos diriam?',
+    ]
+  },
+  qua: { foco:'PRONÚNCIA C1 — REDUÇÃO, LINKING E STRESS AVANÇADO', aula:"Accent's Way · Rachel's English (YouTube) · YouGlish", dur:'40 min',
+    atividades:[
+      'YouGlish.com: pesquise 5 palavras que você pronuncia com sotaque forte — veja como 10 falantes nativos diferentes pronunciam',
+      'Foco hoje: word stress em palavras de 3+ sílabas (PREsent vs preSENT, REcord vs reCORD)',
+      'Shadowing avançado: escolha 3 min de um podcast e repita frase por frase com o mesmo ritmo, velocidade e entonação',
+      'Grave você lendo 1 parágrafo de um artigo em inglês — compare com a leitura de um nativo no Speechify ou similar',
+    ]
+  },
+  qui: { foco:'LEITURA C1 — ARGUMENTAÇÃO DENSA E VOCABULÁRIO ACADÊMICO', aula:'The Economist · Nature · Foreign Affairs', dur:'45 min',
+    atividades:[
+      'Leia 1 artigo completo do The Economist ou Foreign Affairs (800–1200 palavras) sem dicionário',
+      'Identifique: qual a linha argumentativa? Quais as premissas implícitas? Qual o viés do autor?',
+      'Sublinhe 10 palavras ou expressões que você raramente usaria — pesquise e adicione ao Anki',
+      'Escreva 3 frases de resposta ao artigo em inglês usando vocabulário equivalente ao do texto',
+    ]
+  },
+  sex: { foco:'ESCRITA EXECUTIVA — RELATÓRIO E ANÁLISE PROFISSIONAL', aula:'HBR Writing · Plain Language Guidelines', dur:'40 min',
+    atividades:[
+      'Escreva um relatório de performance fictício de 250 palavras (sobre qualquer cliente da Insid360) em inglês',
+      'Estrutura: Executive Summary (2 frases) → Key Metrics → Insights → Recommendations → Next Steps',
+      'Revise eliminando: adjetivos fracos, voz passiva excessiva, frases com mais de 25 palavras',
+      'Traduza 1 parágrafo do seu português profissional mais sofisticado — veja o que você perde/ganha em inglês',
+    ]
+  },
+  sab: { foco:'CONVERSAÇÃO DE ELITE — DEBATE E PERSUASÃO', aula:'italki tutor nativo · ou Tandem parceiro avançado', dur:'60 min',
+    atividades:[
+      'Sessão com tutor ou parceiro: debata 1 tema de negócios ou tecnologia (AI, marketing digital, saúde corporativa)',
+      'Objetivo: fale 60% do tempo. Se o parceiro falar mais que você, você não está praticando suficientemente',
+      'Use pelo menos 5 idioms estudados esta semana em contexto natural — não force, espere o momento certo',
+      'Após a sessão: escreva 3 frases que você quis dizer mas não conseguiu — esses são os gaps reais',
+    ]
+  },
+  dom: { foco:'AVALIAÇÃO 4 SEMANAS — PROGRESSO REAL E PLANO S5', aula:'Self-assessment profundo', dur:'30 min',
+    atividades:[
+      'Compare: o que você consegue fazer em inglês hoje vs na S1? Seja específico (listening, speaking, writing, vocab)',
+      'Rate honestamente de 1–10: Listening / Speaking / Reading / Writing / Pronunciation / Vocabulary',
+      'Identifique sua maior evolução e sua maior lacuna ainda existente',
+      'Defina 1 meta de inglês para o próximo mês: um resultado concreto (ex: gravar 1 video de 5 min em inglês sobre marketing)',
+    ]
+  },
+};
+
 function getInglesPlano() {
   const s = getCurrentSemana();
-  if (s >= 3) return INGLES_S3;
+  if (s >= 4) return INGLES_S4;
+  if (s === 3) return INGLES_S3;
   if (s === 2) return INGLES_S2;
   return INGLES_S1;
 }
@@ -741,9 +942,63 @@ const LEITURA_S3 = {
 };
 
 // ── LEITURA — FUNÇÃO DINÂMICA ──
+// ── LEITURA — SEMANA 4: CONCLUSÃO + ENSINAR + PRÓXIMO LIVRO ──
+const LEITURA_S4 = {
+  seg: { foco:'SPRINT FINAL — TERMINE O LIVRO ESTA SEMANA', meta:'30+ páginas', cor:'var(--amber)',
+    tarefas:[
+      { n:'Leia 30 páginas — o ritmo de conclusão é diferente do de absorção', desc:'Quando você está perto do fim, o cérebro acelera naturalmente. Use isso. O objetivo hoje não é extrair cada insight — é terminar o arco. A síntese vem depois. Por agora: avance.' },
+      { n:'Atualize o slider de progresso e calcule as páginas restantes', desc:'Se restam 60 páginas e você lê 30 hoje e 30 amanhã, o livro termina quarta. Coloque isso no calendário. Livros sem data de conclusão raramente terminam. A data transforma intenção em compromisso.' },
+      { n:'Anote 1 insight novo — algo que a S4 trouxe que a S1 não teria captado', desc:'4 semanas de leitura progressiva desenvolveram sua capacidade analítica sobre este livro. O que você vê agora que era invisível na primeira semana? Essa evolução de leitura é tão valiosa quanto o conteúdo do livro.' },
+    ]
+  },
+  ter: { foco:'LEITURA INTENSIVA — PENÚLTIMA SESSÃO', meta:'25-30 páginas', cor:'var(--amber)',
+    tarefas:[
+      { n:'Leia focando na resolução do argumento do autor', desc:'Todo livro não-ficcional tem uma promessa implícita na introdução. As últimas páginas são onde o autor entrega (ou não) essa promessa. Leia com essa pergunta: o autor cumpriu o que prometeu no início?' },
+      { n:'Sublinhe a frase mais poderosa do livro inteiro — aquela que ficará', desc:'Não a mais bonita literariamente — a mais transformadora para você. Essa frase é o epicentro do aprendizado deste livro. Ela merece um lugar especial nas notas. Escreva-a do livro, depois escreva por que ela importa.' },
+      { n:'Prepare-se para terminar amanhã: defina o próximo livro', desc:'O próximo livro deve estar escolhido antes de fechar o atual. Se você tem uma "fila" de leitura, avance ela. Se não tem, dedique 10 min hoje a pesquisar 3 opções. A continuidade da leitura depende da próxima escolha já estar pronta.' },
+    ]
+  },
+  qua: { foco:'CONCLUSÃO — FECHE O LIVRO COM INTENÇÃO', meta:'Páginas restantes', cor:'var(--amber)',
+    tarefas:[
+      { n:'Termine o livro — última sessão de leitura desta obra', desc:'Termine sem pressa. As últimas páginas merecem a mesma atenção que as primeiras. Autores frequentemente colocam a síntese mais poderosa na conclusão — é onde tudo converge. Leia devagar.' },
+      { n:'Imediatamente após: escreva de memória as 3 principais ideias do livro', desc:'Sem abrir o livro. O que você lembra agora, imediatamente após terminar, é o que ficou de verdade. Esse exercício calibra o que absorveu. O que não está nessa lista provavelmente não ficou — e não precisava ficar.' },
+      { n:'Atualize o slider para 100% e registre a data de conclusão nas notas', desc:'Data de início → data de conclusão. Quantas semanas levou? Qual foi o ritmo médio de páginas por dia? Esses dados constroem seu "perfil de leitor" e ajudam a calibrar os próximos livros com mais precisão.' },
+    ]
+  },
+  qui: { foco:'SÍNTESE TOTAL — O DOCUMENTO FINAL DO LIVRO', meta:'Síntese escrita completa', cor:'var(--amber)',
+    tarefas:[
+      { n:'Escreva o resumo definitivo do livro: 400-600 palavras', desc:'Estrutura: 1) O problema que o livro resolve. 2) O argumento central. 3) As 3 ideias mais importantes. 4) As 3 aplicações práticas para sua vida/trabalho. 5) Sua avaliação honesta (o que funcionou, o que não funcionou, nota 1-10 e por quê). Esse documento é seu ativo intelectual — não o livro.' },
+      { n:'Liste 5 ações concretas com prazo que nasceram deste livro', desc:'Cada ação com: O QUÊ + QUANDO + COMO MEDIR. Sem essas 3 partes, não é uma ação — é uma intenção. Intenções não mudam comportamento. Ações com prazo e métrica mudam.' },
+      { n:'Indique este livro (ou não): você recomendaria? Para quem? Por quê?', desc:'Esse exercício força uma avaliação honesta e consolida o aprendizado através da argumentação. "Recomendo para gestores de marketing porque..." é uma frase que exige que você saiba o que o livro realmente diz.' },
+    ]
+  },
+  sex: { foco:'TÉCNICA FEYNMAN — ENSINE O LIVRO PARA FIXAR', meta:'Output ensinável', cor:'var(--amber)',
+    tarefas:[
+      { n:'Grave um áudio de 5 min ensinando o livro como se fosse para um amigo', desc:'Sem roteiro, sem consultar o livro. Apenas fale. O que sair espontaneamente é o que você realmente aprendeu. O que travar é o que você achou que aprendeu mas não interiorizou. Essa lacuna é o próximo estudo.' },
+      { n:'Identifique 1 ideia do livro que você consegue explicar e 1 que você não consegue', desc:'A que você não consegue explicar revela onde a compreensão é superficial. Volte para essa parte específica do livro por 10 minutos. Uma releitura focada vale mais que uma releitura completa.' },
+      { n:'Compartilhe 1 insight com alguém (mensagem, conversa ou post)', desc:'Ensinar para uma pessoa real é o nível mais alto de aprendizado. A pergunta "o que você leu de bom?" é uma das oportunidades mais subutilizadas de consolidação. Use.' },
+    ]
+  },
+  sab: { foco:'INÍCIO DO PRÓXIMO LIVRO — PRIMEIRAS 30 PÁGINAS', meta:'30 páginas do novo livro', cor:'var(--amber)',
+    tarefas:[
+      { n:'Abra o próximo livro e leia as primeiras 30 páginas sem parar', desc:'O começo de um novo livro é o momento de maior evasão. A inércia do livro anterior ainda está no sistema. Force as primeiras 30 páginas — após isso, a curiosidade natural toma conta. Nunca feche o atual sem já começar o próximo.' },
+      { n:'Registre o título, autor e data de início no slider', desc:'Data de início + meta de páginas/dia = data estimada de conclusão. Coloque isso agora. Um livro com data de início e data projetada de fim tem 3x mais chance de ser terminado que um sem.' },
+      { n:'Qual é a sua expectativa? O que você quer aprender com este livro?', desc:'Escreva 2 frases nas notas antes de mergulhar. Ler com intenção específica aumenta a retenção porque o cérebro filtra ativamente o que é relevante para a pergunta que você trouxe. Sem pergunta, tudo parece igualmente importante — e portanto nada realmente fica.' },
+    ]
+  },
+  dom: { foco:'PLANEJAMENTO — LISTA DE LEITURA DO TRIMESTRE', meta:'Curadoria intencional', cor:'var(--amber)',
+    tarefas:[
+      { n:'Monte a lista dos próximos 3 livros com justificativa para cada escolha', desc:'Não leia aleatoriamente. Cada livro deve ter um motivo: aprofundar um tema, contrastar uma perspectiva, resolver um problema real. Uma biblioteca curada é uma vantagem competitiva intelectual que poucos constroem conscientemente.' },
+      { n:'Avalie seu ritmo de leitura das últimas 4 semanas', desc:'Total de páginas lidas / 28 dias = páginas por dia. Com esse ritmo, quantos livros por ano você leria? Compare com o que você quer ler. Ajuste o protocolo diário se necessário.' },
+      { n:'Revise o resumo que escriu hoje — adicione 1 reflexão extra com 7 dias de distância', desc:'O que você nota agora, com 7 dias de distância do fim do livro, que não estava na síntese imediata? A distância temporal revela o que realmente ficou versus o que pareceu importante no calor da leitura.' },
+    ]
+  },
+};
+
 function getLeituraPlano() {
   const s = getCurrentSemana();
-  if (s >= 3) return LEITURA_S3;
+  if (s >= 4) return LEITURA_S4;
+  if (s === 3) return LEITURA_S3;
   return LEITURA_PLAN;
 }
 
