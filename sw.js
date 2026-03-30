@@ -1,8 +1,8 @@
-// GILMAR OPS — Service Worker v6
+// GILMAR OPS — Service Worker v7
 // Network-first for app.js + index.html (always fresh)
 // Cache-first for static assets (style.css, fonts, etc.)
 
-const CACHE = 'gilmar-ops-v6';
+const CACHE = 'gilmar-ops-v7';
 const ASSETS = ['/', '/index.html', '/style.css', '/app.js', '/config.js', '/manifest.json'];
 const NETWORK_FIRST = ['/app.js', '/index.html', '/'];
 

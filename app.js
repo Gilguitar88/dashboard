@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════
-//  GILMAR // OPS — app.js v7
+//  GILMAR // OPS — app.js v8
 //  Guitarra S4 · Inglês S4 · Leitura S4 · Treino S4 (Deload)
 //  Semana 4 · 30 mar 2026
 // ═══════════════════════════════════════════════════════════
@@ -563,14 +563,26 @@ function getTreinoPlano() {
 
 
 // ── SEMANA DETECTION SYSTEM ──
-// Semana 1 = 09/03/2026. A cada 7 dias avança 1 semana.
-// Use local date arithmetic to avoid timezone issues
+// Datas de início explícitas por semana — sem aritmética de datas (mais robusto)
 function getCurrentSemana() {
   const now = new Date();
-  const inicio = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // local midnight today
-  const ref = new Date(2026, 2, 9); // March 9, 2026 local (month is 0-indexed)
-  const diff = Math.floor((inicio - ref) / (7*24*60*60*1000));
-  return Math.max(1, Math.min(diff + 1, 8)); // Semana 1-8
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate()); // meia-noite local
+  // Cada item = primeiro dia (seg) da semana correspondente
+  const inicios = [
+    new Date(2026, 2,  9), // S1 — 09 Mar
+    new Date(2026, 2, 16), // S2 — 16 Mar
+    new Date(2026, 2, 23), // S3 — 23 Mar
+    new Date(2026, 2, 30), // S4 — 30 Mar ← semana atual
+    new Date(2026, 3,  6), // S5 — 06 Abr
+    new Date(2026, 3, 13), // S6 — 13 Abr
+    new Date(2026, 3, 20), // S7 — 20 Abr
+    new Date(2026, 3, 27), // S8 — 27 Abr
+  ];
+  let s = 1;
+  for (let i = 0; i < inicios.length; i++) {
+    if (today >= inicios[i]) s = i + 1; else break;
+  }
+  return s;
 }
 
 // ── INGLÊS — SEMANA 1 (BASE) ──
@@ -1627,14 +1639,15 @@ async function boot() {
   // Atualiza label específico do inglês
   const inglesLbl = document.getElementById('ingles-semana-lbl');
   if (inglesLbl) {
-    const nivelMap = { 1:'SEMANA 1 · B2 BASE', 2:'SEMANA 2 · B2 AVANÇADO', 3:'SEMANA 3 · C1 FLUÊNCIA' };
-    inglesLbl.textContent = nivelMap[semanaAtual] || 'SEMANA ' + semanaAtual;
+    const nivelMap = { 1:'SEMANA 1 · B2 BASE', 2:'SEMANA 2 · B2 AVANÇADO', 3:'SEMANA 3 · C1 FLUÊNCIA', 4:'SEMANA 4 · C1 MAESTRIA' };
+    inglesLbl.textContent = nivelMap[semanaAtual] || 'SEMANA ' + semanaAtual + ' · C1 AVANÇADO';
   }
   // Mensagem de boot com contexto da semana
   setTimeout(() => {
     const h  = new Date().getHours();
     const gr = h<12 ? 'BOM DIA' : h<18 ? 'BOA TARDE' : 'BOA NOITE';
-    const guitarFoco = semanaAtual >= 3 ? 'SWEEP · ECONOMY · CHORD MELODY' : semanaAtual === 2 ? 'OUTSIDE PLAY · MODAL · TAPPING' : 'FUNDAMENTOS FUSION';
+    const guitarFocoMap = { 1:'FUNDAMENTOS FUSION', 2:'OUTSIDE PLAY · MODAL · TAPPING', 3:'SWEEP · ECONOMY · CHORD MELODY', 4:'LEGATO · HYBRID PICKING · HARMÔNICOS' };
+    const guitarFoco = guitarFocoMap[semanaAtual] || 'NÍVEL AVANÇADO';
     showPopup(gr + ', GILMAR.', 'SEMANA ' + semanaAtual + ' · GUITARRA: ' + guitarFoco + ' · EXECUTE A MISSÃO.');
   }, 800);
   loadTodayState().then(() => renderTasks(currentDay));
