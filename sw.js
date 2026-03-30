@@ -24,6 +24,13 @@ self.addEventListener('fetch', e => {
   if (e.request.url.includes('supabase.co') || e.request.url.includes('googleapis.com')) return;
 
   const url = new URL(e.request.url);
+
+  // URLs com ?v= (versionadas) — sempre rede, nunca cache
+  if (url.search.includes('v=')) {
+    e.respondWith(fetch(e.request));
+    return;
+  }
+
   const isNetworkFirst = NETWORK_FIRST.some(p => url.pathname === p || url.pathname.endsWith(p));
 
   if (isNetworkFirst) {
