@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════
-//  GILMAR // OPS — app.js v9
+//  GILMAR // OPS — app.js v10
 //  Guitarra S4 · Inglês S4 · Leitura S4 · Treino S4 (Deload)
 //  Semana 4 · 30 mar 2026
 // ═══════════════════════════════════════════════════════════
@@ -1861,6 +1861,48 @@ async function reqNotif() {
   }
 }
 
+// ── VÍDEO DO DIA — MENTALIDADE · RESILIÊNCIA · PRODUTIVIDADE ──
+const VIDEOS_MENTALIDADE = [
+  { id:'u4ZoJKF_VuA', titulo:'Start With Why — Simon Sinek',          desc:'Líderes que inspiram começam com propósito, não produto. O framework que mudou como empresas e pessoas pensam sobre motivação.',     tags:['LIDERANÇA','PROPÓSITO'] },
+  { id:'iCvmsMzlF7o', titulo:'O Poder da Vulnerabilidade — Brené Brown', desc:'Coragem real é ser visto de verdade. A pesquisa que revelou que vulnerabilidade é a raiz de conexão, criatividade e inovação.', tags:['CORAGEM','CONEXÃO'] },
+  { id:'Cpc-t-Uwv1I', titulo:'Por Que Fazemos o Que Fazemos — Tony Robbins', desc:'As forças invisíveis que dirigem cada decisão. Como transformar o entendimento do comportamento humano em resultado real.', tags:['PSICOLOGIA','MOTIVAÇÃO'] },
+  { id:'Lp7E973zozc', titulo:'Pare de Se Sabotar — Mel Robbins',       desc:'Você não tem problema de motivação — tem problema de ativação. A ciência por trás da procrastinação e como quebrar o padrão.',  tags:['PRODUTIVIDADE','AÇÃO'] },
+  { id:'_X5t9FKZMBA', titulo:'6 Regras do Sucesso — Arnold Schwarzenegger', desc:'Do nada para tudo: fisiculturismo, cinema, política. As 6 regras que Schwarzenegger usou para dominar cada área da vida.', tags:['DISCIPLINA','AMBIÇÃO'] },
+  { id:'1MGknFaSBs8', titulo:'Coloque Deus Primeiro — Denzel Washington', desc:'Um dos discursos de formatura mais impactantes já feitos. Sobre fé, risco, fracasso e propósito real na vida.',           tags:['PROPÓSITO','FÉ'] },
+  { id:'pxBQLFLei70', titulo:'Faça Sua Cama — Almirante McRaven',      desc:'Se você quer mudar o mundo, comece fazendo sua cama. 10 lições de 36 anos como Navy SEAL sobre disciplina e execução.',         tags:['DISCIPLINA','EXECUÇÃO'] },
+  { id:'lsSC2vx7zFQ', titulo:'Quando Você Quiser Vencer — Eric Thomas', desc:'Sua fome pelo sucesso deve ser maior que seu medo do fracasso. Um dos discursos motivacionais mais impactantes já gravados.',   tags:['FOME','DETERMINAÇÃO'] },
+  { id:'ji5_MqicxSo', titulo:'A Última Aula — Randy Pausch',           desc:'Diagnosticado com câncer terminal, Randy Pausch ensinou como realmente viver. Uma aula sobre sonhos, barreiras e legado.',        tags:['VIDA','LEGADO'] },
+  { id:'V80-gPkpH6M', titulo:'O Risco que Você Deve Correr — Jim Carrey', desc:'O discurso de formatura mais incomum de todos os tempos. Carrey sobre medo, propósito e por que o fracasso seguro não existe.', tags:['RISCO','PROPÓSITO'] },
+  { id:'TQMbvJNRpLE', titulo:'Como Pensar como Elon Musk — First Principles', desc:'O método de raciocínio que separa inovadores de executores. Como questionar premissas e construir a partir do zero.',    tags:['INOVAÇÃO','RACIOCÍNIO'] },
+  { id:'H14bBuluwB8', titulo:'Mentalidade de Crescimento — Carol Dweck', desc:'A pesquisa que mudou a educação mundial: a diferença entre acreditar que você nasce com talento ou que desenvolve com esforço.', tags:['MINDSET','APRENDIZADO'] },
+  { id:'8KkKuTCFvzI', titulo:'Controle do Ego — Ryan Holiday',         desc:'O ego é o inimigo do crescimento real. Como grandes líderes, artistas e atletas aprenderam a eliminar o orgulho paralisante.',  tags:['EGO','CRESCIMENTO'] },
+  { id:'IDvuQ8kRVMY', titulo:'A Psicologia da Autossuperação — David Goggins', desc:'A mente como o único limite real. Goggins sobre callusing the mind, accountability mirror e ultrapassar o que parece impossível.', tags:['RESILIÊNCIA','MENTALIDADE'] },
+];
+
+function renderVideoDia() {
+  const wrap = document.getElementById('video-dia-wrap');
+  if (!wrap) return;
+  const dow = new Date().getDay(); // 0=dom...6=sab
+  const s   = getCurrentSemana();
+  const idx = (s * 7 + dow) % VIDEOS_MENTALIDADE.length;
+  const v   = VIDEOS_MENTALIDADE[idx];
+  wrap.innerHTML = `
+    <div class="video-dia-card">
+      <div class="vd-header">
+        <span class="vd-badge">▶ VÍDEO DO DIA</span>
+        <span class="vd-tags">${v.tags.map(t=>`<span class="vd-tag">${t}</span>`).join('')}</span>
+      </div>
+      <div class="vd-titulo">${v.titulo}</div>
+      <div class="vd-desc">${v.desc}</div>
+      <div class="vd-embed-wrap">
+        <iframe class="vd-embed"
+          src="https://www.youtube-nocookie.com/embed/${v.id}?rel=0&modestbranding=1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>`;
+}
+
 // ── PWA ──
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(()=>{}));
@@ -1871,6 +1913,7 @@ async function boot() {
   setSyncStatus('idle');
   initQuote();
   autoSelectToday();
+  renderVideoDia();
   renderTasks(currentDay);
   renderHabits();
   renderRings();
