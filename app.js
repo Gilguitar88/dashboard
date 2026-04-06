@@ -1,5 +1,5 @@
 // ═══════════════════════════════════════════════════════════
-//  GILMAR // OPS — app.js v8
+//  GILMAR // OPS — app.js v9
 //  Guitarra S4 · Inglês S4 · Leitura S4 · Treino S4 (Deload)
 //  Semana 4 · 30 mar 2026
 // ═══════════════════════════════════════════════════════════
@@ -336,9 +336,76 @@ const GUITAR_PLAN_S4 = {
   },
 };
 
+// ── GUITARRA — SEMANA 5: IMPROVISAÇÃO FUSION · IDENTIDADE SONORA ──
+const GUITAR_PLAN_S5 = {
+  seg: { tipo:'IMPROVISAÇÃO', foco:'Fusion Vocabulary — Frases com Identidade Própria', dur:'65 min', cor:'#ff6b35',
+    exercicios:[
+      { n:'Análise de 3 licks favoritos: desconstrua por que funcionam', bpm:'30 min / escuta ativa', desc:'Escolha 3 frases que você ama (de qualquer guitarrista). Toque lentamente. Identifique: qual técnica usa? Que escala? Qual o contorno melódico? A dissecação transforma admiração em vocabulário próprio. Copiar para entender não é copiar — é aprender.' },
+      { n:'Crie 5 frases originais com o vocabulário S1–S4', bpm:'60–80 BPM / backing Am', desc:'Sem tocar o que você já sabe — combine técnicas de semanas diferentes numa única frase. Legato + sweep, ou hybrid + harmônico, ou alternate + economy. Crossover de vocabulário é onde a identidade começa.' },
+      { n:'Call & response: 4 compassos pergunta, 4 compassos resposta', bpm:'75 BPM', desc:'Improvisação em diálogo interno. Os 4 compassos de "resposta" devem usar técnica diferente da "pergunta". Isso força variação e evita o loop mecânico que torna improvisos previsíveis.' },
+      { n:'10 min de improviso livre — sem repetir a mesma frase 2x', bpm:'Backing Am7 a 80 BPM', desc:'Regra brutal: se você ouvir que está repetindo uma frase, mude imediatamente. Isso força expansão de vocabulário em tempo real. Grave tudo — o melhor lick que você já criou pode ter aparecido acidentalmente.' },
+    ],
+    regra:'🎯 Identidade sonora não é ter um som diferente — é ter frases que só você pensa. Essa semana, caça essas frases.'
+  },
+  ter: { tipo:'TÉCNICA', foco:'Ritmo Fusion — Polirritmo e Groove Assimétrico', dur:'65 min', cor:'#4ecdc4',
+    exercicios:[
+      { n:'Grupos de 3 sobre beat de 4 — deslocamento rítmico', bpm:'70 BPM / clique', desc:'Toque tríades (3 notas) em loop sobre um beat de 4/4. O acento cai em lugar diferente a cada vez, criando tensão rítmica. Frank Gambale e Guthrie usam isso constantemente. Soa complexo mas é simples: 3 contra 4.' },
+      { n:'Hemíola: 3 em 2 — agrupamentos de semínimas em ternário', bpm:'80 BPM', desc:'Agrupe suas frases de 3 em 3 notas em compasso de 4/4. Soa como se o tempo mudou mas o clique é o mesmo. É o truque rítmico favorito de Wayne Krantz. Desorientador para quem ouve, libertador para quem toca.' },
+      { n:'Ghost notes e dinâmica — toque o silêncio', bpm:'85 BPM / groove', desc:'Alterne notas reais com ghost notes (som abafado, sem pitch). A percussão entra na guitarra. Toque uma frase de 4 compassos onde metade das notas são ghost notes. Isso dá groove — a maioria dos guitarristas não sabe fazer.' },
+      { n:'Frase de 5 notas em loop — cria polirritmo natural', bpm:'90 BPM', desc:'Toque uma frase de 5 notas em repeat contínuo sobre 4/4. A cada 20 notas (4 compassos), a frase completa um ciclo. Esse polirritmo natural cria tensão e resolução automáticas. É matemática que soa como música.' },
+    ],
+    regra:'⏱️ Ritmo é o que separa guitarrista de músico. Técnica sem groove é ginástica. Técnica com groove é arte.'
+  },
+  qua: { tipo:'HARMONIA', foco:'Modos e Superimposição — Além da Pentatônica', dur:'60 min', cor:'#c084fc',
+    exercicios:[
+      { n:'Dórico vs Eólio sobre Am — perceba a diferença do 6º grau', bpm:'Backing Am / 15 min', desc:'Am Dórico tem F# (6º maior) — som Santana, jazz fusion. Am Eólio tem F natural — som clássico, metal. Toque a mesma frase, mude só o 6º grau. A diferença emocional é imediata. Isso é o poder do modo.' },
+      { n:'Lídio sobre Cmaj7 — o som "flutuante" e cinematográfico', bpm:'Backing Cmaj7 / 10 min', desc:'C Lídio tem F# (4º aumentado). Esse único # transforma um acorde comum num som de trilha sonora de ficção científica. Joe Satriani e Steve Vai vivem no Lídio. Toque e sinta por que.' },
+      { n:'Superimposição: Am pentatônica sobre G7 — tensão e resolução', bpm:'Backing G7–Cmaj7 / 15 min', desc:'Toque Am pentatônica sobre G7 dominante. Cria tensão intensa (b9, #11, b13 soam todos). Resolva em Cmaj7 com C pentatônica. Isso é superimposição básica — o recurso harmônico mais poderoso do jazz-fusion.' },
+      { n:'Crie 1 frase de 8 compassos usando 3 modos diferentes', bpm:'70 BPM', desc:'Mude o "sabor" melódico a cada 2 compassos mudando o modo. Planeje no papel antes: compasso 1-2 Dórico, 3-4 Frígio, 5-6 Lídio, 7-8 Mixolídio. A transição entre modos é o desafio — não pode soar aleatório.' },
+    ],
+    regra:'🎼 Modo é emoção específica em forma de escala. Escolher o modo certo é como um diretor de cinema escolhe a luz da cena.'
+  },
+  qui: { tipo:'REPERTÓRIO', foco:'Deep Work — 1 Música Completa Dominada', dur:'75 min', cor:'#e8ff47',
+    exercicios:[
+      { n:'Escolha 1 música desafiadora e divida em 4 seções', bpm:'20 min / análise', desc:'Nada de "aprender toda a música". Divida em: intro, verso, refrão/solo, outro. Cada seção tem seu desafio técnico isolado. Aprender por seções é 3x mais eficiente que do início ao fim — o cérebro consolida em partes.' },
+      { n:'Seções 1 e 2: a 50% da velocidade, 10 vezes cada', bpm:'50% do original', desc:'10 repetições limpas de cada seção a 50% é mais valioso que 100 repetições na velocidade certa mas com erros. O sistema motor não diferencia velocidade — ele grava o padrão. Grave o padrão certo.' },
+      { n:'Seções 3 e 4: mesma metodologia', bpm:'50% do original', desc:'Se a seção tem um solo ou parte difícil, isole os 4 compassos mais difíceis e trabalhe só eles por 15 min antes de fazer a seção completa. O problema nunca é a música — é sempre aqueles 4 compassos específicos.' },
+      { n:'Juntando tudo: 5 takes da música inteira', bpm:'70% do original', desc:'5 takes sem parar, do início ao fim. Não interrompa por erros — continue. O cérebro aprende as transições entre seções apenas quando as enfrenta em sequência. Após os 5 takes, só o take 1 e o 5 — qual melhorou mais?' },
+    ],
+    regra:'📀 Dominar 1 música inteira vale mais que saber 10 pela metade. Repertório sólido é a prova real do músico.'
+  },
+  sex: { tipo:'COMPOSIÇÃO', foco:'Estrutura de Música Própria — Do Riff ao Arranjo', dur:'90 min', cor:'#ff6b35',
+    exercicios:[
+      { n:'Grave 5 riffs de 4 compassos — sem filtro, apenas crie', bpm:'Qualquer BPM', desc:'5 riffs diferentes em 10 minutos. Não julgue. Não corrija. O objetivo é quantidade — entre os 5, 1 vai ser bom o suficiente para construir. Criatividade sob pressão de tempo elimina o perfeccionismo que paralisa.' },
+      { n:'Escolha o melhor riff e crie uma progressão de acordes por baixo', bpm:'Riff escolhido', desc:'Não precisa ser sofisticado: I-IV-V, I-VI-IV-V, ou i-VII-VI-VII. Coloque o riff sobre cada acorde e veja onde soa melhor. O contraponto entre riff fixo e harmonia que muda é o DNA do rock e fusion.' },
+      { n:'Adicione uma seção B diferente (bridge ou solo)', bpm:'Progressão definida', desc:'A seção B cria contraste. Se o riff é denso e rítmico, a seção B pode ser melódica e espaçada. Contraste é o que faz uma música memorável — sem ele, é um loop, não uma composição.' },
+      { n:'Grave a estrutura completa: A-A-B-A', bpm:'Estrutura final', desc:'4 seções, 12-16 compassos cada. Grave o esqueleto mesmo que rudimentar. Uma música com começo, meio e fim — mesmo simples — é uma composição completa. Isso é o que a maioria dos guitarristas nunca faz.' },
+    ],
+    regra:'✍️ Todo grande álbum começou com alguém gravando um riff numa sexta à noite sem plano. Você não precisa de um plano — precisa começar.'
+  },
+  sab: { tipo:'EXPRESSÃO', foco:'Gravação com Qualidade — Registro Profissional', dur:'120 min', cor:'#4ecdc4',
+    exercicios:[
+      { n:'Setup de gravação: nível de entrada, EQ básico, metronômo de referência', bpm:'30 min / setup', desc:'Sinal limpo antes de qualquer processamento. Distorção de entrada = lixo na gravação. Ajuste o gain para o pico não passar de -6dB. Metrônomo audível no fone para manter groove. Setup leva tempo — é investimento, não perda.' },
+      { n:'Grave a composição da sexta: 3 takes completos', bpm:'Composição S5', desc:'Take 1: para aquecer e ouvir o que precisa ajustar. Take 2: o mais focado. Take 3: o mais relaxado. Profissionais gravam 20+ takes. Amadores esperam que 1 take seja perfeito. Entre os 3, você já tem algo útil.' },
+      { n:'Grave 1 improvisação de 3 min — tema livre', bpm:'Backing Am7 a 85 BPM', desc:'3 minutos contínuos de improviso. Depois ouça inteiro. Identifique: onde você perdeu a conexão com o groove? Onde você se surpreendeu? Onde entrou em loop? Esses são os dados brutos da sua evolução.' },
+      { n:'Ouça tudo e escreva 3 observações honestas nas notas', bpm:'Escuta crítica', desc:'Não "foi bem" ou "foi mal". Específico: "o legato perdeu velocidade nos pulls", "o vibrato sumiu quando acelerou", "o rhythm ficou sólido durante 2 compassos". Observação específica gera melhoria específica.' },
+    ],
+    regra:'🎙️ Gravar não é documentar — é aprender. O microfone não mente e o ouvido critico só funciona quando você não está tocando.'
+  },
+  dom: { tipo:'REVISÃO + PLANEJAMENTO', foco:'Síntese S5 e Definição do Próximo Ciclo', dur:'45 min', cor:'var(--amber)',
+    exercicios:[
+      { n:'Ouça os melhores momentos das gravações da semana', bpm:'20 min', desc:'Sem crítica — apenas escuta. O que soa como você? O que ainda soa como imitação? Essa distinção é o teste da identidade sonora. Quanto mais "você" soar, mais a evolução está sendo incorporada.' },
+      { n:'Inventário técnico completo: do que você é capaz hoje?', bpm:'15 min / escrita', desc:'Liste: técnicas dominadas, técnicas em progresso, técnicas ainda não tocadas. Seja honesto e específico. "Sweep 5 cordas a 110 BPM limpo" é mensurável. "Sweep bom" não diz nada. O inventário honesto é o mapa do próximo mês.' },
+      { n:'Defina 1 meta musical concreta para as próximas 4 semanas', bpm:'10 min', desc:'Ex: "Gravar 1 música própria de 3 min com intro, verso e solo". "Aprender inteiro 1 música de Guthrie". "Desenvolver 1 solo em 3 partes com dinâmica intencional". Uma meta, específica, com prazo. É o que separa desenvolvimento de hobby.' },
+    ],
+    regra:'🏁 5 semanas de prática focada. Você não é o mesmo guitarrista de março. Prove isso para você mesmo — grave algo hoje que seria impossível na S1.'
+  },
+};
+
 function getGuitarPlano() {
   const s = getCurrentSemana();
-  if (s >= 4) return GUITAR_PLAN_S4;
+  if (s >= 5) return GUITAR_PLAN_S5;
+  if (s === 4) return GUITAR_PLAN_S4;
   if (s === 3) return GUITAR_PLAN_S3;
   return GUITAR_PLAN;
 }
@@ -554,9 +621,77 @@ const TREINO_S4 = {
   },
 };
 
+// ── TREINO — SEMANA 5: VOLUME TOTAL · NOVAS CARGAS PÓS-PRs ──
+const TREINO_S5 = {
+  seg: { grupo:'PEITO + TRÍCEPS — VOLUME TOTAL · CARGA DOS PRs', cor:'var(--neon)',
+    exercicios:[
+      'Supino reto — 4x6 com 90% do 5RM testado na S4 (foco em força)',
+      'Supino inclinado halteres — 4x10 · aumente 2kg vs S3',
+      'Crucifixo polia — 3x15 · tempo 3-1-3 (descida controlada)',
+      'Tríceps corda — 4x12 + drop set na última série',
+      'HIIT 15 min pós-treino: 40s on / 20s off · bike ou corda',
+    ]
+  },
+  ter: { grupo:'COSTAS + BÍCEPS — VOLUME TOTAL · FORÇA BASE', cor:'#38bdf8',
+    exercicios:[
+      'Puxada frontal — 4x6 com 90% do 5RM testado na S4',
+      'Remada curvada barra — 4x8 · aumente 5kg vs S3',
+      'Remada sentada polia — 3x12 · pausa 2s na contração',
+      'Rosca direta — 3x10 · alternado com martelo 3x12',
+      'Face pull — 3x20 · saúde do manguito + finalização',
+    ]
+  },
+  qua: { grupo:'CORE + MOBILIDADE — RECUPERAÇÃO ATIVA', cor:'var(--amber)',
+    exercicios:[
+      'Prancha frontal progressiva: 4x40s (10s a mais que S3)',
+      'Ab wheel rollout: 3x10 — controle total na descida',
+      'Dead bug lento: 3x10 cada lado com respiração nasal',
+      'Mobilidade quadril + ombros: 20 min (yoga ou rotina própria)',
+      'Caminhada 30 min + alongamento completo pós-sessão',
+    ]
+  },
+  qui: { grupo:'PERNAS — FORÇA + HIPERTROFIA', cor:'#c084fc',
+    exercicios:[
+      'Agachamento livre — 4x5 com 90% do 3RM testado na S4',
+      'Leg press — 4x12 · aumente 10kg vs S3',
+      'Stiff halteres — 3x10 · foco em amplitude máxima',
+      'Cadeira extensora — 3x15 + drop set para finalizar quadríceps',
+      'Panturrilha em pé: 4x20 com pausa 2s no topo',
+    ]
+  },
+  sex: { grupo:'OMBROS + TRAPÉZIO — VOLUME + DEFINIÇÃO', cor:'var(--neon)',
+    exercicios:[
+      'Desenvolvimento halteres — 4x10 · aumente 2kg vs S3',
+      'Elevação lateral: 4x15 com controle total (sem impulso)',
+      'Elevação frontal alternada: 3x12 cada braço',
+      'Encolhimento halteres: 3x15 · 2s no topo',
+      'Cardio: 25 min zona 2 (conversa + suor leve)',
+    ]
+  },
+  sab: { grupo:'FULL BODY FUNCIONAL + ESPORTE', cor:'var(--amber)',
+    exercicios:[
+      'Kettlebell swing ou thruster: 5x10 (potência total)',
+      'Pull-up máximo: 3 séries até a falha (registre as reps)',
+      'Burpee: 3x10 sem pausa — teste de condicionamento',
+      'Esporte preferido: futebol, natação ou tenis — 40 min',
+      'Foam roller completo + 10 min de respiração diafragmática',
+    ]
+  },
+  dom: { grupo:'DESCANSO TOTAL + NUTRIÇÃO ESTRATÉGICA', cor:'var(--muted)',
+    exercicios:[
+      'Zero treino — descanso ativo: caminhada leve 20 min se quiser',
+      'Refeeding: carbs +80g na manutenção calórica (glicogênio muscular)',
+      'Proteína: mínimo 220g — síntese proteica não para no descanso',
+      'Registre as cargas da semana — base para progressão da S6',
+      'Sono: 8h mínimo · O músculo cresce no sono, não na academia',
+    ]
+  },
+};
+
 function getTreinoPlano() {
   const s = getCurrentSemana();
-  if (s >= 4) return TREINO_S4;
+  if (s >= 5) return TREINO_S5;
+  if (s === 4) return TREINO_S4;
   if (s === 3) return TREINO_S3;
   return TREINO_SPLITS;
 }
@@ -838,9 +973,70 @@ const INGLES_S4 = {
   },
 };
 
+// ── INGLÊS — SEMANA 5: STORYTELLING · OUTPUT DE ALTO NÍVEL ──
+const INGLES_S5 = {
+  seg: { foco:'STORYTELLING PROFISSIONAL — CONTE HISTÓRIAS QUE VENDEM', aula:'TED Talk análise + prática de narrativa', dur:'40 min',
+    atividades:[
+      'Assista 1 TED Talk de 10-15 min com legenda em inglês (tema: negócios ou liderança)',
+      'Identifique a estrutura narrativa: problema → jornada → solução → chamada para ação',
+      'Reconte a história do TED em 2 minutos — para o espelho, em inglês, sem notas',
+      'Grave o seu reconto e ouça: onde você travou? Que palavras faltaram? Esse é o vocabulário a estudar hoje.',
+    ]
+  },
+  ter: { foco:'CONVERSAÇÃO DE ELITE — NEGÓCIOS E MARKETING DIGITAL', aula:'italki / Tandem ou simulação gravada', dur:'50 min',
+    atividades:[
+      'Sessão de conversação de 30 min: tema obrigatório — "my best marketing campaign result this year"',
+      'Explique uma estratégia de performance marketing em inglês (CPA, ROAS, conversion funnel)',
+      'Pratique: "Let me walk you through..." / "The data showed that..." / "What we found was..."',
+      'Escreva 5 frases técnicas de marketing que você usou mal ou não conseguiu usar — corrija e memorize',
+    ]
+  },
+  qua: { foco:'ESCRITA EXECUTIVA — EMAIL E RELATÓRIO C1', aula:'Grammarly + Harvard Business Review style', dur:'35 min',
+    atividades:[
+      'Reescreva 1 email importante da semana em inglês (pode ser fictício, mas baseado em real)',
+      'Use a estrutura: Context (1 linha) → Key finding (2-3 linhas) → Recommendation (1-2 linhas) → Next step (1 linha)',
+      'Elimine: "I wanted to", "Please be advised", "As per". Substitua por linguagem direta e executiva',
+      'Leia 1 artigo curto do HBR (hbr.org) e copie 3 construções de frase que você quer incorporar',
+    ]
+  },
+  qui: { foco:'LISTENING DE ELITE — SOTAQUE E VELOCIDADE NATIVA', aula:'Lex Fridman / Patrick Bet-David / How I Built This', dur:'45 min',
+    atividades:[
+      'Ouça 30 min de podcast sem legenda — escolha 1 episódio com tema de negócios ou tecnologia',
+      'A cada 5 min, pause e resuma em voz alta (em inglês) o que acabou de ouvir — 30 segundos',
+      'Identifique 5 expresões novas. Anote no campo INTEL abaixo com a tradução e contexto',
+      'Shadowing: pegue 1 trecho de 1 min do podcast e repita junto com o falante — foco no ritmo e entonação',
+    ]
+  },
+  sex: { foco:'APRESENTAÇÃO EXECUTIVA — PITCH DE 5 MINUTOS', aula:'Preparação e gravação de apresentação', dur:'60 min',
+    atividades:[
+      'Prepare um pitch de 5 min em inglês sobre 1 cliente ou projeto da Insid360 (real ou fictício)',
+      'Estrutura: quem é o cliente → qual era o problema → o que você fez → qual foi o resultado → próximo passo',
+      'Grave o pitch completo. Ouça e avalie: clareza / fluência / ritmo / vocabulário técnico',
+      'Refaça o pitch incorporando as melhorias. Compare os 2 takes — a diferença é seu aprendizado do dia',
+    ]
+  },
+  sab: { foco:'CONTEÚDO NATIVO — IMERSÃO E PRAZER REAL', aula:'Série, filme ou podcast sem esforço', dur:'60 min',
+    atividades:[
+      'Assista 1 episódio de série ou 1 filme em inglês sem legenda (se possível) ou com legenda em inglês',
+      'Escolha algo que você genuinamente gostaria de assistir — imersão com prazer grava mais que estudo com esforço',
+      'Anote 3-5 expressões coloquiais que ouviu e quer usar — sem compromisso de memorizar tudo',
+      'Ao final: quanto você entendeu? Mais que na S4? Esse número sobe a cada semana de imersão consistente.',
+    ]
+  },
+  dom: { foco:'AVALIAÇÃO 5 SEMANAS — VOCÊ EVOLUIU?', aula:'Self-assessment honesto + planejamento S6', dur:'30 min',
+    atividades:[
+      'Rate de 1-10 as 4 habilidades: Listening / Speaking / Reading / Writing — compare com sua avaliação da S4',
+      'Grave 2 minutos falando sobre qualquer tema em inglês — sem preparação. Ouça e avalie sem piedade',
+      'Identifique: qual habilidade cresceu mais? Qual ainda é seu maior gargalo?',
+      'Defina 1 meta específica e mensurável para as próximas 3 semanas de inglês',
+    ]
+  },
+};
+
 function getInglesPlano() {
   const s = getCurrentSemana();
-  if (s >= 4) return INGLES_S4;
+  if (s >= 5) return INGLES_S5;
+  if (s === 4) return INGLES_S4;
   if (s === 3) return INGLES_S3;
   if (s === 2) return INGLES_S2;
   return INGLES_S1;
@@ -1007,9 +1203,63 @@ const LEITURA_S4 = {
   },
 };
 
+// ── LEITURA — SEMANA 5: NOVO LIVRO · PROFUNDIDADE MÁXIMA ──
+const LEITURA_S5 = {
+  seg: { foco:'NOVO LIVRO — IMERSÃO ESTRATÉGICA INICIAL', meta:'30 páginas + mapeamento do livro', cor:'var(--amber)',
+    tarefas:[
+      { n:'Leia as primeiras 30 páginas sem parar — capture o tom e tese do autor', desc:'As primeiras 30 páginas entregam o contrato do livro: qual é a promessa? O que o autor quer mudar em você? Leia com essa pergunta ativa. A resposta é o filtro pelo qual você vai ler o resto.' },
+      { n:'Mapeie o livro: leia o índice, introdução e últimas páginas de cada capítulo', desc:'O mapa do livro revela a estrutura antes de entrar nela. Você sabe para onde vai, então cada capítulo faz sentido no contexto maior. Leitores lentos leem linear. Leitores rápidos leem o mapa primeiro.' },
+      { n:'Escreva nas notas: qual é sua expectativa? O que você quer extrair?', desc:'Leitura com intenção específica é 2x mais eficiente. "Quero entender como aplicar X na Insid360" é um filtro ativo que o cérebro usa para reter o relevante e descartar o ruído. Sem intenção, tudo parece importante e nada fica.' },
+    ]
+  },
+  ter: { foco:'LEITURA PROFUNDA — CONCEITOS CENTRAIS', meta:'25 páginas + anotações por capítulo', cor:'var(--amber)',
+    tarefas:[
+      { n:'Leia com caneta: sublinhe apenas a frase mais importante de cada página', desc:'1 frase por página. Essa restrição força a priorização — você não pode sublinhar tudo. Escolher a frase central de cada página é um ato de compreensão, não de leitura passiva.' },
+      { n:'Após cada capítulo, escreva 1 parágrafo com suas palavras — sem olhar o livro', desc:'O teste da compreensão real: você consegue explicar sem o livro? Se não conseguir, o capítulo não entrou. Volte ao ponto específico onde a compreensão falhou, não ao capítulo inteiro.' },
+      { n:'Conecte 1 ideia do livro ao seu trabalho real na Insid360', desc:'Qual cliente, campanha ou desafio atual se beneficia do que você acabou de ler? Conhecimento sem conexão com a realidade decai em 48h. Conexão com prática real dura meses.' },
+    ]
+  },
+  qua: { foco:'LEITURA CRÍTICA — ARGUMENTE COM O AUTOR', meta:'20 páginas + pensamento crítico', cor:'var(--amber)',
+    tarefas:[
+      { n:'Leia com postura de cético amigável: onde o argumento é forte? Onde é fraco?', desc:'Todo livro tem pontos cegos. Identifique 1 argumento forte (e explique por que) e 1 argumento fraco (e qual a lacuna). Isso é pensamento crítico — não ceticismo destrutivo, mas escrutínio intelectual respeitoso.' },
+      { n:'Escreva 1 contra-argumento para a tese principal do livro', desc:'Se você consegue refutar o autor, entendeu o argumento profundamente. Se não consegue, não entendeu bem o suficiente. O contra-argumento não precisa ser correto — precisa ser fundamentado.' },
+      { n:'Pesquise 1 referência que o autor cita — confirme se é usada corretamente', desc:'Autores às vezes citam estudos fora de contexto. 5 minutos de pesquisa revela se a fonte suporta a afirmação. Isso não é desconfiança — é literacia intelectual. Você se tornará leitor muito melhor com esse hábito.' },
+    ]
+  },
+  qui: { foco:'REVISÃO E SÍNTESE SEMANAL', meta:'15 novas páginas + revisão', cor:'var(--amber)',
+    tarefas:[
+      { n:'Releia todas as notas e grifos da semana — 10 minutos', desc:'A revisão espaçada na quinta-feira de uma leitura que começou segunda tem exatamente o espaçamento ideal para consolidação de longo prazo. Esse hábito isolado pode dobrar sua retenção de leitura.' },
+      { n:'Leia 15 páginas novas — foco em como se conectam ao que já leu', desc:'Você não está lendo capítulo 5 isolado — está construindo sobre o que os capítulos 1-4 estabeleceram. Leia como arquiteto que olha o edifício, não como operário que olha só o tijolo atual.' },
+      { n:'Escreva a tese central do livro até aqui em 2 frases', desc:'Se precisar de mais de 2 frases, a compreensão ainda está difusa. O teste da síntese é brutal mas honesto. Se você consegue, está pronto para extrair aplicações. Se não consegue, precisa de mais leitura ativa.' },
+    ]
+  },
+  sex: { foco:'APLICAÇÃO DIRETA — DO LIVRO PARA A PRÁTICA', meta:'25 páginas + plano de ação', cor:'var(--amber)',
+    tarefas:[
+      { n:'Leia 25 páginas focado exclusivamente em: o que eu faria diferente amanhã?', desc:'Filtro brutal de praticidade. Para cada ideia que passar nesse filtro, escreva "AÇÃO:" nas notas com a ação específica. Uma ação real extraída de uma leitura vale mais que 10 livros lidos sem ação.' },
+      { n:'Monte um mini-plano de ação de 3 itens baseado no livro', desc:'3 ações específicas, com gatilho claro: "Quando X acontecer, farei Y". Escreva nas notas. Encaminhe para seu sistema de tarefas. Um livro que gera 3 ações concretas mudou sua vida — independente de quantas páginas tem.' },
+      { n:'Compartilhe 1 insight do livro com alguém relevante (mensagem, reunião, post)', desc:'Ensinar é a última etapa do aprendizado. Compartilhar força articulação — e articulação é compreensão. A pessoa que mais aprende quando você explica algo é você mesmo.' },
+    ]
+  },
+  sab: { foco:'LEITURA PROFUNDA — RELEITURA INTENCIONAL', meta:'20 páginas + extração profunda', cor:'var(--amber)',
+    tarefas:[
+      { n:'Volte ao capítulo que mais impactou você até agora — releia', desc:'A segunda leitura do melhor capítulo revela o que o cérebro filtrou na primeira. Grandes leitores releem os melhores trechos. Não releram o livro inteiro — releram as pepitas de ouro.' },
+      { n:'Extraia a ideia central desse capítulo e escreva como você a aplicaria em 3 contextos diferentes', desc:'3 contextos: trabalho na Insid360 / vida pessoal / interação com família. Uma ideia que funciona em 3 contextos não é teoria — é princípio. Princípios são os ativos intelectuais mais valiosos que existem.' },
+      { n:'Atualize o slider de progresso e projete quando vai terminar o livro', desc:'Páginas lidas / dias desde o início = ritmo atual. Páginas restantes / ritmo = dias para terminar. Coloque uma data. Livros com data de conclusão são lidos. Sem data, ficam na mesinha de cabeceira por meses.' },
+    ]
+  },
+  dom: { foco:'PLANEJAMENTO + CURADORIA DE LEITURA', meta:'Reflexão e próximos passos', cor:'var(--amber)',
+    tarefas:[
+      { n:'Avalie o livro até aqui: está entregando o que prometeu? Você está no ritmo certo?', desc:'Honestidade é mais importante que consistência. Se o livro está decepcionando, tudo bem mudar. Se o ritmo está baixo, o problema é o protocolo — ajuste agora, não na próxima semana.' },
+      { n:'Monte a lista dos próximos 2 livros com justificativa intencional', desc:'Qual gap intelectual ou desafio prático cada livro vai resolver? Leitura curada por intenção específica é 3x mais acionável que leitura por recomendação aleatória.' },
+      { n:'Calcule seu ritmo de leitura das últimas 5 semanas — qual é sua média real?', desc:'Total de páginas lidas desde S1 / 35 dias. Com esse ritmo, quantos livros por ano? Compare com o que você quer ler. A matemática simples revela se o protocolo está funcionando ou precisa de ajuste.' },
+    ]
+  },
+};
+
 function getLeituraPlano() {
   const s = getCurrentSemana();
-  if (s >= 4) return LEITURA_S4;
+  if (s >= 5) return LEITURA_S5;
+  if (s === 4) return LEITURA_S4;
   if (s === 3) return LEITURA_S3;
   return LEITURA_PLAN;
 }
@@ -1639,15 +1889,15 @@ async function boot() {
   // Atualiza label específico do inglês
   const inglesLbl = document.getElementById('ingles-semana-lbl');
   if (inglesLbl) {
-    const nivelMap = { 1:'SEMANA 1 · B2 BASE', 2:'SEMANA 2 · B2 AVANÇADO', 3:'SEMANA 3 · C1 FLUÊNCIA', 4:'SEMANA 4 · C1 MAESTRIA' };
+    const nivelMap = { 1:'SEMANA 1 · B2 BASE', 2:'SEMANA 2 · B2 AVANÇADO', 3:'SEMANA 3 · C1 FLUÊNCIA', 4:'SEMANA 4 · C1 MAESTRIA', 5:'SEMANA 5 · C1 STORYTELLING' };
     inglesLbl.textContent = nivelMap[semanaAtual] || 'SEMANA ' + semanaAtual + ' · C1 AVANÇADO';
   }
   // Mensagem de boot com contexto da semana
   setTimeout(() => {
     const h  = new Date().getHours();
     const gr = h<12 ? 'BOM DIA' : h<18 ? 'BOA TARDE' : 'BOA NOITE';
-    const guitarFocoMap = { 1:'FUNDAMENTOS FUSION', 2:'OUTSIDE PLAY · MODAL · TAPPING', 3:'SWEEP · ECONOMY · CHORD MELODY', 4:'LEGATO · HYBRID PICKING · HARMÔNICOS' };
-    const guitarFoco = guitarFocoMap[semanaAtual] || 'NÍVEL AVANÇADO';
+    const guitarFocoMap = { 1:'FUNDAMENTOS FUSION', 2:'OUTSIDE PLAY · MODAL · TAPPING', 3:'SWEEP · ECONOMY · CHORD MELODY', 4:'LEGATO · HYBRID PICKING · HARMÔNICOS', 5:'IMPROVISAÇÃO FUSION · COMPOSIÇÃO' };
+    const guitarFoco = guitarFocoMap[semanaAtual] || 'MAESTRIA CONTÍNUA';
     showPopup(gr + ', GILMAR.', 'SEMANA ' + semanaAtual + ' · GUITARRA: ' + guitarFoco + ' · EXECUTE A MISSÃO.');
   }, 800);
   loadTodayState().then(() => renderTasks(currentDay));
