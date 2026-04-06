@@ -1,13 +1,12 @@
-// GILMAR OPS — Service Worker v8
-// Network-first for app.js + index.html (always fresh)
-// URLs com ?v= sempre buscam da rede (sem cache)
+// GILMAR OPS — Service Worker v9
+// Sem pré-cache no install (evita falha por paths errados no GitHub Pages)
+// URLs com ?v= sempre buscam da rede · network-first para JS e HTML
 
-const CACHE = 'gilmar-ops-v8';
-const ASSETS = ['/', '/index.html', '/style.css', '/app.js', '/config.js', '/manifest.json'];
+const CACHE = 'gilmar-ops-v9';
 const NETWORK_FIRST = ['/app.js', '/index.html', '/'];
 
 self.addEventListener('install', e => {
-  e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
+  // Sem addAll — install nunca falha por 404
   self.skipWaiting();
 });
 
