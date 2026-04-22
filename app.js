@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════════════
-//  GILMAR // OPS — app.js v10
-//  Guitarra S4 · Inglês S4 · Leitura S4 · Treino S4 (Deload)
-//  Semana 4 · 30 mar 2026
+//  GILMAR // OPS — app.js v11
+//  Guitarra S5+ · Inglês S5+ · Leitura S5+ · Treino S5+
+//  Semana 7 · 22 abr 2026 — Ciclo contínuo pós-S5
 // ═══════════════════════════════════════════════════════════
 
 // ── SUPABASE ──
@@ -707,10 +707,10 @@ function getCurrentSemana() {
     new Date(2026, 2,  9), // S1 — 09 Mar
     new Date(2026, 2, 16), // S2 — 16 Mar
     new Date(2026, 2, 23), // S3 — 23 Mar
-    new Date(2026, 2, 30), // S4 — 30 Mar ← semana atual
+    new Date(2026, 2, 30), // S4 — 30 Mar
     new Date(2026, 3,  6), // S5 — 06 Abr
     new Date(2026, 3, 13), // S6 — 13 Abr
-    new Date(2026, 3, 20), // S7 — 20 Abr
+    new Date(2026, 3, 20), // S7 — 20 Abr ← semana atual
     new Date(2026, 3, 27), // S8 — 27 Abr
   ];
   let s = 1;
@@ -1932,14 +1932,32 @@ async function boot() {
   // Atualiza label específico do inglês
   const inglesLbl = document.getElementById('ingles-semana-lbl');
   if (inglesLbl) {
-    const nivelMap = { 1:'SEMANA 1 · B2 BASE', 2:'SEMANA 2 · B2 AVANÇADO', 3:'SEMANA 3 · C1 FLUÊNCIA', 4:'SEMANA 4 · C1 MAESTRIA', 5:'SEMANA 5 · C1 STORYTELLING' };
-    inglesLbl.textContent = nivelMap[semanaAtual] || 'SEMANA ' + semanaAtual + ' · C1 AVANÇADO';
+    const nivelMap = {
+      1:'SEMANA 1 · B2 BASE',
+      2:'SEMANA 2 · B2 AVANÇADO',
+      3:'SEMANA 3 · C1 FLUÊNCIA',
+      4:'SEMANA 4 · C1 MAESTRIA',
+      5:'SEMANA 5 · C1 STORYTELLING',
+      6:'SEMANA 6 · C1 CONSOLIDAÇÃO',
+      7:'SEMANA 7 · C1 FLUÊNCIA AVANÇADA',
+      8:'SEMANA 8 · C1 DOMÍNIO TOTAL',
+    };
+    inglesLbl.textContent = nivelMap[semanaAtual] || 'SEMANA ' + semanaAtual + ' · C1 CONTÍNUO';
   }
   // Mensagem de boot com contexto da semana
   setTimeout(() => {
     const h  = new Date().getHours();
     const gr = h<12 ? 'BOM DIA' : h<18 ? 'BOA TARDE' : 'BOA NOITE';
-    const guitarFocoMap = { 1:'FUNDAMENTOS FUSION', 2:'OUTSIDE PLAY · MODAL · TAPPING', 3:'SWEEP · ECONOMY · CHORD MELODY', 4:'LEGATO · HYBRID PICKING · HARMÔNICOS', 5:'IMPROVISAÇÃO FUSION · COMPOSIÇÃO' };
+    const guitarFocoMap = {
+      1:'FUNDAMENTOS FUSION',
+      2:'OUTSIDE PLAY · MODAL · TAPPING',
+      3:'SWEEP · ECONOMY · CHORD MELODY',
+      4:'LEGATO · HYBRID PICKING · HARMÔNICOS',
+      5:'IMPROVISAÇÃO FUSION · COMPOSIÇÃO',
+      6:'CONSOLIDAÇÃO S5 · IDENTIDADE SONORA',
+      7:'IMPROVISAÇÃO LIVRE · COMPOSIÇÃO ORIGINAL',
+      8:'GRAVAÇÃO FINAL · SÍNTESE DO CICLO',
+    };
     const guitarFoco = guitarFocoMap[semanaAtual] || 'MAESTRIA CONTÍNUA';
     showPopup(gr + ', GILMAR.', 'SEMANA ' + semanaAtual + ' · GUITARRA: ' + guitarFoco + ' · EXECUTE A MISSÃO.');
   }, 800);
