@@ -167,14 +167,14 @@
 
 <!-- TABNAV -->
 <div id="tabnav">
-  <button class="tnav active" onclick="goTab('rotina')"    id="t-rotina">ROTINA</button>
-  <button class="tnav"        onclick="goTab('ingles')"    id="t-ingles">INGLÊS</button>
-  <button class="tnav"        onclick="goTab('leitura')"   id="t-leitura">LEITURA</button>
-  <button class="tnav"        onclick="goTab('guitarra')"  id="t-guitarra">GUITARRA</button>
-  <button class="tnav"        onclick="goTab('treino')"    id="t-treino">TREINO</button>
-  <button class="tnav"        onclick="goTab('negocios')"  id="t-negocios">INSID360</button>
-  <button class="tnav"        onclick="goTab('trilhas')"   id="t-trilhas" style="color:#fbbf24">TRILHAS</button>
-  <button class="tnav"        onclick="goTab('outros')"    id="t-outros">METAS</button>
+  <button class="tnav active" onclick="goTab('rotina')"       id="t-rotina">ROTINA</button>
+  <button class="tnav"        onclick="goTab('guitarra')"    id="t-guitarra">GUITARRA</button>
+  <button class="tnav"        onclick="goTab('treino')"      id="t-treino">TREINO</button>
+  <button class="tnav"        onclick="goTab('negocios')"    id="t-negocios">INSID360</button>
+  <button class="tnav"        onclick="goTab('trilhas')"     id="t-trilhas" style="color:#fbbf24">TRILHAS</button>
+  <button class="tnav"        onclick="goTab('modobruto')"   id="t-modobruto" style="color:#60a5fa">MODO BRUTO</button>
+  <button class="tnav"        onclick="goTab('oportunidades')" id="t-oportunidades" style="color:#6ee7b7">OPORT.</button>
+  <button class="tnav"        onclick="goTab('outros')"      id="t-outros">METAS</button>
 </div>
 
 <!-- PAGE: ROTINA -->
@@ -209,53 +209,59 @@
   <div id="habit-grid"></div>
 </div>
 
-<!-- PAGE: INGLÊS -->
-<div class="page" id="page-ingles">
-  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:var(--neon)">♟</span><div><h1 class="pg-title" style="color:var(--neon)">INGLÊS</h1><div class="pg-sub">AQUISIÇÃO LINGUÍSTICA</div></div></div></div>
-  <div class="sec-hdr"><span class="sec-lbl">PLANO DO DIA — <span id="ingles-semana-lbl" class="semana-label">SEMANA 7</span> · C1 FLUÊNCIA</span><div class="sec-line"></div></div>
-  <div id="ingles-detail"></div>
-  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">PROGRESSO SEMANAL</span><div class="sec-line"></div></div>
-  <div class="rings-row" id="rings-ingles"></div>
-  <div class="sec-hdr" style="margin-top:12px"><span class="sec-lbl">INTEL</span><div class="sec-line"></div></div>
-  <textarea class="notes" placeholder="// FRASES NOVAS, EXPRESSÕES, ANOTAÇÕES..."></textarea>
-</div>
-
-<!-- PAGE: LEITURA -->
-<div class="page" id="page-leitura">
-  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:var(--amber)">♜</span><div><h1 class="pg-title" style="color:var(--amber)">LEITURA</h1><div class="pg-sub">INTELIGÊNCIA E DESENVOLVIMENTO</div></div></div></div>
-  <div class="sec-hdr"><span class="sec-lbl">LIVRO EM OPERAÇÃO</span><div class="sec-line"></div></div>
-  <div class="book-card">
-    <div class="book-spine" style="background:var(--amber)"></div>
-    <div class="book-body">
-      <input class="bk-title" id="bk-title" placeholder="TÍTULO DO LIVRO..." oninput="saveBookMeta()">
-      <input class="bk-author" id="bk-author" placeholder="// autor" oninput="saveBookMeta()">
-      <div class="prog-row"><span>PROGRESSO</span><span id="bk-pct">0%</span></div>
-      <div class="prog-track"><div id="bk-fill" class="prog-fill" style="width:0%;background:var(--amber)"></div></div>
-      <input type="range" min="0" max="100" value="0" id="bk-range" oninput="bkProg(this.value)" class="range-amber" style="width:100%;margin-top:10px">
-    </div>
-  </div>
-  <div class="sec-hdr" style="margin-top:16px"><span class="sec-lbl">MISSÃO DE LEITURA HOJE — <span class="semana-label">SEMANA 7</span></span><div class="sec-line"></div></div>
-  <div id="leitura-detail"></div>
-  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">REGISTRO SEMANAL</span><div class="sec-line"></div></div>
-  <div id="rw-row" class="rw-row"></div>
-  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">NOTAS & INSIGHTS</span><div class="sec-line"></div></div>
-  <textarea class="notes" style="min-height:180px" placeholder="// CITAÇÕES · IDEIAS-CHAVE · REFLEXÕES..."></textarea>
-</div>
-
 <!-- PAGE: GUITARRA -->
 <div class="page" id="page-guitarra">
-  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:#c084fc">♛</span><div><h1 class="pg-title" style="color:#c084fc">GUITARRA</h1><div class="pg-sub">20 ANOS · MAESTRIA CONTÍNUA</div></div></div></div>
-  <div class="sec-hdr"><span class="sec-lbl">SESSÃO DE HOJE — <span id="guitar-semana-lbl" class="semana-label">SEMANA 7</span></span><div class="sec-line"></div></div>
-  <div id="guitar-detail"></div>
-  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">METRÔNOMO</span><div class="sec-line"></div></div>
+  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:#c084fc">♛</span><div><h1 class="pg-title" style="color:#c084fc">GUITARRA</h1><div class="pg-sub">20 ANOS · MÚSICO COMPLETO · EVOLUÇÃO DIÁRIA</div></div></div></div>
+
+  <div class="sec-hdr"><span class="sec-lbl">FOCO DO DIA</span><div class="sec-line"></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
+    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Técnica geral (45 min)</div><div class="mt-meta">Escalas · Arpejos · Sweep · Legato · Alternate picking</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Teoria aplicada (20 min)</div><div class="mt-meta">Harmonia · Modos · Progressões · Cifras</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Repertório / Estilo (30 min)</div><div class="mt-meta">Rodar estilos: blues · jazz · rock · funk · fingerpicking</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Improvisação livre (15 min)</div><div class="mt-meta">Sem metrônomo · expressão · musicalidade</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Gravar 1 vídeo musical</div><div class="mt-meta">TikTok · Reels · YT Shorts — qualquer estilo</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Editar + agendar post</div><div class="mt-meta">1 gravação → 3 destinos automáticos</div></div>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-lbl">ESTILOS EM ROTAÇÃO SEMANAL</span><div class="sec-line"></div></div>
+  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px">
+    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🎸 FUSION / PROG</span>
+    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🎷 JAZZ</span>
+    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🔵 BLUES</span>
+    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🤘 ROCK / METAL</span>
+    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🕺 FUNK / R&B</span>
+    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🎵 FINGERPICKING</span>
+    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🎼 CLÁSSICO</span>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-lbl">METRÔNOMO</span><div class="sec-line"></div></div>
   <div class="bpm-card">
     <div class="bpm-num" id="bpm-num">80</div>
     <div class="bpm-unit">BPM</div>
     <input type="range" min="40" max="240" value="80" oninput="document.getElementById('bpm-num').textContent=this.value" class="range-purple" style="width:80%;margin-top:18px">
     <div class="bpm-scale"><span>40</span><span>120</span><span>240</span></div>
   </div>
+
   <div class="sec-hdr"><span class="sec-lbl">LOG DA SESSÃO</span><div class="sec-line"></div></div>
-  <textarea class="notes" placeholder="// O QUE PRATICOU · CONQUISTAS · PRÓXIMOS DESAFIOS..."></textarea>
+  <textarea class="notes" placeholder="// ESTILO DO DIA · O QUE PRATICOU · CONQUISTAS · PRÓXIMOS DESAFIOS..."></textarea>
 </div>
 
 <!-- PAGE: TREINO -->
@@ -323,10 +329,10 @@
   <!-- Cards das 3 trilhas -->
   <div class="trilha-hero">
     <div class="trilha-card tc-fisico">
-      <div class="tc-icon">🧴</div>
-      <div class="tc-nome">PRODUTO FÍSICO</div>
-      <div class="tc-vel">Retorno imediato · semanas</div>
-      <div class="tc-pot">Mês 1–3: R$2–5k/mês<br>Mês 7–12: R$20k+/mês</div>
+      <div class="tc-icon">🛒</div>
+      <div class="tc-nome">PRODUTO / AFILIADO</div>
+      <div class="tc-vel">Em análise · validando nicho</div>
+      <div class="tc-pot">Produto próprio ou afiliado<br>TikTok Shop · IG · conteúdo</div>
     </div>
     <div class="trilha-card tc-saas">
       <div class="tc-icon">⚡</div>
@@ -338,7 +344,7 @@
       <div class="tc-icon">🎸</div>
       <div class="tc-nome">GUITARRA / CONTEÚDO</div>
       <div class="tc-vel">Retorno longo · 6–12 meses</div>
-      <div class="tc-pot">Mês 7–12: R$3–8k/mês<br>Autoridade PT-BR fusion</div>
+      <div class="tc-pot">Mês 7–12: R$3–8k/mês<br>Músico completo · PT-BR</div>
     </div>
   </div>
 
@@ -363,7 +369,7 @@
     <div class="grade-row">
       <div class="gr-hora">11h–12h</div>
       <div class="gr-bloco" style="color:#c084fc">🎸 Guitarra</div>
-      <div class="gr-foco">Treino técnico + 1 vídeo fusion por dia</div>
+      <div class="gr-foco">Treino técnico + 1 vídeo musical (qualquer estilo)</div>
     </div>
     <div class="grade-row">
       <div class="gr-hora">12h–13h</div>
@@ -372,8 +378,8 @@
     </div>
     <div class="grade-row">
       <div class="gr-hora">13h–15h</div>
-      <div class="gr-bloco" style="color:#fbbf24">🧴 Perfumes / Shop</div>
-      <div class="gr-foco">TikTok Shop · lives · pedidos · atendimento</div>
+      <div class="gr-bloco" style="color:#fbbf24">🛒 Produto / Afiliado</div>
+      <div class="gr-foco">TikTok Shop · conteúdo · pesquisa de nicho · análise</div>
     </div>
     <div class="grade-row">
       <div class="gr-hora">15h–17h</div>
@@ -387,40 +393,36 @@
     </div>
   </div>
 
-  <!-- Trilha Produto Físico -->
+  <!-- Trilha Produto / Afiliado -->
   <div class="trilha-section">
     <div class="trilha-section-hdr">
-      <span class="ts-icon">🧴</span>
-      <span class="ts-title" style="color:#fbbf24">PRODUTO FÍSICO — PERFUMES</span>
-      <span class="ts-meta">13h–15h</span>
+      <span class="ts-icon">🛒</span>
+      <span class="ts-title" style="color:#fbbf24">PRODUTO / AFILIADO</span>
+      <span class="ts-meta">13h–15h · EM ANÁLISE</span>
     </div>
     <div class="mon-task" style="--mt-color:#fbbf24" onclick="this.classList.toggle('done')">
       <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Live de review de perfumes no TikTok Shop</div><div class="mt-meta">Operação · 45–60 min · Diária</div></div>
+      <div class="mt-body"><div class="mt-nome">Pesquisa de nicho e validação de produto</div><div class="mt-meta">Estratégia · 30 min · Diária</div></div>
     </div>
     <div class="mon-task" style="--mt-color:#fbbf24" onclick="this.classList.toggle('done')">
       <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Gravar 1–2 vídeos de review / unboxing</div><div class="mt-meta">Tarefa · 30 min · Diária</div></div>
+      <div class="mt-body"><div class="mt-nome">Analisar concorrência e tendências no TikTok Shop</div><div class="mt-meta">Pesquisa · 30 min · Diária</div></div>
     </div>
     <div class="mon-task" style="--mt-color:#fbbf24" onclick="this.classList.toggle('done')">
       <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Atender pedidos e confirmar envios</div><div class="mt-meta">Operação · 30 min · Diária</div></div>
+      <div class="mt-body"><div class="mt-nome">Gravar 1–2 vídeos de conteúdo / teste de nicho</div><div class="mt-meta">Tarefa · 30 min · Diária</div></div>
     </div>
     <div class="mon-task" style="--mt-color:#fbbf24" onclick="this.classList.toggle('done')">
       <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Gestão de estoque e reposição</div><div class="mt-meta">Gestão · 20 min · Diária</div></div>
-    </div>
-    <div class="mon-task" style="--mt-color:#fbbf24" onclick="this.classList.toggle('done')">
-      <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Responder DMs e comentários sobre produtos</div><div class="mt-meta">Hábito · 20 min · Diária</div></div>
+      <div class="mt-body"><div class="mt-nome">Responder DMs e engajar audiência</div><div class="mt-meta">Hábito · 20 min · Diária</div></div>
     </div>
     <div class="mon-task" style="--mt-color:#fbbf24; opacity:.6" onclick="this.classList.toggle('done')">
       <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Análise de faturamento semanal do Shop</div><div class="mt-meta">Revisão · 30 min · Semanal</div></div>
+      <div class="mt-body"><div class="mt-nome">Avaliar programas de afiliado (Hotmart, Shopee, Amazon)</div><div class="mt-meta">Estratégia · 1h · Semanal</div></div>
     </div>
     <div class="mon-task" style="--mt-color:#fbbf24; opacity:.6" onclick="this.classList.toggle('done')">
       <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Pesquisa de novos produtos e fornecedores</div><div class="mt-meta">Estratégia · 1h · Semanal</div></div>
+      <div class="mt-body"><div class="mt-nome">Definir produto/nicho da semana e testar</div><div class="mt-meta">Decisão · 30 min · Semanal</div></div>
     </div>
   </div>
 
@@ -525,6 +527,173 @@
   <textarea class="notes" style="min-height:180px" placeholder="// ANOTAÇÕES LIVRES · IDEIAS · LEMBRETES..."></textarea>
 </div>
 
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE: MODO BRUTO                                    -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="page-modobruto">
+  <div class="pg-hdr">
+    <div class="pgh-left">
+      <span class="chess-icon" style="color:#60a5fa">⚡</span>
+      <div>
+        <h1 class="pg-title" style="color:#60a5fa">MODO BRUTO</h1>
+        <div class="pg-sub">SAAS DE PRODUTIVIDADE · NEXT.JS · SUPABASE · STRIPE</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Métricas do produto -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0 20px">
+    <div style="background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.2);border-radius:10px;padding:12px;text-align:center">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:#60a5fa" id="mb-usuarios">0</div>
+      <div style="font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">Usuários</div>
+    </div>
+    <div style="background:rgba(110,231,183,.08);border:1px solid rgba(110,231,183,.2);border-radius:10px;padding:12px;text-align:center">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:#6ee7b7" id="mb-mrr">R$0</div>
+      <div style="font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">MRR</div>
+    </div>
+    <div style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:10px;padding:12px;text-align:center">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:#fbbf24" id="mb-churn">0%</div>
+      <div style="font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">Churn</div>
+    </div>
+    <div style="background:rgba(192,132,252,.08);border:1px solid rgba(192,132,252,.2);border-radius:10px;padding:12px;text-align:center">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:#c084fc" id="mb-dias">0</div>
+      <div style="font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.06em;margin-top:2px">Dias</div>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-lbl">MISSÕES DO DIA · BUILD</span><div class="sec-line"></div></div>
+  <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+    <div class="mt-ck"></div>
+    <div class="mt-body"><div class="mt-nome">Build do Modo Bruto (código, features, testes)</div><div class="mt-meta">Projeto · 2h · 07:00–09:00</div></div>
+  </div>
+  <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+    <div class="mt-ck"></div>
+    <div class="mt-body"><div class="mt-nome">Suporte a usuários e onboarding</div><div class="mt-meta">Operação · 30 min · Diária</div></div>
+  </div>
+  <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+    <div class="mt-ck"></div>
+    <div class="mt-body"><div class="mt-nome">Revisar métricas (usuários, churn, MRR)</div><div class="mt-meta">Revisão · 20 min · 17:00–18:00</div></div>
+  </div>
+
+  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">CONTEÚDO · FUNIL</span><div class="sec-line"></div></div>
+  <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+    <div class="mt-ck"></div>
+    <div class="mt-body"><div class="mt-nome">Gravar 2 vídeos IA/produtividade para TikTok</div><div class="mt-meta">Tarefa · 40 min · 09:00–11:00</div></div>
+  </div>
+  <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+    <div class="mt-ck"></div>
+    <div class="mt-body"><div class="mt-nome">Editar + agendar posts de produtividade</div><div class="mt-meta">Tarefa · 30 min · 15:00–17:00</div></div>
+  </div>
+  <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+    <div class="mt-ck"></div>
+    <div class="mt-body"><div class="mt-nome">Responder comentários e engajar audiência</div><div class="mt-meta">Hábito · 20 min · Diária</div></div>
+  </div>
+
+  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">ROADMAP / BACKLOG</span><div class="sec-line"></div></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:16px">
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,68,68,.3);border-radius:8px;padding:10px">
+      <div style="font-size:10px;font-weight:700;color:#ff4444;letter-spacing:.08em;margin-bottom:8px">🔴 URGENTE</div>
+      <textarea style="background:transparent;border:none;color:rgba(255,255,255,.7);font-size:11px;width:100%;min-height:80px;resize:vertical;outline:none" placeholder="// features urgentes..."></textarea>
+    </div>
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(251,191,36,.3);border-radius:8px;padding:10px">
+      <div style="font-size:10px;font-weight:700;color:#fbbf24;letter-spacing:.08em;margin-bottom:8px">🟡 PRÓXIMA SPRINT</div>
+      <textarea style="background:transparent;border:none;color:rgba(255,255,255,.7);font-size:11px;width:100%;min-height:80px;resize:vertical;outline:none" placeholder="// próximas features..."></textarea>
+    </div>
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(110,231,183,.3);border-radius:8px;padding:10px">
+      <div style="font-size:10px;font-weight:700;color:#6ee7b7;letter-spacing:.08em;margin-bottom:8px">🟢 BACKLOG</div>
+      <textarea style="background:transparent;border:none;color:rgba(255,255,255,.7);font-size:11px;width:100%;min-height:80px;resize:vertical;outline:none" placeholder="// ideias futuras..."></textarea>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-lbl">INTEL / DECISÕES</span><div class="sec-line"></div></div>
+  <textarea class="notes" style="min-height:140px" placeholder="// APRENDIZADOS · DECISÕES TÉCNICAS · PRÓXIMOS PASSOS..."></textarea>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE: OPORTUNIDADES                                 -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="page-oportunidades">
+  <div class="pg-hdr">
+    <div class="pgh-left">
+      <span class="chess-icon" style="color:#6ee7b7">◈</span>
+      <div>
+        <h1 class="pg-title" style="color:#6ee7b7">OPORTUNIDADES</h1>
+        <div class="pg-sub">ATUALIZADO SEMANALMENTE · MONETIZAÇÃO · INTERESSE</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:8px;margin:12px 0 20px;flex-wrap:wrap">
+    <div style="background:rgba(110,231,183,.08);border:1px solid rgba(110,231,183,.2);border-radius:8px;padding:8px 14px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🟢 ATIVAS: <span id="op-ativas">0</span></div>
+    <div style="background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.2);border-radius:8px;padding:8px 14px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🔍 EM ANÁLISE: <span id="op-analise">0</span></div>
+    <div style="background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.2);border-radius:8px;padding:8px 14px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🧪 EM TESTE: <span id="op-teste">0</span></div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-lbl">🔥 SEMANA ATUAL</span><div class="sec-line"></div></div>
+
+  <!-- Oportunidade card template -->
+  <div id="oport-lista">
+
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(110,231,183,.25);border-radius:10px;padding:14px 16px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;letter-spacing:.06em">TikTok Shop — Afiliado</div>
+        <span style="background:rgba(251,191,36,.2);color:#fbbf24;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.06em">EM ANÁLISE</span>
+      </div>
+      <div style="font-size:12px;opacity:.6;margin-bottom:6px">Monetização via comissão de produtos sem estoque. Testar nicho antes de comprar produto próprio.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:10px;opacity:.4;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 6px">AFILIADO</span>
+        <span style="font-size:10px;opacity:.4;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 6px">TIKTOK</span>
+        <span style="font-size:10px;opacity:.4;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 6px">SEM ESTOQUE</span>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(96,165,250,.25);border-radius:10px;padding:14px 16px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;letter-spacing:.06em">Curso de Guitarra PT-BR — Digital</div>
+        <span style="background:rgba(96,165,250,.2);color:#60a5fa;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.06em">EM ANÁLISE</span>
+      </div>
+      <div style="font-size:12px;opacity:.6;margin-bottom:6px">Mini-curso R$97–147 via Hotmart. Fase 2 da trilha guitarra. Validar audiência antes de produzir.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:10px;opacity:.4;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 6px">PRODUTO DIGITAL</span>
+        <span style="font-size:10px;opacity:.4;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 6px">HOTMART</span>
+        <span style="font-size:10px;opacity:.4;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 6px">GUITARRA</span>
+      </div>
+    </div>
+
+    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(192,132,252,.25);border-radius:10px;padding:14px 16px;margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+        <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;letter-spacing:.06em">Consultoria IA para PMEs</div>
+        <span style="background:rgba(192,132,252,.2);color:#c084fc;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.06em">EM ANÁLISE</span>
+      </div>
+      <div style="font-size:12px;opacity:.6;margin-bottom:6px">Aproveitar expertise Insid360 + IA para oferta de consultoria de automação a pequenas empresas. Alto ticket.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <span style="font-size:10px;opacity:.4;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 6px">CONSULTORIA</span>
+        <span style="font-size:10px;opacity:.4;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 6px">IA</span>
+        <span style="font-size:10px;opacity:.4;border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:2px 6px">ALTO TICKET</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-hdr" style="margin-top:24px"><span class="sec-lbl">➕ NOVA OPORTUNIDADE DA SEMANA</span><div class="sec-line"></div></div>
+  <div style="background:rgba(255,255,255,.03);border:1px dashed rgba(110,231,183,.2);border-radius:10px;padding:14px 16px;margin-bottom:16px">
+    <input id="op-nome" placeholder="Nome da oportunidade..." style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;width:100%;padding:6px 0;margin-bottom:10px;outline:none">
+    <textarea id="op-desc" placeholder="// Descrição, potencial, próximo passo..." style="background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7);font-size:12px;width:100%;min-height:60px;resize:none;outline:none;padding:4px 0"></textarea>
+    <div style="display:flex;gap:8px;margin-top:12px">
+      <select id="op-status" style="background:#111;border:1px solid rgba(255,255,255,.15);color:#fff;padding:6px 10px;border-radius:6px;font-size:11px;flex:1">
+        <option value="analise">EM ANÁLISE</option>
+        <option value="teste">EM TESTE</option>
+        <option value="ativa">ATIVA</option>
+        <option value="descartada">DESCARTADA</option>
+      </select>
+      <button onclick="adicionarOportunidade()" style="background:rgba(110,231,183,.15);border:1px solid rgba(110,231,183,.3);color:#6ee7b7;padding:6px 16px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:.06em;cursor:pointer">ADICIONAR</button>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-lbl">INTEL ESTRATÉGICA</span><div class="sec-line"></div></div>
+  <textarea class="notes" style="min-height:120px" placeholder="// INSIGHTS DA SEMANA · O QUE DESCARTAR · O QUE PRIORIZAR..."></textarea>
+</div>
+
 <!-- POPUP -->
 <div id="popup">
   <div class="popup-dot"></div>
@@ -544,34 +713,59 @@
   </div>
 </div>
 
-<script src="config.js?v=12"></script>
-<script src="app.js?v=12"></script>
+<script src="config.js?v=13"></script>
+<script src="app.js?v=13"></script>
 <script>
-// Suporte à aba TRILHAS — navegação
-(function(){
-  const origGoTab = window.goTab;
-  if (typeof origGoTab === 'function') {
-    window.goTab = function(tab) {
-      origGoTab(tab);
-      // garante que a aba trilhas também funciona
-    };
-  }
-  // Fallback caso goTab ainda não esteja definida no load
-  document.addEventListener('DOMContentLoaded', function(){
-    document.querySelectorAll('.tnav').forEach(btn => {
-      btn.addEventListener('click', function(){
-        const tab = this.getAttribute('onclick').match(/'([^']+)'/)?.[1];
-        if (tab === 'trilhas') {
-          document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-          document.querySelectorAll('.tnav').forEach(b => b.classList.remove('active'));
-          const pg = document.getElementById('page-trilhas');
-          if (pg) pg.classList.add('active');
-          this.classList.add('active');
-        }
-      });
+// Suporte às novas abas (trilhas, modobruto, oportunidades)
+document.addEventListener('DOMContentLoaded', function(){
+  // Contador de dias do Modo Bruto (desde 03/Jun/2026)
+  const inicio = new Date('2026-06-03');
+  const hoje = new Date();
+  const dias = Math.floor((hoje - inicio) / 86400000);
+  const el = document.getElementById('mb-dias');
+  if (el) el.textContent = dias >= 0 ? dias : 0;
+
+  // Tabs extras — fallback para goTab nativo
+  document.querySelectorAll('.tnav').forEach(btn => {
+    btn.addEventListener('click', function(){
+      const match = this.getAttribute('onclick').match(/'([^']+)'/);
+      if (!match) return;
+      const tab = match[1];
+      const extras = ['trilhas','modobruto','oportunidades'];
+      if (extras.includes(tab)) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tnav').forEach(b => b.classList.remove('active'));
+        const pg = document.getElementById('page-' + tab);
+        if (pg) pg.classList.add('active');
+        this.classList.add('active');
+      }
     });
   });
-})();
+});
+
+// Adicionar oportunidade dinamicamente
+function adicionarOportunidade() {
+  const nome = document.getElementById('op-nome').value.trim();
+  const desc = document.getElementById('op-desc').value.trim();
+  const status = document.getElementById('op-status').value;
+  if (!nome) return;
+
+  const cores = { analise: ['#fbbf24','rgba(251,191,36,.25)','EM ANÁLISE'], teste: ['#60a5fa','rgba(96,165,250,.25)','EM TESTE'], ativa: ['#6ee7b7','rgba(110,231,183,.25)','ATIVA'], descartada: ['#888','rgba(128,128,128,.15)','DESCARTADA'] };
+  const [cor, borda, label] = cores[status] || cores.analise;
+
+  const card = document.createElement('div');
+  card.style.cssText = `background:rgba(255,255,255,.04);border:1px solid ${borda};border-radius:10px;padding:14px 16px;margin-bottom:10px`;
+  card.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;letter-spacing:.06em">${nome}</div>
+      <span style="background:${borda};color:${cor};font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.06em">${label}</span>
+    </div>
+    <div style="font-size:12px;opacity:.6">${desc}</div>`;
+
+  document.getElementById('oport-lista').appendChild(card);
+  document.getElementById('op-nome').value = '';
+  document.getElementById('op-desc').value = '';
+}
 </script>
 </body>
 </html>
