@@ -174,6 +174,7 @@
   <button class="tnav"        onclick="goTab('trilhas')"     id="t-trilhas" style="color:#fbbf24">TRILHAS</button>
   <button class="tnav"        onclick="goTab('modobruto')"   id="t-modobruto" style="color:#60a5fa">MODO BRUTO</button>
   <button class="tnav"        onclick="goTab('oportunidades')" id="t-oportunidades" style="color:#6ee7b7">OPORT.</button>
+  <button class="tnav"        onclick="goTab('financeiro')"  id="t-financeiro" style="color:#34d399">FINANÇAS</button>
   <button class="tnav"        onclick="goTab('outros')"      id="t-outros">METAS</button>
 </div>
 
@@ -694,6 +695,88 @@
   <textarea class="notes" style="min-height:120px" placeholder="// INSIGHTS DA SEMANA · O QUE DESCARTAR · O QUE PRIORIZAR..."></textarea>
 </div>
 
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE: EVOLUÇÃO MONETÁRIA                            -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="page-financeiro">
+  <div class="pg-hdr">
+    <div class="pgh-left">
+      <span class="chess-icon" style="color:#34d399">₿</span>
+      <div>
+        <h1 class="pg-title" style="color:#34d399">EVOLUÇÃO MONETÁRIA</h1>
+        <div class="pg-sub">ENTRADAS · SAÍDAS · SALDO · CONTROLE TOTAL</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seletor de mês -->
+  <div style="display:flex;gap:8px;align-items:center;margin:12px 0 20px">
+    <span style="font-size:11px;opacity:.4;text-transform:uppercase;letter-spacing:.08em">MÊS</span>
+    <select id="fin-mes" onchange="finAtualizar()" style="background:#111;border:1px solid rgba(255,255,255,.15);color:#fff;padding:6px 12px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em">
+      <option value="0">JANEIRO</option><option value="1">FEVEREIRO</option><option value="2">MARÇO</option>
+      <option value="3">ABRIL</option><option value="4">MAIO</option><option value="5" selected>JUNHO</option>
+      <option value="6">JULHO</option><option value="7">AGOSTO</option><option value="8">SETEMBRO</option>
+      <option value="9">OUTUBRO</option><option value="10">NOVEMBRO</option><option value="11">DEZEMBRO</option>
+    </select>
+    <select id="fin-ano" onchange="finAtualizar()" style="background:#111;border:1px solid rgba(255,255,255,.15);color:#fff;padding:6px 12px;border-radius:6px;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em">
+      <option value="2026" selected>2026</option><option value="2027">2027</option>
+    </select>
+  </div>
+
+  <!-- Cards de resumo -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:24px">
+    <div style="background:rgba(52,211,153,.08);border:1px solid rgba(52,211,153,.25);border-radius:12px;padding:16px;text-align:center">
+      <div style="font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">TOTAL ENTRADAS</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:#34d399" id="fin-total-entrada">R$ 0,00</div>
+    </div>
+    <div style="background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.25);border-radius:12px;padding:16px;text-align:center">
+      <div style="font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">TOTAL SAÍDAS</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:#f87171" id="fin-total-saida">R$ 0,00</div>
+    </div>
+    <div style="background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.25);border-radius:12px;padding:16px;text-align:center">
+      <div style="font-size:10px;opacity:.5;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">SALDO</div>
+      <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:900;color:#60a5fa" id="fin-saldo">R$ 0,00</div>
+    </div>
+  </div>
+
+  <!-- Entradas -->
+  <div class="sec-hdr"><span class="sec-lbl" style="color:#34d399">⬆ ENTRADAS</span><div class="sec-line"></div></div>
+  <div id="fin-entradas-lista"></div>
+  <div style="display:flex;gap:8px;margin:8px 0 20px;align-items:center">
+    <input id="fin-entrada-desc" placeholder="Descrição (ex: Insid360, Modo Bruto, Guitarra...)" style="flex:2;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.2);border-radius:8px;color:#fff;padding:9px 12px;font-size:13px;outline:none">
+    <input id="fin-entrada-val" type="number" min="0" step="0.01" placeholder="R$ 0,00" style="flex:1;background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.2);border-radius:8px;color:#34d399;padding:9px 12px;font-size:13px;font-weight:700;outline:none;text-align:right">
+    <button onclick="finAdicionarEntrada()" style="background:rgba(52,211,153,.15);border:1px solid rgba(52,211,153,.35);color:#34d399;padding:9px 16px;border-radius:8px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.06em;cursor:pointer;white-space:nowrap">+ ENTRADA</button>
+  </div>
+
+  <!-- Saídas -->
+  <div class="sec-hdr"><span class="sec-lbl" style="color:#f87171">⬇ SAÍDAS</span><div class="sec-line"></div></div>
+  <div id="fin-saidas-lista"></div>
+  <div style="display:flex;gap:8px;margin:8px 0 20px;align-items:center">
+    <input id="fin-saida-desc" placeholder="Descrição (ex: Servidor, Marketing, Pessoal...)" style="flex:2;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.2);border-radius:8px;color:#fff;padding:9px 12px;font-size:13px;outline:none">
+    <input id="fin-saida-val" type="number" min="0" step="0.01" placeholder="R$ 0,00" style="flex:1;background:rgba(248,113,113,.06);border:1px solid rgba(248,113,113,.2);border-radius:8px;color:#f87171;padding:9px 12px;font-size:13px;font-weight:700;outline:none;text-align:right">
+    <button onclick="finAdicionarSaida()" style="background:rgba(248,113,113,.15);border:1px solid rgba(248,113,113,.35);color:#f87171;padding:9px 16px;border-radius:8px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:.06em;cursor:pointer;white-space:nowrap">+ SAÍDA</button>
+  </div>
+
+  <!-- Barra de saúde financeira -->
+  <div class="sec-hdr"><span class="sec-lbl">SAÚDE FINANCEIRA</span><div class="sec-line"></div></div>
+  <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:16px;margin-bottom:20px">
+    <div style="display:flex;justify-content:space-between;margin-bottom:8px">
+      <span style="font-size:11px;opacity:.5">ENTRADAS vs SAÍDAS</span>
+      <span style="font-size:11px;font-weight:700;color:#34d399" id="fin-pct-txt">0%</span>
+    </div>
+    <div style="background:rgba(255,255,255,.06);border-radius:6px;height:10px;overflow:hidden">
+      <div id="fin-barra" style="height:100%;width:0%;background:linear-gradient(90deg,#34d399,#6ee7b7);border-radius:6px;transition:width .4s ease"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:6px">
+      <span style="font-size:10px;opacity:.35">R$ 0</span>
+      <span style="font-size:10px;opacity:.35" id="fin-barra-max">R$ 0</span>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-lbl">OBSERVAÇÕES</span><div class="sec-line"></div></div>
+  <textarea class="notes" style="min-height:120px" placeholder="// METAS FINANCEIRAS · INVESTIMENTOS · PRÓXIMOS PASSOS..."></textarea>
+</div>
+
 <!-- POPUP -->
 <div id="popup">
   <div class="popup-dot"></div>
@@ -738,6 +821,117 @@ document.addEventListener('DOMContentLoaded', function(){
         const pg = document.getElementById('page-' + tab);
         if (pg) pg.classList.add('active');
         this.classList.add('active');
+      }
+    });
+  });
+});
+
+// ── EVOLUÇÃO MONETÁRIA ───────────────────────────────────
+let finDados = JSON.parse(localStorage.getItem('fin_dados') || '{}');
+
+function finChave() {
+  const m = document.getElementById('fin-mes')?.value ?? new Date().getMonth();
+  const a = document.getElementById('fin-ano')?.value ?? new Date().getFullYear();
+  return `${a}-${m}`;
+}
+
+function finSalvar() {
+  localStorage.setItem('fin_dados', JSON.stringify(finDados));
+}
+
+function finFmt(v) {
+  return 'R$ ' + Number(v).toLocaleString('pt-BR', {minimumFractionDigits:2, maximumFractionDigits:2});
+}
+
+function finRenderLinha(item, idx, tipo) {
+  const cor = tipo === 'entrada' ? '#34d399' : '#f87171';
+  const div = document.createElement('div');
+  div.style.cssText = 'display:flex;align-items:center;gap:10px;padding:9px 12px;background:rgba(255,255,255,.03);border-radius:8px;margin-bottom:5px';
+  div.innerHTML = `
+    <span style="flex:1;font-size:13px;opacity:.85">${item.desc}</span>
+    <span style="font-family:\'Barlow Condensed\',sans-serif;font-weight:700;font-size:14px;color:${cor}">${finFmt(item.val)}</span>
+    <button onclick="finRemover('${tipo}',${idx})" style="background:transparent;border:none;color:rgba(255,255,255,.25);font-size:16px;cursor:pointer;padding:0 4px;line-height:1" title="Remover">×</button>`;
+  return div;
+}
+
+function finAtualizar() {
+  const chave = finChave();
+  const dados = finDados[chave] || {entradas:[], saidas:[]};
+
+  const listaE = document.getElementById('fin-entradas-lista');
+  const listaS = document.getElementById('fin-saidas-lista');
+  if (!listaE || !listaS) return;
+  listaE.innerHTML = ''; listaS.innerHTML = '';
+
+  let totalE = 0, totalS = 0;
+  dados.entradas.forEach((it, i) => { totalE += Number(it.val); listaE.appendChild(finRenderLinha(it, i, 'entrada')); });
+  dados.saidas.forEach((it, i)   => { totalS += Number(it.val); listaS.appendChild(finRenderLinha(it, i, 'saida')); });
+
+  const saldo = totalE - totalS;
+  document.getElementById('fin-total-entrada').textContent = finFmt(totalE);
+  document.getElementById('fin-total-saida').textContent   = finFmt(totalS);
+  const elSaldo = document.getElementById('fin-saldo');
+  elSaldo.textContent = finFmt(saldo);
+  elSaldo.style.color = saldo >= 0 ? '#60a5fa' : '#f87171';
+
+  const max = Math.max(totalE, totalS, 1);
+  const pct = Math.round((totalE / max) * 100);
+  document.getElementById('fin-barra').style.width = pct + '%';
+  document.getElementById('fin-pct-txt').textContent = Math.round(totalE > 0 ? (totalE / (totalE + totalS)) * 100 : 0) + '% coberto';
+  document.getElementById('fin-barra-max').textContent = finFmt(max);
+}
+
+function finAdicionarEntrada() {
+  const desc = document.getElementById('fin-entrada-desc').value.trim();
+  const val  = parseFloat(document.getElementById('fin-entrada-val').value);
+  if (!desc || isNaN(val) || val <= 0) return;
+  const chave = finChave();
+  if (!finDados[chave]) finDados[chave] = {entradas:[], saidas:[]};
+  finDados[chave].entradas.push({desc, val});
+  finSalvar(); finAtualizar();
+  document.getElementById('fin-entrada-desc').value = '';
+  document.getElementById('fin-entrada-val').value  = '';
+}
+
+function finAdicionarSaida() {
+  const desc = document.getElementById('fin-saida-desc').value.trim();
+  const val  = parseFloat(document.getElementById('fin-saida-val').value);
+  if (!desc || isNaN(val) || val <= 0) return;
+  const chave = finChave();
+  if (!finDados[chave]) finDados[chave] = {entradas:[], saidas:[]};
+  finDados[chave].saidas.push({desc, val});
+  finSalvar(); finAtualizar();
+  document.getElementById('fin-saida-desc').value = '';
+  document.getElementById('fin-saida-val').value  = '';
+}
+
+function finRemover(tipo, idx) {
+  const chave = finChave();
+  if (!finDados[chave]) return;
+  finDados[chave][tipo === 'entrada' ? 'entradas' : 'saidas'].splice(idx, 1);
+  finSalvar(); finAtualizar();
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  // Seleciona mês atual
+  const agora = new Date();
+  const selMes = document.getElementById('fin-mes');
+  const selAno = document.getElementById('fin-ano');
+  if (selMes) selMes.value = String(agora.getMonth());
+  if (selAno) selAno.value = String(agora.getFullYear());
+  finAtualizar();
+
+  // Tab financeiro
+  document.querySelectorAll('.tnav').forEach(btn => {
+    btn.addEventListener('click', function(){
+      const match = this.getAttribute('onclick').match(/'([^']+)'/);
+      if (match && match[1] === 'financeiro') {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tnav').forEach(b => b.classList.remove('active'));
+        const pg = document.getElementById('page-financeiro');
+        if (pg) pg.classList.add('active');
+        this.classList.add('active');
+        finAtualizar();
       }
     });
   });
