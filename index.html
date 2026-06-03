@@ -11,6 +11,97 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <link rel="stylesheet" href="style.css?v=4">
+<style>
+/* ── TRILHAS PAGE ─────────────────────────────────────────── */
+.trilha-hero {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+.trilha-card {
+  flex: 1;
+  min-width: 160px;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+  padding: 14px 16px;
+}
+.trilha-card .tc-icon { font-size: 22px; margin-bottom: 6px; }
+.trilha-card .tc-nome { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .08em; color: #fff; }
+.trilha-card .tc-vel  { font-size: 10px; opacity: .5; text-transform: uppercase; letter-spacing: .06em; margin-top: 2px; }
+.trilha-card .tc-pot  { font-size: 11px; margin-top: 8px; color: #6ee7b7; font-weight: 600; }
+.trilha-card.tc-fisico  { border-color: rgba(251,191,36,.25); }
+.trilha-card.tc-saas    { border-color: rgba(96,165,250,.25); }
+.trilha-card.tc-guitar  { border-color: rgba(192,132,252,.25); }
+
+.grade-wrap {
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 0 24px;
+}
+.grade-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  padding: 10px 14px;
+  gap: 8px;
+  align-items: center;
+}
+.grade-row:last-child { border-bottom: none; }
+.gr-hora  { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .06em; color: #6ee7b7; }
+.gr-bloco { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; color: #fff; }
+.gr-foco  { font-size: 11px; opacity: .55; }
+
+.trilha-section { margin-top: 28px; }
+.trilha-section-hdr {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 10px;
+}
+.trilha-section-hdr .ts-icon { font-size: 18px; }
+.trilha-section-hdr .ts-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800; font-size: 16px; letter-spacing: .08em;
+}
+.trilha-section-hdr .ts-meta {
+  font-size: 10px; opacity: .45; margin-left: auto;
+  letter-spacing: .06em; text-transform: uppercase;
+}
+.mon-task {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 11px 14px;
+  background: rgba(255,255,255,.03);
+  border-left: 3px solid var(--mt-color, #444);
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: background .15s;
+}
+.mon-task:hover { background: rgba(255,255,255,.06); }
+.mon-task.done  { opacity: .4; }
+.mon-task.done .mt-ck::after { content: '✓'; font-size: 11px; color: #6ee7b7; display: flex; align-items: center; justify-content: center; }
+.mt-ck {
+  width: 18px; height: 18px; min-width: 18px;
+  border: 1.5px solid rgba(255,255,255,.25);
+  border-radius: 4px; margin-top: 1px;
+  transition: border-color .2s;
+}
+.mon-task.done .mt-ck { border-color: #6ee7b7; background: rgba(110,231,183,.12); }
+.mt-body { flex: 1; }
+.mt-nome { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: .04em; }
+.mt-meta { font-size: 10px; opacity: .45; margin-top: 2px; text-transform: uppercase; letter-spacing: .05em; }
+
+.regra-row {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+  font-size: 13px;
+}
+.regra-row:last-child { border-bottom: none; }
+.regra-icon { font-size: 16px; min-width: 24px; }
+</style>
 </head>
 <body>
 
@@ -76,13 +167,14 @@
 
 <!-- TABNAV -->
 <div id="tabnav">
-  <button class="tnav active" onclick="goTab('rotina')"   id="t-rotina">ROTINA</button>
-  <button class="tnav"        onclick="goTab('ingles')"   id="t-ingles">INGLÊS</button>
-  <button class="tnav"        onclick="goTab('leitura')"  id="t-leitura">LEITURA</button>
-  <button class="tnav"        onclick="goTab('guitarra')" id="t-guitarra">GUITARRA</button>
-  <button class="tnav"        onclick="goTab('treino')"   id="t-treino">TREINO</button>
-  <button class="tnav"        onclick="goTab('negocios')" id="t-negocios">INSID360</button>
-  <button class="tnav"        onclick="goTab('outros')"   id="t-outros">METAS</button>
+  <button class="tnav active" onclick="goTab('rotina')"    id="t-rotina">ROTINA</button>
+  <button class="tnav"        onclick="goTab('ingles')"    id="t-ingles">INGLÊS</button>
+  <button class="tnav"        onclick="goTab('leitura')"   id="t-leitura">LEITURA</button>
+  <button class="tnav"        onclick="goTab('guitarra')"  id="t-guitarra">GUITARRA</button>
+  <button class="tnav"        onclick="goTab('treino')"    id="t-treino">TREINO</button>
+  <button class="tnav"        onclick="goTab('negocios')"  id="t-negocios">INSID360</button>
+  <button class="tnav"        onclick="goTab('trilhas')"   id="t-trilhas" style="color:#fbbf24">TRILHAS</button>
+  <button class="tnav"        onclick="goTab('outros')"    id="t-outros">METAS</button>
 </div>
 
 <!-- PAGE: ROTINA -->
@@ -214,6 +306,212 @@
   <textarea class="notes" style="min-height:160px" placeholder="// IDEIAS · ESTRATÉGIAS · PRÓXIMOS MOVIMENTOS..."></textarea>
 </div>
 
+<!-- ═══════════════════════════════════════════════════ -->
+<!-- PAGE: TRILHAS DE MONETIZAÇÃO                        -->
+<!-- ═══════════════════════════════════════════════════ -->
+<div class="page" id="page-trilhas">
+  <div class="pg-hdr">
+    <div class="pgh-left">
+      <span class="chess-icon" style="color:#fbbf24">⚡</span>
+      <div>
+        <h1 class="pg-title" style="color:#fbbf24">TRILHAS</h1>
+        <div class="pg-sub">MONETIZAÇÃO · 10H/DIA · 3 FRENTES PARALELAS</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cards das 3 trilhas -->
+  <div class="trilha-hero">
+    <div class="trilha-card tc-fisico">
+      <div class="tc-icon">🧴</div>
+      <div class="tc-nome">PRODUTO FÍSICO</div>
+      <div class="tc-vel">Retorno imediato · semanas</div>
+      <div class="tc-pot">Mês 1–3: R$2–5k/mês<br>Mês 7–12: R$20k+/mês</div>
+    </div>
+    <div class="trilha-card tc-saas">
+      <div class="tc-icon">⚡</div>
+      <div class="tc-nome">MODO BRUTO / SAAS</div>
+      <div class="tc-vel">Retorno médio · 3–6 meses</div>
+      <div class="tc-pot">Mês 3–6: R$1.5–5k/mês<br>Mês 7–12: R$5–15k/mês</div>
+    </div>
+    <div class="trilha-card tc-guitar">
+      <div class="tc-icon">🎸</div>
+      <div class="tc-nome">GUITARRA / CONTEÚDO</div>
+      <div class="tc-vel">Retorno longo · 6–12 meses</div>
+      <div class="tc-pot">Mês 7–12: R$3–8k/mês<br>Autoridade PT-BR fusion</div>
+    </div>
+  </div>
+
+  <!-- Grade operacional -->
+  <div class="sec-hdr"><span class="sec-lbl">GRADE OPERACIONAL · 10H/DIA</span><div class="sec-line"></div></div>
+  <div class="grade-wrap">
+    <div class="grade-row">
+      <div class="gr-hora">06h–07h</div>
+      <div class="gr-bloco">🧠 Deep Work</div>
+      <div class="gr-foco">Planejamento estratégico · 0 distrações</div>
+    </div>
+    <div class="grade-row">
+      <div class="gr-hora">07h–09h</div>
+      <div class="gr-bloco" style="color:#60a5fa">⚡ Modo Bruto SaaS</div>
+      <div class="gr-foco">Build técnico · código · deploy · Stripe</div>
+    </div>
+    <div class="grade-row">
+      <div class="gr-hora">09h–11h</div>
+      <div class="gr-bloco" style="color:#60a5fa">📱 Conteúdo Digital</div>
+      <div class="gr-foco">2 vídeos TikTok/IG · produtividade e IA</div>
+    </div>
+    <div class="grade-row">
+      <div class="gr-hora">11h–12h</div>
+      <div class="gr-bloco" style="color:#c084fc">🎸 Guitarra</div>
+      <div class="gr-foco">Treino técnico + 1 vídeo fusion por dia</div>
+    </div>
+    <div class="grade-row">
+      <div class="gr-hora">12h–13h</div>
+      <div class="gr-bloco" style="opacity:.45">☕ Pausa real</div>
+      <div class="gr-foco">Almoço · desconexão total da tela</div>
+    </div>
+    <div class="grade-row">
+      <div class="gr-hora">13h–15h</div>
+      <div class="gr-bloco" style="color:#fbbf24">🧴 Perfumes / Shop</div>
+      <div class="gr-foco">TikTok Shop · lives · pedidos · atendimento</div>
+    </div>
+    <div class="grade-row">
+      <div class="gr-hora">15h–17h</div>
+      <div class="gr-bloco">📱 Edição / Agendamento</div>
+      <div class="gr-foco">1 gravação → 3 formatos (TT + IG + YT Shorts)</div>
+    </div>
+    <div class="grade-row">
+      <div class="gr-hora">17h–18h</div>
+      <div class="gr-bloco">📊 Métricas / Revisão</div>
+      <div class="gr-foco">Análise do dia · ajuste de rota</div>
+    </div>
+  </div>
+
+  <!-- Trilha Produto Físico -->
+  <div class="trilha-section">
+    <div class="trilha-section-hdr">
+      <span class="ts-icon">🧴</span>
+      <span class="ts-title" style="color:#fbbf24">PRODUTO FÍSICO — PERFUMES</span>
+      <span class="ts-meta">13h–15h</span>
+    </div>
+    <div class="mon-task" style="--mt-color:#fbbf24" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Live de review de perfumes no TikTok Shop</div><div class="mt-meta">Operação · 45–60 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#fbbf24" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Gravar 1–2 vídeos de review / unboxing</div><div class="mt-meta">Tarefa · 30 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#fbbf24" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Atender pedidos e confirmar envios</div><div class="mt-meta">Operação · 30 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#fbbf24" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Gestão de estoque e reposição</div><div class="mt-meta">Gestão · 20 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#fbbf24" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Responder DMs e comentários sobre produtos</div><div class="mt-meta">Hábito · 20 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#fbbf24; opacity:.6" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Análise de faturamento semanal do Shop</div><div class="mt-meta">Revisão · 30 min · Semanal</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#fbbf24; opacity:.6" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Pesquisa de novos produtos e fornecedores</div><div class="mt-meta">Estratégia · 1h · Semanal</div></div>
+    </div>
+  </div>
+
+  <!-- Trilha SaaS -->
+  <div class="trilha-section">
+    <div class="trilha-section-hdr">
+      <span class="ts-icon">⚡</span>
+      <span class="ts-title" style="color:#60a5fa">MODO BRUTO — SAAS</span>
+      <span class="ts-meta">07h–11h</span>
+    </div>
+    <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Build do Modo Bruto (código, features, testes)</div><div class="mt-meta">Projeto · 2h · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Gravar 2 vídeos IA/produtividade para TikTok</div><div class="mt-meta">Tarefa · 40 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Editar + agendar posts de produtividade</div><div class="mt-meta">Tarefa · 30 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Suporte a usuários e onboarding</div><div class="mt-meta">Operação · 30 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Responder comentários e engajar audiência</div><div class="mt-meta">Hábito · 20 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#60a5fa" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Revisar métricas do SaaS (usuários, churn, MRR)</div><div class="mt-meta">Revisão · 20 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#60a5fa; opacity:.6" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Atualizar roadmap e backlog do Modo Bruto</div><div class="mt-meta">Gestão · 30 min · Semanal</div></div>
+    </div>
+  </div>
+
+  <!-- Trilha Guitarra Monetização -->
+  <div class="trilha-section">
+    <div class="trilha-section-hdr">
+      <span class="ts-icon">🎸</span>
+      <span class="ts-title" style="color:#c084fc">GUITARRA — CONTEÚDO & DIGITAL</span>
+      <span class="ts-meta">11h–12h</span>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Treino técnico fusion (escalas, licks, improvisação)</div><div class="mt-meta">Hábito · 45 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Gravar 1 vídeo musical para TikTok/Reels</div><div class="mt-meta">Tarefa · 15 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Editar vídeo de guitarra + legendas</div><div class="mt-meta">Tarefa · 20 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Agendar post guitarra (TT + IG + YT Shorts)</div><div class="mt-meta">Tarefa · 10 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Análise de views e comentários dos vídeos</div><div class="mt-meta">Revisão · 15 min · Diária</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc; opacity:.6" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Estudo de repertório Guthrie Govan</div><div class="mt-meta">Hábito · 30 min · 3x/semana</div></div>
+    </div>
+    <div class="mon-task" style="--mt-color:#c084fc; opacity:.6" onclick="this.classList.toggle('done')">
+      <div class="mt-ck"></div>
+      <div class="mt-body"><div class="mt-nome">Gravação de demo de qualidade (YouTube long-form)</div><div class="mt-meta">Projeto · 2h · Semanal</div></div>
+    </div>
+  </div>
+
+  <!-- Regras invioláveis -->
+  <div class="sec-hdr" style="margin-top:32px"><span class="sec-lbl">🔒 REGRAS INVIOLÁVEIS</span><div class="sec-line"></div></div>
+  <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:14px 16px;margin-bottom:24px">
+    <div class="regra-row"><span class="regra-icon">🔒</span><span>Blocos são intocáveis — não misturar trilhas dentro do mesmo bloco de tempo</span></div>
+    <div class="regra-row"><span class="regra-icon">🎬</span><span>1 gravação, 3 destinos — TikTok + Reels + YouTube Shorts automaticamente</span></div>
+    <div class="regra-row"><span class="regra-icon">📅</span><span>Segunda define a semana — 5 vídeos + entregáveis SaaS + pedidos da loja</span></div>
+    <div class="regra-row"><span class="regra-icon">📊</span><span>Uma métrica por trilha — Guitarra: views/vídeo · SaaS: usuários ativos · Físico: faturamento semanal</span></div>
+    <div class="regra-row"><span class="regra-icon">⛔</span><span>Sem nova ideia nos primeiros 90 dias — nova trilha zera o relógio</span></div>
+  </div>
+
+  <div class="sec-hdr"><span class="sec-lbl">INTEL</span><div class="sec-line"></div></div>
+  <textarea class="notes" style="min-height:160px" placeholder="// ANOTAÇÕES DAS TRILHAS · INSIGHTS · AJUSTES DE ROTA..."></textarea>
+</div>
+
 <!-- PAGE: METAS -->
 <div class="page" id="page-outros">
   <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:var(--amber)">♝</span><div><h1 class="pg-title" style="color:var(--amber)">METAS</h1><div class="pg-sub">VIDA · FAMÍLIA · PATRIMÔNIO</div></div></div></div>
@@ -246,7 +544,34 @@
   </div>
 </div>
 
-<script src="config.js?v=11"></script>
-<script src="app.js?v=11"></script>
+<script src="config.js?v=12"></script>
+<script src="app.js?v=12"></script>
+<script>
+// Suporte à aba TRILHAS — navegação
+(function(){
+  const origGoTab = window.goTab;
+  if (typeof origGoTab === 'function') {
+    window.goTab = function(tab) {
+      origGoTab(tab);
+      // garante que a aba trilhas também funciona
+    };
+  }
+  // Fallback caso goTab ainda não esteja definida no load
+  document.addEventListener('DOMContentLoaded', function(){
+    document.querySelectorAll('.tnav').forEach(btn => {
+      btn.addEventListener('click', function(){
+        const tab = this.getAttribute('onclick').match(/'([^']+)'/)?.[1];
+        if (tab === 'trilhas') {
+          document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+          document.querySelectorAll('.tnav').forEach(b => b.classList.remove('active'));
+          const pg = document.getElementById('page-trilhas');
+          if (pg) pg.classList.add('active');
+          this.classList.add('active');
+        }
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>
