@@ -212,48 +212,37 @@
 
 <!-- PAGE: GUITARRA -->
 <div class="page" id="page-guitarra">
-  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:#c084fc">♛</span><div><h1 class="pg-title" style="color:#c084fc">GUITARRA</h1><div class="pg-sub">20 ANOS · MÚSICO COMPLETO · EVOLUÇÃO DIÁRIA</div></div></div></div>
+  <div class="pg-hdr"><div class="pgh-left"><span class="chess-icon" style="color:#c084fc">♛</span><div><h1 class="pg-title" style="color:#c084fc">GUITARRA</h1><div class="pg-sub">MÚSICO COMPLETO · PLANO DIÁRIO · EVOLUÇÃO CONSTANTE</div></div></div></div>
 
-  <div class="sec-hdr"><span class="sec-lbl">FOCO DO DIA</span><div class="sec-line"></div></div>
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px">
-    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
-      <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Técnica geral (45 min)</div><div class="mt-meta">Escalas · Arpejos · Sweep · Legato · Alternate picking</div></div>
-    </div>
-    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
-      <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Teoria aplicada (20 min)</div><div class="mt-meta">Harmonia · Modos · Progressões · Cifras</div></div>
-    </div>
-    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
-      <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Repertório / Estilo (30 min)</div><div class="mt-meta">Rodar estilos: blues · jazz · rock · funk · fingerpicking</div></div>
-    </div>
-    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
-      <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Improvisação livre (15 min)</div><div class="mt-meta">Sem metrônomo · expressão · musicalidade</div></div>
-    </div>
-    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
-      <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Gravar 1 vídeo musical</div><div class="mt-meta">TikTok · Reels · YT Shorts — qualquer estilo</div></div>
-    </div>
-    <div class="mon-task" style="--mt-color:#c084fc" onclick="this.classList.toggle('done')">
-      <div class="mt-ck"></div>
-      <div class="mt-body"><div class="mt-nome">Editar + agendar post</div><div class="mt-meta">1 gravação → 3 destinos automáticos</div></div>
-    </div>
+  <!-- Seletor de dia da semana -->
+  <div style="display:flex;gap:6px;margin:12px 0 20px;flex-wrap:wrap" id="guitar-day-sel">
+    <button class="gds active" onclick="guitDia(this,0)">SEG</button>
+    <button class="gds" onclick="guitDia(this,1)">TER</button>
+    <button class="gds" onclick="guitDia(this,2)">QUA</button>
+    <button class="gds" onclick="guitDia(this,3)">QUI</button>
+    <button class="gds" onclick="guitDia(this,4)">SEX</button>
+    <button class="gds" onclick="guitDia(this,5)">SÁB</button>
+    <button class="gds" onclick="guitDia(this,6)">DOM</button>
   </div>
 
-  <div class="sec-hdr"><span class="sec-lbl">ESTILOS EM ROTAÇÃO SEMANAL</span><div class="sec-line"></div></div>
-  <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px">
-    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🎸 FUSION / PROG</span>
-    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🎷 JAZZ</span>
-    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🔵 BLUES</span>
-    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🤘 ROCK / METAL</span>
-    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🕺 FUNK / R&B</span>
-    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🎵 FINGERPICKING</span>
-    <span style="background:rgba(192,132,252,.15);border:1px solid rgba(192,132,252,.3);border-radius:6px;padding:4px 10px;font-size:11px;font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:.06em">🎼 CLÁSSICO</span>
-  </div>
+  <style>
+  .gds { background:rgba(192,132,252,.1); border:1px solid rgba(192,132,252,.2); color:rgba(255,255,255,.5); padding:6px 14px; border-radius:6px; font-family:'Barlow Condensed',sans-serif; font-weight:700; font-size:12px; letter-spacing:.06em; cursor:pointer; transition:.15s; }
+  .gds.active { background:rgba(192,132,252,.25); border-color:#c084fc; color:#c084fc; }
+  .guitar-bloco { background:rgba(255,255,255,.03); border-left:3px solid #c084fc; border-radius:0 8px 8px 0; padding:12px 14px; margin-bottom:8px; }
+  .gb-tempo { font-size:10px; color:#fbbf24; font-weight:700; letter-spacing:.06em; text-transform:uppercase; margin-bottom:4px; }
+  .gb-titulo { font-family:'Barlow Condensed',sans-serif; font-weight:800; font-size:15px; letter-spacing:.05em; color:#fff; margin-bottom:4px; }
+  .gb-desc { font-size:12px; opacity:.6; line-height:1.5; margin-bottom:8px; }
+  .gb-link { display:inline-flex; align-items:center; gap:5px; background:rgba(255,0,0,.12); border:1px solid rgba(255,0,0,.25); border-radius:5px; padding:4px 10px; font-size:11px; font-weight:700; color:#f87171; text-decoration:none; font-family:'Barlow Condensed',sans-serif; letter-spacing:.04em; }
+  .gb-link:hover { background:rgba(255,0,0,.22); }
+  .gb-bpm { font-size:10px; opacity:.4; margin-top:6px; }
+  .gb-check { display:flex; align-items:center; gap:8px; margin-top:8px; cursor:pointer; }
+  .gb-check input { accent-color:#c084fc; width:15px; height:15px; cursor:pointer; }
+  .gb-check span { font-size:11px; opacity:.6; }
+  </style>
 
-  <div class="sec-hdr"><span class="sec-lbl">METRÔNOMO</span><div class="sec-line"></div></div>
+  <div id="guitar-plano-dia"></div>
+
+  <div class="sec-hdr" style="margin-top:20px"><span class="sec-lbl">METRÔNOMO</span><div class="sec-line"></div></div>
   <div class="bpm-card">
     <div class="bpm-num" id="bpm-num">80</div>
     <div class="bpm-unit">BPM</div>
@@ -262,7 +251,7 @@
   </div>
 
   <div class="sec-hdr"><span class="sec-lbl">LOG DA SESSÃO</span><div class="sec-line"></div></div>
-  <textarea class="notes" placeholder="// ESTILO DO DIA · O QUE PRATICOU · CONQUISTAS · PRÓXIMOS DESAFIOS..."></textarea>
+  <textarea class="notes" placeholder="// BPM ATINGIDO · DIFICULDADES · CONQUISTAS · PRÓXIMO DESAFIO..."></textarea>
 </div>
 
 <!-- PAGE: TREINO -->
@@ -824,6 +813,329 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     });
   });
+});
+
+// ── GUITARRA — PLANO DIÁRIO ──────────────────────────────
+const GUITAR_PLANO = [
+  // SEGUNDA — Técnica: Alternate Picking + Velocidade
+  {
+    dia: 'SEGUNDA', tema: '⚡ TÉCNICA — ALTERNATE PICKING & VELOCIDADE',
+    cor: '#c084fc',
+    blocos: [
+      {
+        tempo: '10 min — Aquecimento',
+        titulo: 'Cromáticos 4 dedos no metrônomo',
+        desc: 'Todas as cordas, movendo 1 casa por repetição. Comece em 60 BPM, suba 5 BPM a cada minuto até sentir tensão. Foco: zero tensão no pulso.',
+        bpm: 'Início: 60 BPM → Meta: 120 BPM',
+        link: 'https://www.youtube.com/watch?v=G2dNQRr72KE',
+        linkLabel: '▶ Aquecimento — Paul Gilbert'
+      },
+      {
+        tempo: '15 min — Alternate Picking',
+        titulo: 'Escala pentatônica em sequências de 3',
+        desc: 'Escala de Am pentatônica em sequências de 3 notas, subindo e descendo. Grave e assista — o movimento do pulso deve ser mínimo. Técnica Troy Grady.',
+        bpm: 'Início: 80 BPM → Meta: 160 BPM',
+        link: 'https://www.youtube.com/watch?v=hBZ3jTpqJgU',
+        linkLabel: '▶ Cracking the Code — Troy Grady'
+      },
+      {
+        tempo: '15 min — String Skipping',
+        titulo: 'Licks de Paul Gilbert — string skipping',
+        desc: 'Lick clássico: 1ª e 3ª corda pulando. Use alternate picking estrito. Comece devagar e aumente até o lick soar limpo em velocidade.',
+        bpm: 'Início: 70 BPM → Meta: 130 BPM',
+        link: 'https://www.youtube.com/watch?v=9WdK2J5yNLc',
+        linkLabel: '▶ Paul Gilbert String Skipping'
+      },
+      {
+        tempo: '10 min — Gravação',
+        titulo: 'Gravar 1 reel de técnica',
+        desc: 'Grave um dos exercícios do dia em velocidade desafiante mas limpa. Caption: "X dias de prática — BPM hoje: Y". TikTok + Reels + YT Shorts.',
+        bpm: '',
+        link: '',
+        linkLabel: ''
+      }
+    ]
+  },
+  // TERÇA — Blues & Feeling
+  {
+    dia: 'TERÇA', tema: '🔵 BLUES — FEELING & EXPRESSÃO',
+    cor: '#38bdf8',
+    blocos: [
+      {
+        tempo: '10 min — Aquecimento',
+        titulo: 'Bend e vibrato no Blues Box',
+        desc: 'Posição 1 da pentatônica de A. Foco em bends de 1 tom na 3ª e 2ª corda. Vibrato largo e controlado. Ouça cada nota antes de passar para a próxima.',
+        bpm: 'Sem metrônomo — foco em expressão',
+        link: 'https://www.youtube.com/watch?v=x8ZTVIT0wz4',
+        linkLabel: '▶ JustinGuitar — Blues Bends'
+      },
+      {
+        tempo: '20 min — Estudo de frase',
+        titulo: 'Frases de SRV / BB King',
+        desc: 'Pegue 1 frase de cada artista por aula. Transcreva de ouvido. A frase não precisa ser perfeita — o processo de ouvir e reproduzir é o treino. BB King: menos notas, mais sentimento.',
+        bpm: 'Adapte ao original',
+        link: 'https://www.youtube.com/watch?v=oqM8VRlaKF4',
+        linkLabel: '▶ BB King Phrasing Masterclass'
+      },
+      {
+        tempo: '15 min — Blues 12 compassos',
+        titulo: 'Improvisar sobre backing track Blues em A',
+        desc: 'Use apenas a pentatônica menor + nota blue (b5). Regra: cada nota deve ter intenção. Grave e ouça depois — identifique 1 frase boa e 1 pra melhorar.',
+        bpm: 'Backing: 85–100 BPM',
+        link: 'https://www.youtube.com/watch?v=pLIHURY6lFE',
+        linkLabel: '▶ Backing Track Blues A — 90 BPM'
+      },
+      {
+        tempo: '10 min — Gravação',
+        titulo: 'Gravar reel de Blues feeling',
+        desc: 'Improviso sobre backing track. Caption: "Blues puro — menos notas, mais alma". Esse conteúdo performa muito bem.',
+        bpm: '',
+        link: '',
+        linkLabel: ''
+      }
+    ]
+  },
+  // QUARTA — Jazz & Harmonia
+  {
+    dia: 'QUARTA', tema: '🎷 JAZZ — HARMONIA & ACORDES',
+    cor: '#fbbf24',
+    blocos: [
+      {
+        tempo: '15 min — Voicings',
+        titulo: 'Drop 2 — tétrades em todas as inversões',
+        desc: 'Tétrade Cmaj7 Drop 2: 4 inversões nas cordas 6-5-4-3 e 5-4-3-2. Memorize a forma, depois toque em progressão II-V-I em C. Esses shapes aparecem em todo jazz.',
+        bpm: '50–70 BPM',
+        link: 'https://www.youtube.com/watch?v=cqOL9KBmikQ',
+        linkLabel: '▶ Drop 2 Voicings — Jazz Guitar'
+      },
+      {
+        tempo: '15 min — II-V-I',
+        titulo: 'Improvisação sobre progressão II-V-I em C',
+        desc: 'Dm7 → G7 → Cmaj7. Use escala dórica no Dm7, mixolídia no G7, jônica no Cmaj7. Grave mental cada mudança. 1 arpejo por acorde como guia.',
+        bpm: '60–80 BPM',
+        link: 'https://www.youtube.com/watch?v=97Rkc0bQ91Y',
+        linkLabel: '▶ Signals Music — II-V-I Improv'
+      },
+      {
+        tempo: '15 min — Walking Chord Melody',
+        titulo: 'Melodia + harmonia simultânea',
+        desc: 'Pegue uma melodia simples (ex: "Autumn Leaves") e adicione acordes embaixo. Comece só nas notas do acorde. Adam Neely tem o melhor guia para isso.',
+        bpm: 'Lento — foco em precisão',
+        link: 'https://www.youtube.com/watch?v=o1wFCCwkOPE',
+        linkLabel: '▶ Adam Neely — Chord Melody'
+      },
+      {
+        tempo: '10 min — Gravação',
+        titulo: 'Gravar reel de jazz/harmonia',
+        desc: 'Mostre uma progressão II-V-I ou um voicing diferente. Caption: "Guitarra além do rock — isso é harmonia". Nicho diferenciado no TikTok.',
+        bpm: '',
+        link: '',
+        linkLabel: ''
+      }
+    ]
+  },
+  // QUINTA — Fusion & Guthrie Govan
+  {
+    dia: 'QUINTA', tema: '🎸 FUSION — GUTHRIE GOVAN & ALEX HUTCHINGS',
+    cor: '#c084fc',
+    blocos: [
+      {
+        tempo: '10 min — Aquecimento',
+        titulo: 'Legato fluido — 4 notas por corda',
+        desc: 'Escala de A Mixolídia em 4 notas por corda. Hammer-ons e pull-offs sem palheta. Foco: todas as notas com mesmo volume. É a base do som do Guthrie.',
+        bpm: '60 BPM → 100 BPM',
+        link: 'https://www.youtube.com/watch?v=2Z_KAaRX4kQ',
+        linkLabel: '▶ Guthrie Govan Legato Lesson'
+      },
+      {
+        tempo: '20 min — Lick do Guthrie',
+        titulo: 'Estudar 1 lick específico do Govan',
+        desc: 'Escolha 1 lick do canal Guthrie Govan Lessons. Transcreva devagar, parte por parte. O objetivo não é velocidade — é entender a lógica por trás da frase. O DNA do lick importa mais que a execução.',
+        bpm: '50% da velocidade original → aumentar gradualmente',
+        link: 'https://www.youtube.com/watch?v=XqXipEqMf1U',
+        linkLabel: '▶ Guthrie Govan — Waves (análise)'
+      },
+      {
+        tempo: '15 min — Alex Hutchings Groove',
+        titulo: 'Fusion groove: Hutchings style',
+        desc: 'Alex usa muito rhythmic displacement e chord stabs com improv. Escolha 1 vídeo e imite a articulação — não as notas, mas como ele ataca as cordas. O groove fusion é tão importante quanto a velocidade.',
+        bpm: 'Junto ao vídeo',
+        link: 'https://www.youtube.com/watch?v=kBzjEHMKL2k',
+        linkLabel: '▶ Alex Hutchings Fusion Licks'
+      },
+      {
+        tempo: '10 min — Gravação',
+        titulo: 'Gravar reel fusion/prog',
+        desc: 'Improviso sobre backing track fusion. Esse é o nicho único PT-BR — músico avançado com contexto. Caption: "Fusion brasileiro — o que você não vê no TikTok".',
+        bpm: '',
+        link: 'https://www.youtube.com/watch?v=mwIpZxOXqV0',
+        linkLabel: '▶ Backing Track Fusion Dm'
+      }
+    ]
+  },
+  // SEXTA — Funk & Ritmo
+  {
+    dia: 'SEXTA', tema: '🕺 FUNK & RITMO — GROOVE É TÉCNICA',
+    cor: '#6ee7b7',
+    blocos: [
+      {
+        tempo: '15 min — Muting + Strum patterns',
+        titulo: 'Funk rhythm: 16th note patterns',
+        desc: 'Em Em9 ou E7#9 (o acorde do Hendrix). Padrão: D DU UDU. Foco total em muting com a palma — as notas abafadas são tão importantes quanto as abertas. Isso é o que separa o ritmo amador do profissional.',
+        bpm: '80 BPM → 110 BPM',
+        link: 'https://www.youtube.com/watch?v=sYY3t5QxFac',
+        linkLabel: '▶ Funk Guitar 16th Notes'
+      },
+      {
+        tempo: '15 min — Chord embellishments',
+        titulo: 'Grace notes e hammer-ons nos acordes',
+        desc: 'Adicionar pequenos hammer-ons e slides ao chegar nos acordes. Estilo Nile Rodgers e Curtis Mayfield. Isso transforma um ritmo básico em algo que brilha na mix.',
+        bpm: '75–90 BPM',
+        link: 'https://www.youtube.com/watch?v=EAknK86PXVQ',
+        linkLabel: '▶ Nile Rodgers Rhythm Technique'
+      },
+      {
+        tempo: '15 min — Improv sobre Funk groove',
+        titulo: 'Solo funk sobre backing track',
+        desc: 'Use pentatônica + cromatismos + double stops. O foco é groove — cada nota deve encaixar com a batida. Pense como Ernie Isley ou Prince.',
+        bpm: 'Backing: 95–105 BPM',
+        link: 'https://www.youtube.com/watch?v=cVpJPaGBLFE',
+        linkLabel: '▶ Funk Backing Track Em'
+      },
+      {
+        tempo: '10 min — Gravação',
+        titulo: 'Gravar reel de funk rhythm',
+        desc: 'O ritmo funk gera muito engajamento — pessoas tentam copiar. Caption: "O segredo do funk na guitarra". Conteúdo didático + groove = viral.',
+        bpm: '',
+        link: '',
+        linkLabel: ''
+      }
+    ]
+  },
+  // SÁBADO — Composição & Criatividade
+  {
+    dia: 'SÁBADO', tema: '🎼 COMPOSIÇÃO — CRIAR É EVOLUIR',
+    cor: '#fb923c',
+    blocos: [
+      {
+        tempo: '20 min — Composição livre',
+        titulo: 'Escrever 1 ideia musical do zero',
+        desc: 'Regra: nenhuma ideia existente. Comece com 1 riff ou progressão de 4 acordes. Grave no celular assim que surgir. Não julgue — apenas crie. Toda música boa começa como uma ideia ruim.',
+        bpm: 'Livre',
+        link: 'https://www.youtube.com/watch?v=KUedEqzEqMY',
+        linkLabel: '▶ Como Compor — Rick Beato'
+      },
+      {
+        tempo: '20 min — Arranjo e estrutura',
+        titulo: 'Desenvolver a ideia: intro, tema, variação',
+        desc: 'Pegar a ideia do bloco anterior e criar: intro (4 compassos), tema principal (8), variação (8). Mesmo que simples, ter estrutura é o que diferencia uma ideia de uma música.',
+        bpm: 'Adapte ao tema',
+        link: 'https://www.youtube.com/watch?v=BVVYXXIhOlg',
+        linkLabel: '▶ Song Structure — Adam Neely'
+      },
+      {
+        tempo: '15 min — Referência',
+        titulo: 'Analisar 1 música que você admira',
+        desc: 'Escolha 1 música e identifique: qual é a progressão? Que escala o solo usa? Como a melodia foi construída? Rick Beato faz isso melhor que ninguém. Isso alimenta o subconsciente criativo.',
+        bpm: 'Análise — sem instrumento',
+        link: 'https://www.youtube.com/c/RickBeato',
+        linkLabel: '▶ Rick Beato — What Makes This Song Great'
+      },
+      {
+        tempo: '15 min — Demo',
+        titulo: 'Gravar demo da composição do dia',
+        desc: 'Grave a música inteira — mesmo simples. Poste como "composição da semana" ou use como backing track para futuros vídeos de improviso.',
+        bpm: '',
+        link: '',
+        linkLabel: ''
+      }
+    ]
+  },
+  // DOMINGO — Revisão & Gravação Profissional
+  {
+    dia: 'DOMINGO', tema: '🎬 REVISÃO & GRAVAÇÃO — CONSOLIDAR A SEMANA',
+    cor: '#a78bfa',
+    blocos: [
+      {
+        tempo: '20 min — Revisão técnica',
+        titulo: 'Rever o ponto mais difícil da semana',
+        desc: 'Qual exercício travou? Qual lick não ficou limpo? Dedique 20 minutos só nisso. A repetição consciente no fim da semana consolida o que foi aprendido — é neurociência, não disciplina.',
+        bpm: '70% da meta da semana',
+        link: 'https://www.youtube.com/watch?v=fBXr9mRwKpk',
+        linkLabel: '▶ Como Praticar de Verdade — Bernth'
+      },
+      {
+        tempo: '20 min — Gravação de qualidade',
+        titulo: 'Gravar 1 vídeo longo (YouTube) ou reel elaborado',
+        desc: 'Domingo é o dia do conteúdo mais elaborado. Pode ser: cover de música completa, solo com backing track, ou demonstração técnica com explicação. Qualidade > quantidade.',
+        bpm: 'Depende do conteúdo',
+        link: 'https://www.youtube.com/watch?v=jmjpBCqfEeE',
+        linkLabel: '▶ Como Gravar Guitarra em Casa'
+      },
+      {
+        tempo: '15 min — Planejamento da próxima semana',
+        titulo: 'Definir foco e metas de BPM para a semana',
+        desc: 'Anote: (1) qual técnica focar mais, (2) meta de BPM para segunda, (3) qual estilo gravar no TikTok. Semana sem plano é semana perdida.',
+        bpm: '',
+        link: '',
+        linkLabel: ''
+      },
+      {
+        tempo: '15 min — Escuta ativa',
+        titulo: 'Ouvir 1 álbum completo focado',
+        desc: 'Sem celular, sem distração. Escolha um álbum de referência (Guthrie Govan - Erotic Cakes, SRV - Texas Flood, Holdsworth - Metal Fatigue). Anote 3 coisas que chamaram atenção.',
+        bpm: '',
+        link: 'https://www.youtube.com/watch?v=tKAXa1Ld5IU',
+        linkLabel: '▶ Guthrie Govan — Erotic Cakes Full'
+      }
+    ]
+  }
+];
+
+function guitDia(btn, idx) {
+  document.querySelectorAll('.gds').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const plano = GUITAR_PLANO[idx];
+  const container = document.getElementById('guitar-plano-dia');
+  container.innerHTML = `
+    <div style="background:rgba(192,132,252,.08);border:1px solid rgba(192,132,252,.2);border-radius:10px;padding:10px 16px;margin-bottom:16px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:14px;letter-spacing:.06em;color:${plano.cor}">
+      ${plano.tema}
+    </div>` +
+    plano.blocos.map((b, i) => `
+    <div class="guitar-bloco">
+      <div class="gb-tempo">${b.tempo}</div>
+      <div class="gb-titulo">${b.titulo}</div>
+      <div class="gb-desc">${b.desc}</div>
+      ${b.link ? `<a class="gb-link" href="${b.link}" target="_blank" rel="noopener">▶ ${b.linkLabel.replace('▶ ','')}</a>` : ''}
+      ${b.bpm ? `<div class="gb-bpm">🎯 ${b.bpm}</div>` : ''}
+      <label class="gb-check"><input type="checkbox" onchange="guitSalvarCheck(${idx},${i},this.checked)" id="gck-${idx}-${i}"><span>CONCLUÍDO HOJE</span></label>
+    </div>`).join('');
+
+  // Restaurar checks salvos
+  const saves = JSON.parse(localStorage.getItem('guit_checks') || '{}');
+  const hoje = new Date().toISOString().slice(0,10);
+  plano.blocos.forEach((_, i) => {
+    const el = document.getElementById(`gck-${idx}-${i}`);
+    if (el && saves[hoje] && saves[hoje][idx] && saves[hoje][idx][i]) el.checked = true;
+  });
+}
+
+function guitSalvarCheck(dia, bloco, val) {
+  const saves = JSON.parse(localStorage.getItem('guit_checks') || '{}');
+  const hoje = new Date().toISOString().slice(0,10);
+  if (!saves[hoje]) saves[hoje] = {};
+  if (!saves[hoje][dia]) saves[hoje][dia] = {};
+  saves[hoje][dia][bloco] = val;
+  localStorage.setItem('guit_checks', JSON.stringify(saves));
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  // Carregar dia da semana atual automaticamente
+  const diaSemana = new Date().getDay(); // 0=dom, 1=seg...
+  const map = [6,0,1,2,3,4,5]; // converte JS (dom=0) para nosso array (seg=0)
+  const idx = map[diaSemana];
+  const btns = document.querySelectorAll('.gds');
+  if (btns[idx]) guitDia(btns[idx], idx);
 });
 
 // ── EVOLUÇÃO MONETÁRIA ───────────────────────────────────
